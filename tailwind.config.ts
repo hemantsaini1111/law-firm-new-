@@ -16,6 +16,8 @@ export default {
       fontFamily: {
         serif: ['var(--font-serif)'],
         sans: ['var(--font-sans)'],
+        almendra: ['var(--font-almendra)'],
+        lugrasimo: ['var(--font-lugrasimo)'],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import heroImage from "@/assets/hero-law.jpg";
+import heroBg from "@/assets/svg/herobg5.svg";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -9,16 +9,16 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center">
-      <div 
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url(${heroImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
-      
+    <section 
+      id="home" 
+      className="relative min-h-screen flex items-center"
+      style={{
+        backgroundImage: `url(${heroBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <div className="container mx-auto px-4 py-32 relative z-10">
         <div className="max-w-3xl animate-fade-in">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight animate-slide-up">
@@ -46,20 +46,20 @@ const Hero = () => {
             </Button>
           </div>
           
-          <div className="flex flex-wrap gap-8 mt-12 text-white animate-slide-up" style={{ animationDelay: '0.3s' }}>
-            <div className="group">
-              <div className="text-4xl font-serif font-bold text-accent group-hover:scale-110 transition-transform">30+</div>
-              <div className="text-sm text-white/80">Years Experience</div>
-            </div>
-            <div className="group">
-              <div className="text-4xl font-serif font-bold text-accent group-hover:scale-110 transition-transform">500+</div>
-              <div className="text-sm text-white/80">Cases Won</div>
-            </div>
-            <div className="group">
-              <div className="text-4xl font-serif font-bold text-accent group-hover:scale-110 transition-transform">98%</div>
-              <div className="text-sm text-white/80">Success Rate</div>
-            </div>
-          </div>
+          {/* <div className="flex flex-wrap gap-8 mt-12 text-white animate-slide-up" style={{ animationDelay: '0.3s' }}> */}
+            {/* <div className="group"> */}
+              {/* <div className="text-4xl font-serif font-bold text-accent group-hover:scale-110 transition-transform">30+</div> */}
+              {/* <div className="text-sm text-white/80">Years Experience</div> */}
+            {/* </div> */}
+            {/* <div className="group"> */}
+              {/* <div className="text-4xl font-serif font-bold text-accent group-hover:scale-110 transition-transform">500+</div> */}
+              {/* <div className="text-sm text-white/80">Cases Won</div> */}
+            {/* </div> */}
+            {/* <div className="group"> */}
+              {/* <div className="text-4xl font-serif font-bold text-accent group-hover:scale-110 transition-transform">98%</div> */}
+              {/* <div className="text-sm text-white/80">Success Rate</div> */}
+            {/* </div> */}
+          {/* </div> */}
         </div>
       </div>
     </section>
