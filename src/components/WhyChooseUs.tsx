@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, Shield, Users, TrendingUp } from "lucide-react";
+import whyChooseUsBg from "@/assets/svg/whychooseusbg2.svg";
 
 const features = [
   {
@@ -26,8 +27,12 @@ const features = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-24 bg-gradient-to-br from-primary via-primary to-primary-light text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4wNSIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9nPjwvc3ZnPg==')] opacity-30"></div>
+    <section className="py-24 bg-gradient-to-br from-[#5C3317] via-[#6B4423] to-[#FFE4E1] text-white relative overflow-hidden">
+      {/* Background SVG */}
+      <div 
+        className="absolute inset-0 bg-no-repeat bg-cover bg-center opacity-10 pointer-events-none"
+        style={{backgroundImage: `url(${whyChooseUsBg})`}}
+      ></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
@@ -59,13 +64,13 @@ const WhyChooseUs = () => {
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300 hover:shadow-elegant-hover hover:scale-105">
+              <Card key={index} className="bg-white backdrop-blur-sm border-0 border-l-[5px] border-l-gray-500 hover:bg-white transition-all duration-300 hover:shadow-elegant-hover hover:scale-105 rounded-none rounded-tr-lg rounded-br-lg aspect-square">
                 <CardContent className="pt-8 text-center">
                   <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-8 h-8 text-accent" />
                   </div>
-                  <h3 className="text-xl font-serif font-bold mb-3">{feature.title}</h3>
-                  <p className="text-white/80 leading-relaxed">{feature.description}</p>
+                  <h3 className="text-xl font-serif font-bold mb-3 text-[#5C3317]">{feature.title}</h3>
+                  <p className="text-[#5C3317]/80 leading-relaxed">{feature.description}</p>
                 </CardContent>
               </Card>
             );
