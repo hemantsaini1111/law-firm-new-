@@ -1,92 +1,62 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import legalDocuments from "@/assets/legal-documents.jpg";
+import { Gallery4, Gallery4Item } from "@/components/ui/gallery4";
 
-const cases = [
+// Law firm case studies data
+const caseStudies: Gallery4Item[] = [
   {
-    category: "Corporate Law",
-    title: "Complex Merger & Acquisition",
-    result: "$45M Settlement",
-    description: "Successfully negotiated favorable terms for client in multi-million dollar corporate merger.",
-    badge: "Recent Win"
+    id: "merger-acquisition",
+    title: "Complex Merger & Acquisition Deal",
+    description:
+      "Successfully negotiated favorable terms for our client in a multi-million dollar corporate merger, ensuring seamless transition and protecting client interests throughout the process.",
+    href: "#",
+    image:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
   },
   {
-    category: "Civil Litigation",
-    title: "Business Dispute Resolution",
-    result: "$8.5M Verdict",
-    description: "Won favorable verdict for client in complex commercial litigation case.",
-    badge: "Court Victory"
+    id: "commercial-litigation",
+    title: "Commercial Litigation Victory",
+    description:
+      "Won a significant verdict for our client in a complex commercial litigation case, securing substantial damages and setting an important precedent in contract law.",
+    href: "#",
+    image:
+      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
   },
   {
-    category: "Real Estate",
-    title: "Commercial Property Dispute",
-    result: "$12M Recovery",
-    description: "Secured significant compensation for client in property rights dispute.",
-    badge: "Settlement"
+    id: "real-estate-dispute",
+    title: "Commercial Property Rights Dispute",
+    description:
+      "Secured significant compensation for our client in a high-stakes property rights dispute, navigating complex real estate regulations and zoning laws.",
+    href: "#",
+    image:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
   },
   {
-    category: "Employment Law",
-    title: "Wrongful Termination Case",
-    result: "$2.3M Award",
-    description: "Obtained substantial damages for client in employment discrimination case.",
-    badge: "Jury Award"
-  }
+    id: "employment-discrimination",
+    title: "Employment Discrimination Case",
+    description:
+      "Obtained substantial damages for our client in an employment discrimination case, holding the employer accountable and securing justice for workplace harassment.",
+    href: "#",
+    image:
+      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+  },
+  {
+    id: "intellectual-property",
+    title: "Intellectual Property Protection",
+    description:
+      "Protected our client's intellectual property rights in a landmark case, establishing strong legal precedent and securing their competitive advantage in the market.",
+    href: "#",
+    image:
+      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+  },
 ];
 
 const CaseResults = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-secondary to-background relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.02]">
-        <img src={legalDocuments} alt="" className="w-full h-full object-cover" />
-      </div>
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-block relative group cursor-pointer mb-4">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary">
-              Recent Case Successes
-            </h2>
-            <svg 
-              className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              viewBox="0 0 300 20"
-              preserveAspectRatio="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M 0,15 Q 150,5 300,15"
-                stroke="currentColor"
-                strokeWidth="3"
-                fill="none"
-                className="text-accent"
-              />
-            </svg>
-          </div>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Our track record speaks for itself. Here are some of our recent victories for clients.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-12">
-          {cases.map((caseItem, index) => (
-            <Card key={index} className="border-border hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 bg-background/80 backdrop-blur-sm group">
-              <CardContent className="pt-6">
-                <Badge variant="secondary" className="mb-3 bg-accent/10 text-accent hover:bg-accent/20 shadow-soft">
-                  {caseItem.badge}
-                </Badge>
-                <p className="text-sm text-muted-foreground mb-2 font-medium">{caseItem.category}</p>
-                <h3 className="text-xl font-serif font-bold text-primary mb-3 group-hover:text-accent transition-colors">{caseItem.title}</h3>
-                <div className="text-3xl font-serif font-bold bg-gradient-to-r from-accent to-accent-glow bg-clip-text text-transparent mb-3">{caseItem.result}</div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{caseItem.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <p className="text-sm text-muted-foreground italic">
-            *Prior results do not guarantee a similar outcome. Each case is unique and must be evaluated on its own merits.
-          </p>
-        </div>
-      </div>
+    <section className="relative overflow-hidden">
+      <Gallery4
+        title="Recent Case Successes"
+        description="Our track record speaks for itself. Here are some of our recent victories for clients across various practice areas."
+        items={caseStudies}
+      />
     </section>
   );
 };
