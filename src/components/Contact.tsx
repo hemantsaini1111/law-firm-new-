@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import contactFormImage from '@/assets/svg/contactformimage.svg';
+import contactSection from '@/assets/svg/contactsection.svg';
 
 // === Type Definitions ===
 type FormState = {
@@ -151,8 +152,9 @@ const Contact = () => {
 
   // === Render ===
   return (
-    <section id="contact" className="antialiased text-gray-900 py-12 w-full flex items-center justify-center px-4 sm:px-8" style={{ backgroundColor: 'rgb(255,249,233)' }}>
-      <div className="max-w-5xl w-full mx-auto bg-white shadow-xl rounded-2xl overflow-hidden grid md:grid-cols-2">
+    <section id="contact" className="relative antialiased text-gray-900 py-12 w-full flex items-center justify-center px-4 sm:px-8" style={{ backgroundColor: 'rgb(255,249,233)', backgroundImage: `url(${contactSection})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+      <div className="absolute inset-0 bg-[rgb(255,249,233)]/60"></div>
+      <div className="max-w-5xl w-full ml-auto mr-20 md:mr-32 lg:mr-40 bg-white shadow-xl rounded-2xl overflow-hidden grid md:grid-cols-2 relative z-10">
         
         {/* Left Column: Image (hidden on mobile) */}
         <div className="hidden md:block">

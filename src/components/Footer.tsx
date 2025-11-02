@@ -1,13 +1,14 @@
 import { Scale, MapPin, Phone, Mail, Linkedin, Twitter, Facebook } from "lucide-react";
 import lawLibrary from "@/assets/law-library.jpg";
+import footerCorner from "@/assets/svg/footercorner.svg";
 
 const Footer = () => {
   return (
-    <footer className="relative">
+    <footer className="relative" style={{ backgroundImage: `url(${footerCorner})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
       <div className="absolute inset-0 z-0 opacity-[0.03]">
         <img src={lawLibrary} alt="" className="w-full h-full object-cover" />
       </div>
-      <div className="bg-primary/95 backdrop-blur-sm text-primary-foreground py-16 relative z-10">
+      <div className="bg-primary/70 backdrop-blur-sm text-primary-foreground py-16 relative z-10">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">
