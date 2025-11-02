@@ -1,4 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Phone, FileText, Users, Scale } from "lucide-react";
 import handshakeSvg from "@/assets/svg/handshake2.svg";
 
@@ -30,6 +33,27 @@ const steps = [
 ];
 
 const Process = () => {
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+
+  useEffect(() => {
+    if (!carouselApi) {
+      return;
+    }
+
+    const updateSelection = () => {
+      setCanScrollPrev(carouselApi.canScrollPrev());
+      setCanScrollNext(carouselApi.canScrollNext());
+    };
+
+    updateSelection();
+    carouselApi.on("select", updateSelection);
+    return () => {
+      carouselApi.off("select", updateSelection);
+    };
+  }, [carouselApi]);
+
   return (
     <section className="pt-2.5 pb-[116px] relative overflow-hidden">
       {/* Handshake SVG on the left side */}
@@ -66,7 +90,67 @@ const Process = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl ml-auto mr-0 -mr-12 md:-mr-24 lg:-mr-40 xl:-mr-60 -mt-8">
+        {/* Mobile Carousel */}
+        <div className="block md:hidden w-full max-w-7xl mx-auto -mt-8">
+          <Carousel 
+            setApi={setCarouselApi} 
+            opts={{ 
+              align: "start",
+              loop: true,
+              dragFree: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2">
+              {steps.map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <CarouselItem key={index} className="pl-2 basis-full">
+                    <Card className="border-border hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 group bg-background/80 backdrop-blur-sm relative overflow-hidden">
+                      {/* Bottom border with inset from edges */}
+                      <div className="absolute bottom-0 left-4 right-4 h-1 bg-accent"></div>
+                      <div className="absolute top-0 right-0 text-[120px] font-serif font-bold text-accent/5 leading-none p-4">
+                        {step.number}
+                      </div>
+                      <CardContent className="pt-8 relative z-10">
+                        <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center mb-6 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110 shadow-soft">
+                          <Icon className="w-8 h-8 text-accent" />
+                        </div>
+                        <div className="text-sm font-bold text-accent mb-2">STEP {step.number}</div>
+                        <h3 className="text-xl font-serif font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
+                          {step.title}
+                        </h3>
+                        <p className="text-muted-foreground leading-relaxed">{step.description}</p>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                );
+              })}
+              </CarouselContent>
+            </Carousel>
+            {/* Mobile Navigation Buttons */}
+            <div className="flex justify-center gap-4 mt-6">
+              <button
+                onClick={() => carouselApi?.scrollPrev()}
+                disabled={!canScrollPrev}
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/80 text-white shadow-lg hover:bg-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => carouselApi?.scrollNext()}
+                disabled={!canScrollNext}
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/80 text-white shadow-lg hover:bg-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl md:ml-auto md:mr-0 md:-mr-24 lg:-mr-40 xl:-mr-60 -mt-8">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (

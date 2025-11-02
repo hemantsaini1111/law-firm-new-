@@ -154,7 +154,7 @@ const Contact = () => {
   return (
     <section id="contact" className="relative antialiased text-gray-900 py-12 w-full flex items-center justify-center px-4 sm:px-8" style={{ backgroundColor: 'rgb(255,249,233)', backgroundImage: `url(${contactSection})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
       <div className="absolute inset-0 bg-[rgb(255,249,233)]/60"></div>
-      <div className="max-w-5xl w-full ml-auto mr-20 md:mr-32 lg:mr-40 bg-white shadow-xl rounded-2xl overflow-hidden grid md:grid-cols-2 relative z-10">
+      <div className="max-w-5xl w-full mx-auto md:ml-auto md:mr-20 lg:mr-32 xl:mr-40 bg-white shadow-xl rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 relative z-10">
         
         {/* Left Column: Image (hidden on mobile) */}
         <div className="hidden md:block">

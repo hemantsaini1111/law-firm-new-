@@ -1,8 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
 import heroBg from "@/assets/svg/herobg8.svg";
 
 const Hero = () => {
+  const [backgroundPosition, setBackgroundPosition] = useState('center center');
+
+  useEffect(() => {
+    const updateBackgroundPosition = () => {
+      if (window.innerWidth < 768) {
+        setBackgroundPosition('right center');
+      } else {
+        setBackgroundPosition('center center');
+      }
+    };
+
+    updateBackgroundPosition();
+    window.addEventListener('resize', updateBackgroundPosition);
+    
+    return () => {
+      window.removeEventListener('resize', updateBackgroundPosition);
+    };
+  }, []);
+
   const scrollToContact = () => {
     const element = document.getElementById("contact");
     element?.scrollIntoView({ behavior: "smooth" });
@@ -15,10 +35,13 @@ const Hero = () => {
       style={{
         backgroundImage: `url(${heroBg})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: backgroundPosition,
         backgroundRepeat: 'no-repeat',
       }}
     >
+      {/* White overlay for mobile view only */}
+      <div className="absolute inset-0 bg-white/80 md:hidden z-0"></div>
+      
       <div className="container mx-auto px-4 py-32 relative z-10">
         <div className="max-w-3xl animate-fade-in">
           <h1 

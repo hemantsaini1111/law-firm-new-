@@ -82,12 +82,15 @@ const Team = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
       const { scrollLeft, scrollWidth, clientWidth } = container;
-      const scrollAmount = 300; // Based on card width + margin. Adjust as needed.
+      
+      // Calculate card width dynamically based on viewport
+      const isMobile = window.innerWidth < 768;
+      const cardWidth = isMobile ? 256 : 288; // w-64 (256px) on mobile, w-72 (288px) on desktop
+      const gap = 24; // space-x-6 (24px)
+      const scrollAmount = cardWidth + gap;
       
       // Calculate the width of one set (original attorneys array)
-      // Card width is 288px (w-72) + gap 24px (space-x-6) = ~312px per card
-      // Width calculation is dynamic based on attorneys.length
-      const singleSetWidth = attorneys.length * (288 + 24); // w-72 (288px) + space-x-6 (24px)
+      const singleSetWidth = attorneys.length * (cardWidth + gap);
       
       // If at the end of the visible set, jump to the start of a duplicate set invisibly
       const currentPositionInSet = scrollLeft % singleSetWidth;
@@ -112,7 +115,12 @@ const Team = () => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
       const { scrollLeft, scrollWidth } = container;
-      const singleSetWidth = attorneys.length * (288 + 24);
+      
+      // Calculate card width dynamically based on viewport
+      const isMobile = window.innerWidth < 768;
+      const cardWidth = isMobile ? 256 : 288; // w-64 (256px) on mobile, w-72 (288px) on desktop
+      const gap = 24;
+      const singleSetWidth = attorneys.length * (cardWidth + gap);
       
       // If we're in the last set (4th), jump to the second set
       if (scrollLeft >= singleSetWidth * 3) {
@@ -151,7 +159,10 @@ const Team = () => {
     const initializeScroll = () => {
       if (scrollContainerRef.current) {
         const container = scrollContainerRef.current;
-        const singleSetWidth = attorneys.length * (288 + 24);
+        const isMobile = window.innerWidth < 768;
+        const cardWidth = isMobile ? 256 : 288;
+        const gap = 24;
+        const singleSetWidth = attorneys.length * (cardWidth + gap);
         const { scrollWidth, clientWidth } = container;
         
         // Start at the end of the second set, showing cards from the right side
@@ -173,6 +184,12 @@ const Team = () => {
     container?.addEventListener('mouseenter', stopAutoScroll);
     container?.addEventListener('mouseleave', startAutoScroll);
     container?.addEventListener('scroll', handleScroll);
+    
+    // Handle window resize to recalculate on mobile/desktop switch
+    const handleResize = () => {
+      initializeScroll();
+    };
+    window.addEventListener('resize', handleResize);
 
     // Clean up on unmount
     return () => {
@@ -180,6 +197,7 @@ const Team = () => {
       container?.removeEventListener('mouseenter', stopAutoScroll);
       container?.removeEventListener('mouseleave', startAutoScroll);
       container?.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
     };
   }, []); // Empty dependency array ensures this runs once on mount
 

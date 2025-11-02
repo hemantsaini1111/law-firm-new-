@@ -1,4 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Award, Shield, Users, TrendingUp } from "lucide-react";
 import whyChooseUsBg from "@/assets/svg/whychooseusbg2.svg";
 
@@ -26,6 +29,27 @@ const features = [
 ];
 
 const WhyChooseUs = () => {
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+
+  useEffect(() => {
+    if (!carouselApi) {
+      return;
+    }
+
+    const updateSelection = () => {
+      setCanScrollPrev(carouselApi.canScrollPrev());
+      setCanScrollNext(carouselApi.canScrollNext());
+    };
+
+    updateSelection();
+    carouselApi.on("select", updateSelection);
+    return () => {
+      carouselApi.off("select", updateSelection);
+    };
+  }, [carouselApi]);
+
   return (
     <section className="py-24 bg-gradient-to-br from-[#5C3317] via-[#6B4423] to-[#FFE4E1] text-white relative overflow-hidden">
       {/* Background SVG */}
@@ -60,7 +84,59 @@ const WhyChooseUs = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        {/* Mobile Carousel */}
+        <div className="block md:hidden w-full max-w-7xl mx-auto">
+          <Carousel 
+            setApi={setCarouselApi} 
+            opts={{ 
+              align: "start",
+              loop: true,
+              dragFree: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2">
+              {features.map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <CarouselItem key={index} className="pl-2 basis-full">
+                    <Card className="bg-white backdrop-blur-sm border-0 border-l-[5px] border-l-gray-500 hover:bg-white transition-all duration-300 hover:shadow-elegant-hover hover:scale-105 rounded-none rounded-tr-lg rounded-br-lg aspect-square">
+                      <CardContent className="pt-8 text-center">
+                        <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
+                          <Icon className="w-8 h-8 text-accent" />
+                        </div>
+                        <h3 className="text-xl font-serif font-bold mb-3 text-[#5C3317]">{feature.title}</h3>
+                        <p className="text-[#5C3317]/80 leading-relaxed">{feature.description}</p>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                );
+              })}
+              </CarouselContent>
+            </Carousel>
+            {/* Mobile Navigation Buttons */}
+            <div className="flex justify-center gap-4 mt-6">
+              <button
+                onClick={() => carouselApi?.scrollPrev()}
+                disabled={!canScrollPrev}
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-white/20 text-white shadow-lg hover:bg-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={() => carouselApi?.scrollNext()}
+                disabled={!canScrollNext}
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-white/20 text-white shadow-lg hover:bg-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-label="Next slide"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (

@@ -1,7 +1,27 @@
 import { CheckCircle } from "lucide-react";
+import { useState, useEffect } from "react";
 import aboutSectionBg from "@/assets/svg/aboutsection3.svg";
 
 const About = () => {
+  const [backgroundPosition, setBackgroundPosition] = useState('center center');
+
+  useEffect(() => {
+    const updateBackgroundPosition = () => {
+      if (window.innerWidth < 768) {
+        setBackgroundPosition('70% center');
+      } else {
+        setBackgroundPosition('center center');
+      }
+    };
+
+    updateBackgroundPosition();
+    window.addEventListener('resize', updateBackgroundPosition);
+    
+    return () => {
+      window.removeEventListener('resize', updateBackgroundPosition);
+    };
+  }, []);
+
   return (
     <section 
       id="about" 
@@ -13,12 +33,16 @@ const About = () => {
         style={{
           backgroundImage: `url(${aboutSectionBg})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: backgroundPosition,
           backgroundRepeat: 'no-repeat',
         }}
       ></div>
+      
+      {/* White overlay for mobile view only */}
+      <div className="absolute inset-0 bg-white/80 md:hidden z-[1]"></div>
+      
       <div className="relative z-10">
-      <div className="container pr-4 ml-0" style={{ paddingLeft: '40px' }}>
+      <div className="container px-4 md:pr-4 md:ml-0 md:pl-10">
         <div className="max-w-4xl">
           {/* Text Content */}
           <div className="mb-12">
