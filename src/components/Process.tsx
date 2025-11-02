@@ -66,7 +66,7 @@ const Process = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl ml-auto mr-0 -mr-60 -mt-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl ml-auto mr-0 -mr-12 md:-mr-24 lg:-mr-40 xl:-mr-60 -mt-8">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
