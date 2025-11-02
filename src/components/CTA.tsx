@@ -22,9 +22,25 @@ const CTA = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 leading-tight">
-            Ready to Discuss Your Legal Matter?
-          </h2>
+          <div className="inline-block relative group cursor-pointer mb-6">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight">
+              Ready to Discuss Your Legal Matter?
+            </h2>
+            <svg 
+              className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              viewBox="0 0 300 20"
+              preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 0,15 Q 150,5 300,15"
+                stroke="currentColor"
+                strokeWidth="3"
+                fill="none"
+                className="text-accent"
+              />
+            </svg>
+          </div>
           <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed">
             Don't navigate your legal challenges alone. Our experienced attorneys are here to help you achieve the best possible outcome.
           </p>

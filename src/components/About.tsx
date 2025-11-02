@@ -7,9 +7,25 @@ const About = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-6">
-              About Sterling & Associates
-            </h2>
+            <div className="inline-block relative group cursor-pointer mb-6">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary">
+                About Sterling & Associates
+              </h2>
+              <svg 
+                className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                viewBox="0 0 300 20"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 0,15 Q 150,5 300,15"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  fill="none"
+                  className="text-accent"
+                />
+              </svg>
+            </div>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
               For over three decades, Sterling & Associates has been a pillar of legal excellence in our community. Our firm was built on a foundation of integrity, dedication, and an unwavering commitment to our clients' success.
             </p>

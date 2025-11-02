@@ -26,12 +26,25 @@ const Contact = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,hsl(var(--primary)/0.02),transparent_60%)]"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-block mb-4">
-            <span className="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold">Get In Touch</span>
+          <div className="inline-block relative group cursor-pointer mb-4">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary">
+              Contact Us
+            </h2>
+            <svg 
+              className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              viewBox="0 0 300 20"
+              preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 0,15 Q 150,5 300,15"
+                stroke="currentColor"
+                strokeWidth="3"
+                fill="none"
+                className="text-accent"
+              />
+            </svg>
           </div>
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
-            Contact Us
-          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Schedule your free consultation today
           </p>

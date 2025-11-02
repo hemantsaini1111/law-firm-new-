@@ -44,9 +44,25 @@ const Stats = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4">
-            Results That Speak for Themselves
-          </h2>
+          <div className="inline-block relative group cursor-pointer mb-4">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-white">
+              Results That Speak for Themselves
+            </h2>
+            <svg 
+              className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              viewBox="0 0 300 20"
+              preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 0,15 Q 150,5 300,15"
+                stroke="currentColor"
+                strokeWidth="3"
+                fill="none"
+                className="text-accent"
+              />
+            </svg>
+          </div>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">
             Our commitment to excellence is reflected in every case we handle
           </p>
