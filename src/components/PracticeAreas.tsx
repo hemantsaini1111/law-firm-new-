@@ -83,15 +83,101 @@ const PracticeAreas = () => {
         <div className="flex justify-end w-full">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl -mr-12">
             {practiceAreas.map((area, index) => {
+              const isEven = index % 2 === 0;
+              const borderColor = 'rgb(48,35,26)';
+              
               return (
                 <Card 
                   key={index} 
-                  className="border-l-2 border-r-2 border-border hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 group bg-background/80 backdrop-blur-sm"
-                  style={{
-                    borderLeftColor: 'rgb(48,35,26)',
-                    borderRightColor: 'rgb(48,35,26)'
-                  }}
+                  className="relative hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 group bg-background/80 backdrop-blur-sm overflow-visible"
                 >
+                  {isEven ? (
+                    <>
+                      {/* Left border - starts and ends away from corners - visible by default, hidden on hover */}
+                      <div 
+                        className="absolute left-0 border-l-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300"
+                        style={{
+                          borderLeftColor: borderColor,
+                          top: '16px',
+                          bottom: '16px',
+                          pointerEvents: 'none'
+                        }}
+                      ></div>
+                      {/* Top border - starts and ends away from corners - visible by default, hidden on hover */}
+                      <div 
+                        className="absolute top-0 border-t-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300"
+                        style={{
+                          borderTopColor: borderColor,
+                          left: '16px',
+                          right: '16px',
+                          pointerEvents: 'none'
+                        }}
+                      ></div>
+                      {/* Right border - starts and ends away from corners - hidden by default, visible on hover */}
+                      <div 
+                        className="absolute right-0 border-r-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{
+                          borderRightColor: borderColor,
+                          top: '16px',
+                          bottom: '16px',
+                          pointerEvents: 'none'
+                        }}
+                      ></div>
+                      {/* Bottom border - starts and ends away from corners - hidden by default, visible on hover */}
+                      <div 
+                        className="absolute bottom-0 border-b-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{
+                          borderBottomColor: borderColor,
+                          left: '16px',
+                          right: '16px',
+                          pointerEvents: 'none'
+                        }}
+                      ></div>
+                    </>
+                  ) : (
+                    <>
+                      {/* Right border - starts and ends away from corners - visible by default, hidden on hover */}
+                      <div 
+                        className="absolute right-0 border-r-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300"
+                        style={{
+                          borderRightColor: borderColor,
+                          top: '16px',
+                          bottom: '16px',
+                          pointerEvents: 'none'
+                        }}
+                      ></div>
+                      {/* Bottom border - starts and ends away from corners - visible by default, hidden on hover */}
+                      <div 
+                        className="absolute bottom-0 border-b-2 opacity-100 group-hover:opacity-0 transition-opacity duration-300"
+                        style={{
+                          borderBottomColor: borderColor,
+                          left: '16px',
+                          right: '16px',
+                          pointerEvents: 'none'
+                        }}
+                      ></div>
+                      {/* Left border - starts and ends away from corners - hidden by default, visible on hover */}
+                      <div 
+                        className="absolute left-0 border-l-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{
+                          borderLeftColor: borderColor,
+                          top: '16px',
+                          bottom: '16px',
+                          pointerEvents: 'none'
+                        }}
+                      ></div>
+                      {/* Top border - starts and ends away from corners - hidden by default, visible on hover */}
+                      <div 
+                        className="absolute top-0 border-t-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{
+                          borderTopColor: borderColor,
+                          left: '16px',
+                          right: '16px',
+                          pointerEvents: 'none'
+                        }}
+                      ></div>
+                    </>
+                  )}
                   <CardHeader>
                     <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center mb-4 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110 shadow-soft group-hover:shadow-glow">
                       <img src={area.iconImage} alt={area.title} className="w-8 h-8 object-contain" />

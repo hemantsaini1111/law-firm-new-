@@ -57,10 +57,11 @@ All colors MUST be HSL.
     --gradient-overlay: linear-gradient(180deg, hsl(215 50% 12% / 0.8), hsl(215 40% 22% / 0.6));
     
     /* Typography */
-    --font-serif: 'Quintessential', serif;
+    --font-serif: 'EB Garamond', serif;
     --font-sans: 'Enriqueta', serif;
     --font-almendra: 'Almendra SC', serif;
     --font-lugrasimo: 'Lugrasimo', cursive;
+    --font-quintessential: 'Quintessential', serif;
 
     --sidebar-background: 0 0% 98%;
 

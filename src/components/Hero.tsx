@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import heroBg from "@/assets/svg/herobg5.svg";
+import heroBg from "@/assets/svg/herobg8.svg";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -21,28 +21,69 @@ const Hero = () => {
     >
       <div className="container mx-auto px-4 py-32 relative z-10">
         <div className="max-w-3xl animate-fade-in">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight animate-slide-up">
+          <h1 
+            className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 leading-tight animate-slide-up"
+            style={{
+              background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              color: 'transparent'
+            }}
+          >
             Trusted Legal Counsel for Over 30 Years
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s' }}>
+          <p 
+            className="text-xl md:text-2xl mb-8 leading-relaxed animate-slide-up" 
+            style={{ 
+              animationDelay: '0.1s',
+              background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              color: 'transparent',
+              opacity: 0.9
+            }}
+          >
             Expert legal representation with a proven track record of success. We fight for your rights with integrity and dedication.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <Button 
               onClick={scrollToContact}
               size="lg" 
-              className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105"
+              className="bg-accent hover:bg-accent/90 text-lg px-8 py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105"
             >
-              Get Free Consultation
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <span
+                style={{
+                  background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  color: 'transparent'
+                }}
+                className="flex items-center"
+              >
+                Get Free Consultation
+                <ArrowRight className="ml-2 w-5 h-5" style={{ color: 'rgb(61,58,57)' }} />
+              </span>
             </Button>
             <Button 
               onClick={() => document.getElementById("practice-areas")?.scrollIntoView({ behavior: "smooth" })}
               size="lg" 
               variant="outline" 
-              className="bg-white/10 text-white border-white/30 hover:bg-white/20 text-lg px-8 py-7 backdrop-blur-sm hover:scale-105 transition-transform"
+              className="bg-white/10 border-white/30 hover:bg-white/20 text-lg px-8 py-7 backdrop-blur-sm hover:scale-105 transition-transform"
             >
-              Our Services
+              <span
+                style={{
+                  background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  color: 'transparent'
+                }}
+              >
+                Our Services
+              </span>
             </Button>
           </div>
           
