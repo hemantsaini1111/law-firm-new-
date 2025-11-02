@@ -35,7 +35,7 @@ const Stats = () => {
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `linear-gradient(rgba(15, 30, 50, 0.92), rgba(20, 40, 65, 0.92)), url(${courthouseInterior})`,
+          backgroundImage: ` url(${courthouseInterior})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
