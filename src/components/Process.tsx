@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Phone, FileText, Users, Scale } from "lucide-react";
-import officeCollaboration from "@/assets/office-collaboration.jpg";
+import handshakeSvg from "@/assets/svg/handshake2.svg";
 
 const steps = [
   {
@@ -31,15 +31,15 @@ const steps = [
 
 const Process = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-secondary relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/2 h-full opacity-5">
+    <section className="pt-2.5 pb-[116px] relative overflow-hidden">
+      {/* Handshake SVG on the left side */}
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-20 hidden lg:block">
         <img 
-          src={officeCollaboration} 
-          alt="Office collaboration background" 
-          className="w-full h-full object-cover"
+          src={handshakeSvg} 
+          alt="Handshake" 
+          className="w-full h-full object-contain"
         />
       </div>
-      
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <div className="inline-block relative group cursor-pointer mb-4">
@@ -66,7 +66,7 @@ const Process = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl ml-auto mr-0 -mr-60 -mt-8">
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
@@ -74,6 +74,8 @@ const Process = () => {
                 key={index} 
                 className="border-border hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 group bg-background/80 backdrop-blur-sm relative overflow-hidden"
               >
+                {/* Bottom border with inset from edges */}
+                <div className="absolute bottom-0 left-4 right-4 h-1 bg-accent"></div>
                 <div className="absolute top-0 right-0 text-[120px] font-serif font-bold text-accent/5 leading-none p-4">
                   {step.number}
                 </div>
