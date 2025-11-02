@@ -1,91 +1,299 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import jamesSterling from "@/assets/team/james-sterling.jpg";
-import sarahMitchell from "@/assets/team/sarah-mitchell.jpg";
-import michaelChen from "@/assets/team/michael-chen.jpg";
-import emilyRodriguez from "@/assets/team/emily-rodriguez.jpg";
+import React, { useRef, useEffect } from 'react';
+import { ChevronLeft, ArrowRight } from 'lucide-react';
+import teamsectionSvg from '../assets/svg/teamsection2.svg';
+import emilyRodriguez from '../assets/team/emily-rodriguez.jpg';
+import jamesSterling from '../assets/team/james-sterling.jpg';
+import michaelChen from '../assets/team/michael-chen.jpg';
+import sarahMitchell from '../assets/team/sarah-mitchell.jpg';
 
-const team = [
+// --- Type Definitions ---
+interface Attorney {
+  id: number;
+  name: string;
+  title: string;
+  imageUrl: string;
+}
+
+// --- Team Member Data ---
+// Using actual team member images
+const attorneys: Attorney[] = [
   {
-    name: "James Sterling",
-    role: "Senior Partner",
-    specialty: "Corporate Law & Litigation",
-    description: "30+ years of experience in complex corporate matters and trial litigation.",
-    image: jamesSterling
+    id: 1,
+    name: 'Sarah Mitchell',
+    title: 'Senior Attorney',
+    imageUrl: sarahMitchell,
   },
   {
-    name: "Sarah Mitchell",
-    role: "Partner",
-    specialty: "Family Law",
-    description: "Compassionate advocate with expertise in divorce and custody cases.",
-    image: sarahMitchell
+    id: 2,
+    name: 'Emily Rodriguez',
+    title: 'Attorney',
+    imageUrl: emilyRodriguez,
   },
   {
-    name: "Michael Chen",
-    role: "Partner",
-    specialty: "Real Estate Law",
-    description: "Expert in commercial real estate transactions and property disputes.",
-    image: michaelChen
+    id: 3,
+    name: 'James Sterling',
+    title: 'Partner',
+    imageUrl: jamesSterling,
   },
   {
-    name: "Emily Rodriguez",
-    role: "Senior Attorney",
-    specialty: "Employment Law",
-    description: "Dedicated to protecting workers' rights and workplace justice.",
-    image: emilyRodriguez
-  }
+    id: 4,
+    name: 'Michael Chen',
+    title: 'Senior Attorney',
+    imageUrl: michaelChen,
+  },
 ];
 
-const Team = () => {
-  return (
-    <section id="team" className="py-24 bg-gradient-to-b from-background to-secondary relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--accent)/0.03),transparent_70%)]"></div>
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-block relative group cursor-pointer mb-4">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary">
-              Our Legal Team
-            </h2>
-            <svg 
-              className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              viewBox="0 0 300 20"
-              preserveAspectRatio="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M 0,15 Q 150,5 300,15"
-                stroke="currentColor"
-                strokeWidth="3"
-                fill="none"
-                className="text-accent"
-              />
-            </svg>
-          </div>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Meet the experienced attorneys dedicated to your success
-          </p>
-        </div>
+// --- Attorney Card Component ---
+interface AttorneyCardProps {
+  attorney: Attorney;
+}
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {team.map((member, index) => (
-            <Card key={index} className="border-border hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 group bg-background/90 backdrop-blur-sm overflow-hidden">
-              <CardHeader className="relative">
-                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-accent/5 to-transparent"></div>
-                <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 border-4 border-accent/20 group-hover:border-accent/40 transition-colors shadow-elegant relative z-10">
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+const AttorneyCard: React.FC<AttorneyCardProps> = ({ attorney }) => {
+  return (
+    <div className="flex-shrink-0 w-64 md:w-72 snap-start">
+      <div className="relative bg-gradient-to-t from-[#FFF8E7] to-[#FFF8E7] border-2 border-[#b08d57]/40 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl" style={{ backgroundColor: '#FFF8E7' }}>
+        <img
+          src={attorney.imageUrl}
+          alt={attorney.name}
+          className="w-full h-80 object-cover rounded-t-2xl"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = 'https://placehold.co/300x400/cccccc/333333?text=Image+Error&font=inter';
+          }}
+        />
+        <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#FFF8E7] via-[#FFF8E7]/95 to-transparent rounded-b-2xl border-t-2 border-[#b08d57]/40">
+          <h3 className="text-primary text-xl font-serif font-bold truncate">{attorney.name}</h3>
+          <p className="text-[#b08d57] text-sm font-medium">{attorney.title}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- Main Team Component ---
+const Team = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const intervalRef = useRef<number | null>(null); // To store interval ID
+  
+  // Create infinite scroll by duplicating the attorneys array multiple times
+  const duplicatedAttorneys = [...attorneys, ...attorneys, ...attorneys, ...attorneys];
+
+  const scrollRightToLeft = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const { scrollLeft, scrollWidth, clientWidth } = container;
+      const scrollAmount = 300; // Based on card width + margin. Adjust as needed.
+      
+      // Calculate the width of one set (original attorneys array)
+      // Card width is 288px (w-72) + gap 24px (space-x-6) = ~312px per card
+      // Width calculation is dynamic based on attorneys.length
+      const singleSetWidth = attorneys.length * (288 + 24); // w-72 (288px) + space-x-6 (24px)
+      
+      // If at the end of the visible set, jump to the start of a duplicate set invisibly
+      const currentPositionInSet = scrollLeft % singleSetWidth;
+      
+      // If we're approaching the end of a set (within scrollAmount), jump to the next set
+      if (currentPositionInSet + scrollAmount >= singleSetWidth - 50) {
+        // Jump to the start of the next set (which looks like the first)
+        const currentSet = Math.floor(scrollLeft / singleSetWidth);
+        container.scrollTo({
+          left: (currentSet + 1) * singleSetWidth,
+          behavior: 'instant',
+        });
+      } else {
+        // Scroll right (move content from right to left)
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+  };
+  
+  // Handle scroll event to detect when we need to loop
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const { scrollLeft, scrollWidth } = container;
+      const singleSetWidth = attorneys.length * (288 + 24);
+      
+      // If we're in the last set (4th), jump to the second set
+      if (scrollLeft >= singleSetWidth * 3) {
+        container.scrollTo({
+          left: singleSetWidth + (scrollLeft % singleSetWidth),
+          behavior: 'instant',
+        });
+      }
+      // If we're in the first set (at the very beginning), jump to the third set
+      else if (scrollLeft < singleSetWidth) {
+        container.scrollTo({
+          left: (singleSetWidth * 2) + scrollLeft,
+          behavior: 'instant',
+        });
+      }
+    }
+  };
+
+  // --- Auto-scroll logic ---
+  const startAutoScroll = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current); // Clear existing interval
+    intervalRef.current = window.setInterval(() => {
+      scrollRightToLeft();
+    }, 3000); // Scroll every 3 seconds
+  };
+
+  const stopAutoScroll = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  };
+
+  useEffect(() => {
+    // Initialize scroll position to start from the right (show rightmost cards first)
+    const initializeScroll = () => {
+      if (scrollContainerRef.current) {
+        const container = scrollContainerRef.current;
+        const singleSetWidth = attorneys.length * (288 + 24);
+        const { scrollWidth, clientWidth } = container;
+        
+        // Start at the end of the second set, showing cards from the right side
+        // This makes cards appear starting from the right edge of the screen
+        const startPosition = singleSetWidth + singleSetWidth - clientWidth;
+        container.scrollLeft = startPosition;
+      }
+    };
+    
+    // Initialize after layout is complete
+    setTimeout(initializeScroll, 100);
+    
+    startAutoScroll(); // Start auto-scroll on mount
+    
+    // Get the container element
+    const container = scrollContainerRef.current;
+
+    // Add event listeners
+    container?.addEventListener('mouseenter', stopAutoScroll);
+    container?.addEventListener('mouseleave', startAutoScroll);
+    container?.addEventListener('scroll', handleScroll);
+
+    // Clean up on unmount
+    return () => {
+      stopAutoScroll(); // Clear interval
+      container?.removeEventListener('mouseenter', stopAutoScroll);
+      container?.removeEventListener('mouseleave', startAutoScroll);
+      container?.removeEventListener('scroll', handleScroll);
+    };
+  }, []); // Empty dependency array ensures this runs once on mount
+
+  return (
+    <section id="team" className="w-full overflow-hidden relative" style={{ backgroundColor: '#FFF8E7' }}>
+      <style>{`
+        @keyframes drawLine {
+          from {
+            stroke-dashoffset: 1000;
+          }
+          to {
+            stroke-dashoffset: 0;
+          }
+        }
+        .group .animate-draw {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+        }
+        .group:hover .animate-draw {
+          animation: drawLine 0.6s ease-in-out forwards;
+        }
+      `}</style>
+      {/* Background SVG */}
+      <div 
+        className="absolute inset-0 bg-no-repeat bg-cover bg-center opacity-10"
+        style={{backgroundImage: `url(${teamsectionSvg})`}}
+      ></div>
+
+      <div className="relative w-full pl-4 pr-0 py-16 md:py-24" style={{ maxWidth: '100%' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+          
+          {/* --- Left Text Content --- */}
+          <div className="flex flex-col justify-center z-10 lg:order-1 order-1">
+            <span className="text-[#b08d57] text-sm font-semibold uppercase tracking-wider mb-2">
+              Our Attorneys
+            </span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary leading-tight mb-6">
+              <span className="relative inline-block group cursor-default">
+                Dedicated Lawyers
+                {/* Curved underline SVG */}
+                <svg 
+                  className="absolute -bottom-2 left-0 w-full h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out overflow-visible"
+                  viewBox="0 0 300 30"
+                  preserveAspectRatio="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    d="M 0 15 Q 75 5, 150 15 T 300 15" 
+                    stroke="#b08d57" 
+                    strokeWidth="3" 
+                    fill="none" 
+                    strokeLinecap="round"
+                    className="animate-draw"
                   />
-                </div>
-                <CardTitle className="text-xl font-serif text-center group-hover:text-accent transition-colors relative z-10">{member.name}</CardTitle>
-                <CardDescription className="text-center font-medium text-accent relative z-10">{member.role}</CardDescription>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="font-medium text-foreground mb-2">{member.specialty}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{member.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+                </svg>
+              </span>
+              ,
+              <br />
+              <span className="relative inline-block group cursor-default">
+                Proven Results
+                {/* Curved underline SVG */}
+                <svg 
+                  className="absolute -bottom-2 left-0 w-full h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out overflow-visible"
+                  viewBox="0 0 300 30"
+                  preserveAspectRatio="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    d="M 0 15 Q 75 5, 150 15 T 300 15" 
+                    stroke="#b08d57" 
+                    strokeWidth="3" 
+                    fill="none" 
+                    strokeLinecap="round"
+                    className="animate-draw"
+                  />
+                </svg>
+              </span>
+            </h2>
+            <button className="flex items-center justify-center w-fit bg-[#b08d57] text-white py-3 px-8 rounded-lg font-semibold text-base shadow-md hover:bg-[#c09d67] transition-all duration-300 transform hover:scale-105 group">
+              More Attorney
+              <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+            </button>
+          </div>
+
+          {/* --- Right Carousel Content --- */}
+          <div className="relative w-full -mr-12 lg:order-2 order-2">
+            {/* Scroll Container */}
+            <div
+              ref={scrollContainerRef}
+              className="flex space-x-6 overflow-x-auto snap-x snap-mandatory pb-6 w-full
+                         [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {duplicatedAttorneys.map((attorney, index) => (
+                <AttorneyCard key={`${attorney.id}-${index}`} attorney={attorney} />
+              ))}
+            </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={() => {
+                scrollRightToLeft();
+                // Reset interval on manual click
+                stopAutoScroll();
+                startAutoScroll();
+              }}
+              className="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2 
+                         bg-[#b08d57]/90 text-white rounded-full p-3 
+                         shadow-lg hover:bg-[#b08d57] transition-all duration-300 z-30
+                         lg:-left-6"
+              aria-label="Scroll"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+          </div>
         </div>
       </div>
     </section>

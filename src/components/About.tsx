@@ -1,12 +1,27 @@
 import { CheckCircle } from "lucide-react";
-import consultationMeeting from "@/assets/consultation-meeting.jpg";
+import aboutSectionBg from "@/assets/svg/aboutsection3.svg";
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
+    <section 
+      id="about" 
+      className="py-48 bg-background relative overflow-hidden" 
+      style={{ backgroundColor: '#FFF8E7', minHeight: '600px' }}
+    >
+      <div 
+        className="absolute inset-0 z-0 opacity-30"
+        style={{
+          backgroundImage: `url(${aboutSectionBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      ></div>
+      <div className="relative z-10">
+      <div className="container pr-4 ml-0" style={{ paddingLeft: '40px' }}>
+        <div className="max-w-4xl">
+          {/* Text Content */}
+          <div className="mb-12">
             <div className="inline-block relative group cursor-pointer mb-6">
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary">
                 About Sterling & Associates
@@ -47,45 +62,8 @@ const About = () => {
               ))}
             </div>
           </div>
-          
-          <div className="relative">
-            <div className="rounded-2xl overflow-hidden mb-8 shadow-elegant hover:shadow-hover transition-shadow duration-500">
-              <img 
-                src={consultationMeeting} 
-                alt="Sterling & Associates professional legal consultation"
-                className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-            
-            <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 border border-border shadow-soft backdrop-blur-sm">
-              <div className="space-y-8">
-                <div>
-                  <div className="text-5xl font-serif font-bold text-accent mb-2">30+</div>
-                  <div className="text-foreground font-medium">Years of Legal Excellence</div>
-                  <p className="text-muted-foreground mt-2">
-                    Three decades serving our community with dedication and expertise
-                  </p>
-                </div>
-                
-                <div>
-                  <div className="text-5xl font-serif font-bold text-accent mb-2">15</div>
-                  <div className="text-foreground font-medium">Expert Attorneys</div>
-                  <p className="text-muted-foreground mt-2">
-                    A diverse team of specialized legal professionals
-                  </p>
-                </div>
-                
-                <div>
-                  <div className="text-5xl font-serif font-bold text-accent mb-2">$500M+</div>
-                  <div className="text-foreground font-medium">Recovered for Clients</div>
-                  <p className="text-muted-foreground mt-2">
-                    Significant results in settlements and verdicts
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
       </div>
     </section>
   );

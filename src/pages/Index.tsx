@@ -8,7 +8,6 @@ import Process from "@/components/Process";
 import Team from "@/components/Team";
 import CaseResults from "@/components/CaseResults";
 import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -26,7 +25,6 @@ const Index = () => {
       <Team />
       <CaseResults />
       <Testimonials />
-      <FAQ />
       <CTA />
       <Contact />
       <Footer />
