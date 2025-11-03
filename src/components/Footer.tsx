@@ -71,9 +71,9 @@ const Footer = () => {
               <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>
             </div>
           </div>
-          <p className="mt-4 text-center text-xs text-primary-foreground/50">
-            Attorney Advertising. Prior results do not guarantee a similar outcome.
-          </p>
+          {/* <p className="mt-4 text-center text-xs text-primary-foreground/50"> */}
+            {/* Attorney Advertising. Prior results do not guarantee a similar outcome. */}
+          {/* </p> */}
         </div>
       </div>
       </div>
