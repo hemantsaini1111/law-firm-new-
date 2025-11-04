@@ -9,7 +9,7 @@ const features = [
   {
     icon: Award,
     title: "Proven Excellence",
-    description: "Over 30 years of legal excellence with hundreds of successful cases and satisfied clients."
+    description: "Over 45 years of legal excellence with hundreds of successful cases and satisfied clients."
   },
   {
     icon: Shield,

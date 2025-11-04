@@ -17,7 +17,7 @@ const Footer = () => {
               <span className="text-2xl font-serif font-bold">Abhay Bharadwaj & Associates</span>
             </div>
             <p className="text-primary-foreground/80 text-base leading-relaxed mb-6 max-w-md">
-              Trusted legal counsel serving our community for over 30 years. We combine experience, dedication, and personalized service to deliver outstanding results for our clients.
+              Trusted legal counsel serving our community for over 45 years. We combine experience, dedication, and personalized service to deliver outstanding results for our clients.
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center hover:bg-accent/20 transition-colors group">
