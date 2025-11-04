@@ -48,7 +48,7 @@ const About = () => {
           <div className="mb-12">
             <div className="inline-block relative group cursor-pointer mb-6">
               <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary">
-                About Sterling & Associates
+                About Abhay Bharadwaj & Associates
               </h2>
               <svg 
                 className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -66,7 +66,7 @@ const About = () => {
               </svg>
             </div>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              For over three decades, Sterling & Associates has been a pillar of legal excellence in our community. Our firm was built on a foundation of integrity, dedication, and an unwavering commitment to our clients' success.
+              For over three decades, Abhay Bharadwaj & Associates has been a pillar of legal excellence in our community. Our firm was built on a foundation of integrity, dedication, and an unwavering commitment to our clients' success.
             </p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               We believe that every client deserves personalized attention and strategic legal counsel. Our team combines deep legal expertise with a practical understanding of your goals to deliver results that matter.

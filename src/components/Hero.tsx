@@ -54,7 +54,7 @@ const Hero = () => {
               color: 'transparent'
             }}
           >
-            Trusted Legal Counsel for Over 30 Years
+            Trusted Legal Counsel for Over 45 Years
           </h1>
           <p 
             className="text-xl md:text-2xl mb-8 leading-relaxed animate-slide-up" 

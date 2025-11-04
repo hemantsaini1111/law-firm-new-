@@ -239,12 +239,12 @@ const Contact = () => {
               />
               <InfoRow
                 icon={<Phone size={20} />}
-                text="+1 (555) 123-4567"
-                href="tel:+15551234567"
+                text="9727473730"
+                href="tel:9727473730"
               />
               <InfoRow
                 icon={<MapPin size={20} />}
-                text="123 Main Street, Anytown, USA"
+                text="150 Feet Ring Road, Office 401, The Spire-2, Sheetal Park Chowk, Rajkot, Gujarat 360007, INDIA"
               />
             </div>
           </div>

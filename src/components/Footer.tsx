@@ -14,7 +14,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-6">
               <Scale className="w-8 h-8 text-accent" />
-              <span className="text-2xl font-serif font-bold">Sterling & Associates</span>
+              <span className="text-2xl font-serif font-bold">Abhay Bharadwaj & Associates</span>
             </div>
             <p className="text-primary-foreground/80 text-base leading-relaxed mb-6 max-w-md">
               Trusted legal counsel serving our community for over 30 years. We combine experience, dedication, and personalized service to deliver outstanding results for our clients.
@@ -49,11 +49,11 @@ const Footer = () => {
             <ul className="space-y-4 text-sm text-primary-foreground/80">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                <span>123 Legal Plaza, Suite 500<br/>New York, NY 10001</span>
+                <span>150 Feet Ring Road, Office 401, The Spire-2, Sheetal Park Chowk, Rajkot, Gujarat 360007, INDIA</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-accent flex-shrink-0" />
-                <a href="tel:5551234567" className="hover:text-accent transition-colors">(555) 123-4567</a>
+                <a href="tel:9727473730" className="hover:text-accent transition-colors">9727473730</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-accent flex-shrink-0" />
@@ -65,7 +65,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/60">
-            <p>&copy; {new Date().getFullYear()} Sterling & Associates. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Abhay Bharadwaj & Associates. All rights reserved.</p>
             <div className="flex gap-6">
               <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>

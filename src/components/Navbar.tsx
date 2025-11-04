@@ -218,7 +218,7 @@ const Navbar: React.FC = () => {
               }}
             >
                 <Scale className="w-6 h-6 text-white" />
-                <span className="text-xl font-bold text-white tracking-wide">Sterling & Associates</span>
+                <span className="text-xl font-bold text-white tracking-wide">Abhay Bharadwaj & Associates</span>
             </a>
 
             {/* Center: Pattern Fill (Desktop) */}

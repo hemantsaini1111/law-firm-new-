@@ -1,5 +1,5 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import { Button } from "@/components/ui/button";
 import galleryBg from "@/assets/svg/gallarybg.svg";
@@ -33,6 +33,7 @@ const Gallery4 = ({
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const autoScrollIntervalRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!carouselApi) {
@@ -47,6 +48,51 @@ const Gallery4 = ({
     carouselApi.on("select", updateSelection);
     return () => {
       carouselApi.off("select", updateSelection);
+    };
+  }, [carouselApi]);
+
+  // Auto-scroll on mobile only
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    
+    if (isMobile && carouselApi) {
+      // Start auto-scroll (2 second interval)
+      autoScrollIntervalRef.current = window.setInterval(() => {
+        carouselApi.scrollNext();
+      }, 2000);
+
+      // Pause on hover
+      const carouselElement = document.querySelector('.gallery4-carousel');
+      const pauseScroll = () => {
+        if (autoScrollIntervalRef.current) {
+          clearInterval(autoScrollIntervalRef.current);
+          autoScrollIntervalRef.current = null;
+        }
+      };
+      const resumeScroll = () => {
+        if (!autoScrollIntervalRef.current && window.innerWidth < 768) {
+          autoScrollIntervalRef.current = window.setInterval(() => {
+            carouselApi.scrollNext();
+          }, 2000);
+        }
+      };
+
+      carouselElement?.addEventListener('mouseenter', pauseScroll);
+      carouselElement?.addEventListener('mouseleave', resumeScroll);
+
+      return () => {
+        if (autoScrollIntervalRef.current) {
+          clearInterval(autoScrollIntervalRef.current);
+        }
+        carouselElement?.removeEventListener('mouseenter', pauseScroll);
+        carouselElement?.removeEventListener('mouseleave', resumeScroll);
+      };
+    }
+
+    return () => {
+      if (autoScrollIntervalRef.current) {
+        clearInterval(autoScrollIntervalRef.current);
+      }
     };
   }, [carouselApi]);
 
@@ -102,7 +148,7 @@ const Gallery4 = ({
           animation: drawLine 0.6s ease-in-out forwards;
         }
       `}</style>
-      <div className="w-full relative">
+      <div className="w-full relative gallery4-carousel">
         <Carousel
           setApi={setCarouselApi}
           opts={{

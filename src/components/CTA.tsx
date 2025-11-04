@@ -99,10 +99,10 @@ const CTA = () => {
               size="lg" 
               variant="outline" 
               className="bg-white/10 text-white border-white/30 hover:bg-white/20 text-lg px-10 py-7 backdrop-blur-sm hover:scale-105 transition-all"
-              onClick={() => window.location.href = 'tel:5551234567'}
+              onClick={() => window.location.href = 'tel:9727473730'}
             >
               <Phone className="mr-2 w-5 h-5" />
-              (555) 123-4567
+              9727473730
             </Button>
           </div>
 

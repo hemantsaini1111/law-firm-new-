@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Carousel,
   CarouselApi,
@@ -28,7 +28,7 @@ const testimonialData: Testimonial[] = [
     imageUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face',
     rating: 5,
     quote:
-      '"I was struggling with family law for months before I found Sterling & Associates. They not only provided me with the solution I needed, but they also educated me on how to prevent the issue from happening again. Their team is incredibly knowledgeable and patient, and they always go the extra mile to ensure customer satisfaction."',
+      '"I was struggling with family law for months before I found Abhay Bharadwaj & Associates. They not only provided me with the solution I needed, but they also educated me on how to prevent the issue from happening again. Their team is incredibly knowledgeable and patient, and they always go the extra mile to ensure customer satisfaction."',
     theme: 'dark',
   },
   {
@@ -38,7 +38,7 @@ const testimonialData: Testimonial[] = [
     imageUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
     rating: 5,
     quote:
-      '"I had been facing challenges with corporate law for months until I discovered Sterling & Associates. They not only resolved my issues effectively but also guided me on how to avoid similar problems in the future. Their team is highly skilled, patient, and always prioritizes customer satisfaction."',
+      '"I had been facing challenges with corporate law for months until I discovered Abhay Bharadwaj & Associates. They not only resolved my issues effectively but also guided me on how to avoid similar problems in the future. Their team is highly skilled, patient, and always prioritizes customer satisfaction."',
     theme: 'dark',
   },
   {
@@ -48,7 +48,7 @@ const testimonialData: Testimonial[] = [
     imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
     rating: 5,
     quote:
-      '"The legal team at Sterling & Associates handled my real estate dispute with exceptional professionalism. They kept me informed throughout the entire process and achieved a favorable outcome. I highly recommend their services to anyone in need of expert legal representation."',
+      '"The legal team at Abhay Bharadwaj & Associates handled my real estate dispute with exceptional professionalism. They kept me informed throughout the entire process and achieved a favorable outcome. I highly recommend their services to anyone in need of expert legal representation."',
     theme: 'dark',
   },
   {
@@ -58,7 +58,7 @@ const testimonialData: Testimonial[] = [
     imageUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face',
     rating: 5,
     quote:
-      '"Working with Sterling & Associates was a game-changer for our business. Their expertise in commercial law helped us navigate complex contracts and negotiations. The team is responsive, thorough, and truly cares about their clients\' success."',
+      '"Working with Abhay Bharadwaj & Associates was a game-changer for our business. Their expertise in commercial law helped us navigate complex contracts and negotiations. The team is responsive, thorough, and truly cares about their clients\' success."',
     theme: 'dark',
   },
   {
@@ -68,7 +68,7 @@ const testimonialData: Testimonial[] = [
     imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
     rating: 5,
     quote:
-      '"I\'ve worked with many law firms over the years, but Sterling & Associates stands out for their dedication and results. They helped us resolve a complex merger issue that seemed impossible. Their strategic approach and attention to detail made all the difference."',
+      '"I\'ve worked with many law firms over the years, but Abhay Bharadwaj & Associates stands out for their dedication and results. They helped us resolve a complex merger issue that seemed impossible. Their strategic approach and attention to detail made all the difference."',
     theme: 'dark',
   },
   {
@@ -78,7 +78,7 @@ const testimonialData: Testimonial[] = [
     imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face',
     rating: 5,
     quote:
-      '"The team at Sterling & Associates provided exceptional legal support during a challenging employment dispute. They were professional, empathetic, and fought tirelessly for my rights. I\'m grateful for their expertise and highly recommend them."',
+      '"The team at Abhay Bharadwaj & Associates provided exceptional legal support during a challenging employment dispute. They were professional, empathetic, and fought tirelessly for my rights. I\'m grateful for their expertise and highly recommend them."',
     theme: 'dark',
   },
 ];
@@ -173,6 +173,7 @@ const Testimonials = () => {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
+  const autoScrollIntervalRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!carouselApi) {
@@ -188,6 +189,51 @@ const Testimonials = () => {
     carouselApi.on("select", updateSelection);
     return () => {
       carouselApi.off("select", updateSelection);
+    };
+  }, [carouselApi]);
+
+  // Auto-scroll on mobile only
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    
+    if (isMobile && carouselApi) {
+      // Start auto-scroll (2 second interval)
+      autoScrollIntervalRef.current = window.setInterval(() => {
+        carouselApi.scrollNext();
+      }, 2000);
+
+      // Pause on hover
+      const carouselElement = document.querySelector('#testimonials .carousel-container');
+      const pauseScroll = () => {
+        if (autoScrollIntervalRef.current) {
+          clearInterval(autoScrollIntervalRef.current);
+          autoScrollIntervalRef.current = null;
+        }
+      };
+      const resumeScroll = () => {
+        if (!autoScrollIntervalRef.current && window.innerWidth < 768) {
+          autoScrollIntervalRef.current = window.setInterval(() => {
+            carouselApi.scrollNext();
+          }, 2000);
+        }
+      };
+
+      carouselElement?.addEventListener('mouseenter', pauseScroll);
+      carouselElement?.addEventListener('mouseleave', resumeScroll);
+
+      return () => {
+        if (autoScrollIntervalRef.current) {
+          clearInterval(autoScrollIntervalRef.current);
+        }
+        carouselElement?.removeEventListener('mouseenter', pauseScroll);
+        carouselElement?.removeEventListener('mouseleave', resumeScroll);
+      };
+    }
+
+    return () => {
+      if (autoScrollIntervalRef.current) {
+        clearInterval(autoScrollIntervalRef.current);
+      }
     };
   }, [carouselApi]);
 
@@ -309,7 +355,7 @@ const Testimonials = () => {
               loop: true,
               slidesToScroll: 2,
             }}
-            className="w-full ml-auto overflow-hidden"
+            className="w-full ml-auto overflow-hidden carousel-container"
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {testimonialData.map((testimonial) => (

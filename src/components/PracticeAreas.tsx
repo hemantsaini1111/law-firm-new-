@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import corporateLawIcon from "@/assets/icons/corporate-laws.png";
 import civilLawIcon from "@/assets/icons/civil-law.png";
@@ -47,6 +47,7 @@ const PracticeAreas = () => {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
+  const autoScrollIntervalRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!carouselApi) {
@@ -62,6 +63,51 @@ const PracticeAreas = () => {
     carouselApi.on("select", updateSelection);
     return () => {
       carouselApi.off("select", updateSelection);
+    };
+  }, [carouselApi]);
+
+  // Auto-scroll on mobile only
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    
+    if (isMobile && carouselApi) {
+      // Start auto-scroll (2 second interval)
+      autoScrollIntervalRef.current = window.setInterval(() => {
+        carouselApi.scrollNext();
+      }, 2000);
+
+      // Pause on hover
+      const carouselElement = document.querySelector('#practice-areas .carousel-container');
+      const pauseScroll = () => {
+        if (autoScrollIntervalRef.current) {
+          clearInterval(autoScrollIntervalRef.current);
+          autoScrollIntervalRef.current = null;
+        }
+      };
+      const resumeScroll = () => {
+        if (!autoScrollIntervalRef.current && window.innerWidth < 768) {
+          autoScrollIntervalRef.current = window.setInterval(() => {
+            carouselApi.scrollNext();
+          }, 2000);
+        }
+      };
+
+      carouselElement?.addEventListener('mouseenter', pauseScroll);
+      carouselElement?.addEventListener('mouseleave', resumeScroll);
+
+      return () => {
+        if (autoScrollIntervalRef.current) {
+          clearInterval(autoScrollIntervalRef.current);
+        }
+        carouselElement?.removeEventListener('mouseenter', pauseScroll);
+        carouselElement?.removeEventListener('mouseleave', resumeScroll);
+      };
+    }
+
+    return () => {
+      if (autoScrollIntervalRef.current) {
+        clearInterval(autoScrollIntervalRef.current);
+      }
     };
   }, [carouselApi]);
 
@@ -106,7 +152,7 @@ const PracticeAreas = () => {
 
         <div className="flex justify-end w-full">
           {/* Mobile Carousel */}
-          <div className="block md:hidden w-full max-w-5xl mx-auto">
+          <div className="block md:hidden w-full max-w-5xl mx-auto carousel-container">
             <Carousel 
               setApi={setCarouselApi} 
               opts={{ 
