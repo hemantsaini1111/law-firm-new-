@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Scale, Menu, X } from 'lucide-react';
 
 // Define navigation items for easy mapping
@@ -95,10 +96,30 @@ const NavbarStyles = () => (
  * Navbar Component
  */
 const Navbar: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  
   // State for mobile menu toggle
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // State to track the active navigation link
   const [activeLink, setActiveLink] = useState('Home');
+
+  // Update active link based on current route
+  useEffect(() => {
+    if (location.pathname === '/practice-areas') {
+      setActiveLink('Practice Areas');
+    } else if (location.pathname === '/about') {
+      setActiveLink('About');
+    } else if (location.pathname === '/team') {
+      setActiveLink('Team');
+    } else if (location.pathname === '/testimonials') {
+      setActiveLink('Testimonials');
+    } else if (location.pathname === '/contact') {
+      setActiveLink('Contact');
+    } else if (location.pathname === '/') {
+      // Will be updated by scroll handler on home page
+    }
+  }, [location.pathname]);
 
   // Scroll to section helper
   const scrollToSection = (sectionId: string) => {
@@ -190,14 +211,54 @@ const Navbar: React.FC = () => {
   // Handler for desktop link clicks
   const handleNavClick = (item: string) => {
     setActiveLink(item);
-    scrollToSection(getSectionId(item));
+    if (item === 'Practice Areas') {
+      navigate('/practice-areas');
+    } else if (item === 'About') {
+      navigate('/about');
+    } else if (item === 'Team') {
+      navigate('/team');
+    } else if (item === 'Testimonials') {
+      navigate('/testimonials');
+    } else if (item === 'Contact') {
+      navigate('/contact');
+    } else {
+      // If not on home page, navigate to home first, then scroll
+      if (location.pathname !== '/') {
+        navigate('/');
+        setTimeout(() => {
+          scrollToSection(getSectionId(item));
+        }, 100);
+      } else {
+        scrollToSection(getSectionId(item));
+      }
+    }
   };
 
   // Handler for mobile link clicks (also closes the menu)
   const handleMobileNavClick = (item: string) => {
     setActiveLink(item);
     setIsMobileMenuOpen(false);
-    scrollToSection(getSectionId(item));
+    if (item === 'Practice Areas') {
+      navigate('/practice-areas');
+    } else if (item === 'About') {
+      navigate('/about');
+    } else if (item === 'Team') {
+      navigate('/team');
+    } else if (item === 'Testimonials') {
+      navigate('/testimonials');
+    } else if (item === 'Contact') {
+      navigate('/contact');
+    } else {
+      // If not on home page, navigate to home first, then scroll
+      if (location.pathname !== '/') {
+        navigate('/');
+        setTimeout(() => {
+          scrollToSection(getSectionId(item));
+        }, 100);
+      } else {
+        scrollToSection(getSectionId(item));
+      }
+    }
   };
 
   return (
@@ -214,7 +275,8 @@ const Navbar: React.FC = () => {
               className="flex-shrink-0 flex items-center space-x-3 pr-6 h-full cursor-pointer"
               onClick={(e) => {
                 e.preventDefault();
-                handleNavClick('Home');
+                navigate('/');
+                setActiveLink('Home');
               }}
             >
                 <Scale className="w-6 h-6 text-white" />
