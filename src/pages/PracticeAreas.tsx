@@ -190,7 +190,7 @@ const PracticeAreasPage = () => {
       </section>
 
       {/* Practice Areas Detailed Section */}
-      <section className="py-24 bg-gradient-to-b from-secondary to-background relative overflow-hidden w-full">
+      <section className="py-12 md:py-24 bg-gradient-to-b from-secondary to-background relative overflow-hidden w-full">
         <div 
           className="absolute top-10 right-0 w-[500px] h-[500px] z-0 opacity-25 hidden md:block"
           style={{
@@ -204,30 +204,30 @@ const PracticeAreasPage = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--primary)/0.03),transparent_50%)] z-1"></div>
         
         <div className="w-full px-4 md:px-8 lg:px-12 xl:px-16 relative z-10">
-          <div className="max-w-7xl mx-auto space-y-24 md:space-y-32">
+          <div className="max-w-7xl mx-auto space-y-16 md:space-y-24 lg:space-y-32">
             {practiceAreas.map((area, index) => {
               const isEven = index % 2 === 0;
               
               return (
                 <div 
                   key={index}
-                  className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-start md:items-center gap-8 md:gap-12 lg:gap-16`}
+                  className={`flex ${isEven ? 'flex-row' : 'flex-row-reverse'} items-center gap-4 md:gap-8 lg:gap-12 xl:gap-16`}
                 >
                   {/* Image Section */}
-                  <div className="w-full md:w-1/2 relative group">
+                  <div className="w-1/2 relative group">
                     <div className="relative overflow-hidden shadow-elegant-hover">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/10 z-10"></div>
                       <img 
                         src={area.image} 
                         alt={area.title}
-                        className="w-full h-[350px] md:h-[450px] object-cover group-hover:scale-110 transition-transform duration-700 relative z-5"
+                        className="w-full h-[250px] md:h-[350px] lg:h-[450px] object-cover group-hover:scale-110 transition-transform duration-700 relative z-5"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent z-20"></div>
                     </div>
                   </div>
 
                   {/* Content Section */}
-                  <div className="w-full md:w-1/2 space-y-6 relative">
+                  <div className="w-1/2 space-y-4 md:space-y-6 relative">
                     {area.title === "Family Law" && (
                       <div className="absolute left-[-150px] top-[-250px] w-74 h-74 md:w-74 md:h-74 opacity-30 z-0 hidden md:block">
                         <img 
@@ -237,12 +237,12 @@ const PracticeAreasPage = () => {
                         />
                       </div>
                     )}
-                    <div className="flex items-center gap-4 mb-4 relative z-10">
-                      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 backdrop-blur-sm flex items-center justify-center shadow-glow flex-shrink-0 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110">
-                        <img src={area.iconImage} alt={area.title} className="w-10 h-10 object-contain" />
+                    <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4 relative z-10">
+                      <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 backdrop-blur-sm flex items-center justify-center shadow-glow flex-shrink-0 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110">
+                        <img src={area.iconImage} alt={area.title} className="w-7 h-7 md:w-10 md:h-10 object-contain" />
                       </div>
                       <div className="relative group/title cursor-pointer flex-1">
-                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary group-hover/title:text-accent transition-colors inline-block relative">
+                        <h2 className="text-base md:text-3xl lg:text-4xl font-serif font-bold text-primary group-hover/title:text-accent transition-colors inline-block relative">
                           <span>{area.title}</span>
                           <svg 
                             className="absolute -bottom-2 left-0 h-3 opacity-0 group-hover/title:opacity-100 transition-opacity duration-300"
@@ -263,7 +263,7 @@ const PracticeAreasPage = () => {
                       </div>
                     </div>
                     
-                    <p className="text-base md:text-lg text-muted-foreground leading-relaxed relative z-10">
+                    <p className="text-sm md:text-base lg:text-lg text-muted-foreground leading-relaxed relative z-10 line-clamp-4 md:line-clamp-none">
                       {area.fullDescription}
                     </p>
                   </div>

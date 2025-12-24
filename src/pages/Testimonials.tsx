@@ -95,11 +95,11 @@ interface StarRatingProps {
 }
 
 const StarRating: React.FC<StarRatingProps> = ({ rating }) => (
-  <div className="flex text-yellow-500 mb-5">
+  <div className="flex text-yellow-500 mb-4 md:mb-5">
     {[...Array(rating)].map((_, i) => (
       <svg
         key={i}
-        className="w-5 h-5"
+        className="w-4 h-4 sm:w-[18px] sm:h-[18px] md:w-5 md:h-5"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -121,9 +121,9 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial }) => {
 
   const cardClasses = `
     ${isDarkTheme ? 'card-gradient-border bg-white' : 'bg-white/70 backdrop-blur-sm'}
-    relative rounded-2xl shadow-xl p-8 lg:p-10 group
+    relative rounded-2xl shadow-xl p-5 sm:p-6 md:p-8 lg:p-10 group
     transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-2xl
-    h-full min-h-[400px] flex flex-col border-0
+    h-full min-h-[320px] sm:min-h-[360px] md:min-h-[400px] flex flex-col border-0
   `;
 
   return (
@@ -148,9 +148,9 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial }) => {
       {/* Card Content */}
       <div className="flex flex-col h-full">
         {/* Author Info */}
-        <div className="flex items-center mb-4">
+        <div className="flex items-center mb-3 md:mb-4">
           <img
-            className="w-16 h-16 rounded-full object-cover"
+            className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full object-cover"
             src={imageUrl}
             alt={`Profile picture of ${name}`}
             onError={(e) => {
@@ -158,9 +158,9 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial }) => {
               target.src = 'https://placehold.co/64x64/cccccc/FFFFFF?text=User';
             }}
           />
-          <div className="ml-4">
-            <h4 className="text-lg font-bold text-gray-900">{name}</h4>
-            <p className="text-sm text-gray-500">{role}</p>
+          <div className="ml-3 md:ml-4">
+            <h4 className="text-base sm:text-lg font-bold text-gray-900">{name}</h4>
+            <p className="text-xs sm:text-sm text-gray-500">{role}</p>
           </div>
         </div>
 
@@ -168,7 +168,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial }) => {
         <StarRating rating={rating} />
 
         {/* Testimonial Text */}
-        <p className="text-gray-600 leading-relaxed">{quote}</p>
+        <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{quote}</p>
       </div>
     </div>
   );
@@ -335,11 +335,11 @@ const TestimonialsPage = () => {
       >
         <div className="absolute inset-0 bg-white/80 md:hidden z-0"></div>
         
-        <div className="container mx-auto px-4 py-20 relative z-10">
+        <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
           <div className="max-w-4xl animate-fade-in">
-            <div className="inline-block relative group cursor-pointer mb-6">
+            <div className="inline-block relative group cursor-pointer mb-4 md:mb-6">
               <h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight animate-slide-up inline-block relative"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight animate-slide-up inline-block relative"
                 style={{
                   background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
                   WebkitBackgroundClip: 'text',
@@ -367,7 +367,7 @@ const TestimonialsPage = () => {
               </h1>
             </div>
             <p 
-              className="text-lg md:text-xl mb-8 leading-relaxed animate-slide-up max-w-3xl" 
+              className="text-base sm:text-lg md:text-xl mb-6 md:mb-8 leading-relaxed animate-slide-up max-w-3xl" 
               style={{ 
                 animationDelay: '0.1s',
                 background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
@@ -384,7 +384,7 @@ const TestimonialsPage = () => {
               <Button 
                 onClick={scrollToContact}
                 size="lg" 
-                className="bg-accent hover:bg-accent/90 text-lg px-8 py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105"
+                className="bg-accent hover:bg-accent/90 text-base md:text-lg px-6 md:px-8 py-5 md:py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105"
               >
                 <span
                   style={{
@@ -408,7 +408,7 @@ const TestimonialsPage = () => {
       {/* Testimonials Section */}
       <section 
         id="testimonials" 
-        className="testimonials-container relative py-24 w-full flex items-center justify-center px-4 lg:px-16 text-gray-800" 
+        className="testimonials-container relative py-12 sm:py-16 md:py-24 w-full flex items-center justify-center px-4 lg:px-16 text-gray-800" 
         style={{ backgroundColor: 'rgb(255,249,233)' }}
       >
         {/* Background SVG */}
@@ -418,13 +418,13 @@ const TestimonialsPage = () => {
         ></div>
         <div className="max-w-7xl w-full mx-auto relative z-10">
           {/* Header and Navigation */}
-          <div className="flex flex-col sm:flex-row justify-between sm:items-start mb-10 lg:mb-12">
+          <div className="flex flex-col sm:flex-row justify-between sm:items-start mb-8 md:mb-10 lg:mb-12">
             {/* Header Text */}
             <div>
-              <h3 className="text-sm font-medium uppercase tracking-wider text-amber-800 mb-2">
+              <h3 className="text-xs sm:text-sm font-medium uppercase tracking-wider text-amber-800 mb-2">
                 Client Testimonials
               </h3>
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
                 <span className="relative inline-block group cursor-default">
                   What Our Clients Say
                   {/* Curved underline SVG */}
@@ -448,20 +448,20 @@ const TestimonialsPage = () => {
             </div>
             
             {/* Navigation Arrows */}
-            <div className="flex space-x-3 mt-4 sm:mt-0">
+            <div className="flex space-x-2 sm:space-x-3 mt-4 sm:mt-0">
               <button 
                 onClick={() => carouselApi?.scrollPrev()}
                 disabled={!canScrollPrev}
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-amber-800/20 text-amber-900 hover:bg-amber-800/30 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-amber-800/20 text-amber-900 hover:bg-amber-800/30 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
               <button 
                 onClick={() => carouselApi?.scrollNext()}
                 disabled={!canScrollNext}
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-amber-800/20 text-amber-900 hover:bg-amber-800/30 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-amber-800/20 text-amber-900 hover:bg-amber-800/30 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
             </div>
           </div>
@@ -490,7 +490,7 @@ const TestimonialsPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#FFF8E7' }}>
+      <section className="py-12 sm:py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: '#FFF8E7' }}>
         {/* Background SVG */}
         <div 
           className="absolute inset-0 bg-no-repeat bg-contain bg-center opacity-10 z-0"
@@ -502,9 +502,9 @@ const TestimonialsPage = () => {
         ></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-block relative group cursor-pointer mb-6">
+            <div className="inline-block relative group cursor-pointer mb-4 md:mb-6">
               <h2 
-                className="text-3xl md:text-4xl font-serif font-bold"
+                className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold"
                 style={{
                   background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
                   WebkitBackgroundClip: 'text',
@@ -530,13 +530,13 @@ const TestimonialsPage = () => {
                 />
               </svg>
             </div>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 md:mb-8 leading-relaxed">
               Join our satisfied clients and experience the difference that expert legal representation can make. Contact us today to discuss your legal needs.
             </p>
             <Button 
               onClick={scrollToContact}
               size="lg" 
-              className="bg-accent hover:bg-accent/90 text-lg px-8 py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105"
+              className="bg-accent hover:bg-accent/90 text-base md:text-lg px-6 md:px-8 py-5 md:py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105"
             >
               <span
                 style={{
