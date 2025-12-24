@@ -197,7 +197,7 @@ const WhyChooseUs = () => {
               </Card>
             );
           })}
-footerfo        </div>
+        </div>
       </div>
     </section>
   );

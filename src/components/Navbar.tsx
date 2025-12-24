@@ -89,6 +89,53 @@ const NavbarStyles = () => (
         color: #fff;
         transform: scaleX(1.1) scaleY(1.03);
     }
+
+    /* Mobile responsive styles */
+    @media (max-width: 640px) {
+        #navbar-header nav {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+        
+        #navbar-header .logo-text {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+        }
+        
+        #navbar-header .logo-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #navbar-header nav {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+        
+        #navbar-header .logo-text {
+            font-size: 0.75rem;
+            line-height: 1rem;
+        }
+        
+        #navbar-header .logo-icon {
+            width: 1rem;
+            height: 1rem;
+        }
+        
+        #mobile-menu .mobile-nav-link {
+            font-size: 0.875rem;
+            padding: 0.625rem 1rem;
+        }
+    }
+
+    @media (max-width: 360px) {
+        #navbar-header .logo-text {
+            font-size: 0.625rem;
+            line-height: 1rem;
+        }
+    }
   `}</style>
 );
 
@@ -267,20 +314,20 @@ const Navbar: React.FC = () => {
       
       {/* Header */}
       <header id="navbar-header" className="fixed top-0 left-0 right-0 z-50">
-        <nav className="container mx-auto flex items-center justify-between h-16 px-4">
+        <nav className="container mx-auto flex items-center justify-between h-14 sm:h-16 px-3 sm:px-4">
             
             {/* Left: Logo */}
             <a 
               href="#" 
-              className="flex-shrink-0 flex items-center space-x-3 pr-6 h-full cursor-pointer"
+              className="flex-shrink-0 flex items-center space-x-2 sm:space-x-3 pr-2 sm:pr-6 h-full cursor-pointer"
               onClick={(e) => {
                 e.preventDefault();
                 navigate('/');
                 setActiveLink('Home');
               }}
             >
-                <Scale className="w-6 h-6 text-white" />
-                <span className="text-xl font-bold text-white tracking-wide">Abhay Bharadwaj & Associates</span>
+                <Scale className="logo-icon w-5 h-5 sm:w-6 sm:h-6 text-white flex-shrink-0" />
+                <span className="logo-text text-sm sm:text-lg md:text-xl font-bold text-white tracking-wide leading-tight">Abhay Bharadwaj & Associates</span>
             </a>
 
             {/* Center: Pattern Fill (Desktop) */}
@@ -308,17 +355,17 @@ const Navbar: React.FC = () => {
             </div>
 
             {/* Mobile: Hamburger Button */}
-            <div className="lg:hidden">
+            <div className="lg:hidden flex-shrink-0">
                 <button
                     id="hamburger-btn"
-                    className="p-2 rounded-md focus:outline-none text-stone-300 hover:text-white"
+                    className="p-1.5 sm:p-2 rounded-md focus:outline-none text-stone-300 hover:text-white transition-colors"
                     aria-label="Open menu"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 >
                     {isMobileMenuOpen ? (
-                        <X className="w-6 h-6" />
+                        <X className="w-5 h-5 sm:w-6 sm:h-6" />
                     ) : (
-                        <Menu className="w-6 h-6" />
+                        <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
                     )}
                 </button>
             </div>
@@ -329,12 +376,12 @@ const Navbar: React.FC = () => {
           id="mobile-menu"
           className={`lg:hidden ${isMobileMenuOpen ? 'open' : ''}`}
         >
-            <nav className="flex flex-col space-y-1 p-4">
+            <nav className="flex flex-col space-y-1 p-3 sm:p-4">
                 {navItems.map((item) => (
                     <a
                         key={item}
                         href="#"
-                        className={`mobile-nav-link block px-4 py-3 rounded-md text-base font-medium text-stone-300 hover:bg-stone-700 hover:text-white transition-transform duration-200 ${
+                        className={`mobile-nav-link block px-3 sm:px-4 py-2.5 sm:py-3 rounded-md text-sm sm:text-base font-medium text-stone-300 hover:bg-stone-700 hover:text-white transition-transform duration-200 ${
                             activeLink === item ? 'active' : ''
                         }`}
                         onClick={(e) => {
