@@ -59,20 +59,20 @@ interface AttorneyCardProps {
 
 const AttorneyCard: React.FC<AttorneyCardProps> = ({ attorney }) => {
   return (
-    <div className="flex-shrink-0 w-64 md:w-72 snap-start">
+    <div className="flex-shrink-0 w-56 sm:w-64 md:w-72 snap-start">
       <div className="relative bg-gradient-to-t from-[#FFF8E7] to-[#FFF8E7] border-2 border-[#b08d57]/40 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl" style={{ backgroundColor: '#FFF8E7' }}>
         <img
           src={attorney.imageUrl}
           alt={attorney.name}
-          className="w-full h-80 object-cover rounded-t-2xl"
+          className="w-full h-64 sm:h-72 md:h-80 object-cover rounded-t-2xl"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             target.src = 'https://placehold.co/300x400/cccccc/333333?text=Image+Error&font=inter';
           }}
         />
-        <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#FFF8E7] via-[#FFF8E7]/95 to-transparent rounded-b-2xl border-t-2 border-[#b08d57]/40">
-          <h3 className="text-primary text-xl font-serif font-bold truncate">{attorney.name}</h3>
-          <p className="text-[#b08d57] text-sm font-medium">{attorney.title}</p>
+        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 md:p-5 bg-gradient-to-t from-[#FFF8E7] via-[#FFF8E7]/95 to-transparent rounded-b-2xl border-t-2 border-[#b08d57]/40">
+          <h3 className="text-primary text-base sm:text-lg md:text-xl font-serif font-bold truncate">{attorney.name}</h3>
+          <p className="text-[#b08d57] text-xs sm:text-sm font-medium">{attorney.title}</p>
         </div>
       </div>
     </div>
@@ -116,7 +116,7 @@ const TeamPage = () => {
       const { scrollLeft } = container;
       
       const isMobile = window.innerWidth < 768;
-      const cardWidth = isMobile ? 256 : 288;
+      const cardWidth = isMobile ? 224 : 288;
       const gap = 24;
       const scrollAmount = cardWidth + gap;
       const singleSetWidth = attorneys.length * (cardWidth + gap);
@@ -140,7 +140,7 @@ const TeamPage = () => {
       const { scrollLeft } = container;
       
       const isMobile = window.innerWidth < 768;
-      const cardWidth = isMobile ? 256 : 288;
+      const cardWidth = isMobile ? 224 : 288;
       const gap = 24;
       const singleSetWidth = attorneys.length * (cardWidth + gap);
       
@@ -247,11 +247,11 @@ const TeamPage = () => {
       >
         <div className="absolute inset-0 bg-white/80 md:hidden z-0"></div>
         
-        <div className="container mx-auto px-4 py-20 relative z-10">
+        <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
           <div className="max-w-4xl animate-fade-in">
-            <div className="inline-block relative group cursor-pointer mb-6">
+            <div className="inline-block relative group cursor-pointer mb-4 md:mb-6">
               <h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight animate-slide-up inline-block relative"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight animate-slide-up inline-block relative"
                 style={{
                   background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
                   WebkitBackgroundClip: 'text',
@@ -279,7 +279,7 @@ const TeamPage = () => {
               </h1>
             </div>
             <p 
-              className="text-lg md:text-xl mb-8 leading-relaxed animate-slide-up max-w-3xl" 
+              className="text-base sm:text-lg md:text-xl mb-6 md:mb-8 leading-relaxed animate-slide-up max-w-3xl" 
               style={{ 
                 animationDelay: '0.1s',
                 background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
@@ -296,7 +296,7 @@ const TeamPage = () => {
               <Button 
                 onClick={scrollToContact}
                 size="lg" 
-                className="bg-accent hover:bg-accent/90 text-lg px-8 py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105"
+                className="bg-accent hover:bg-accent/90 text-base md:text-lg px-6 md:px-8 py-5 md:py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105"
               >
                 <span
                   style={{
@@ -320,7 +320,7 @@ const TeamPage = () => {
       {/* Team Section */}
       <section 
         id="team" 
-        className="w-full overflow-hidden relative py-24" 
+        className="w-full overflow-hidden relative py-12 sm:py-16 md:py-24" 
         style={{ backgroundColor: '#FFF8E7' }}
       >
         {/* Background SVG */}
@@ -329,13 +329,13 @@ const TeamPage = () => {
           style={{backgroundImage: `url(${teamsectionSvg})`}}
         ></div>
 
-        <div className="relative w-full px-4 py-16 md:py-24 z-10" style={{ maxWidth: '100%' }}>
+        <div className="relative w-full px-4 py-12 md:py-16 lg:py-24 z-10" style={{ maxWidth: '100%' }}>
           <div className="container mx-auto">
-            <div className="text-center mb-12 md:mb-16">
-              <span className="text-[#b08d57] text-sm font-semibold uppercase tracking-wider mb-2 block">
+            <div className="text-center mb-8 md:mb-12 lg:mb-16">
+              <span className="text-[#b08d57] text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2 block">
                 Our Attorneys
               </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary leading-tight mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold text-primary leading-tight mb-4 md:mb-6">
                 <span className="relative inline-block group cursor-default">
                   Dedicated Lawyers
                   <svg 
@@ -375,7 +375,7 @@ const TeamPage = () => {
                   </svg>
                 </span>
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-4">
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mt-3 md:mt-4">
                 Our team of experienced attorneys brings decades of combined legal expertise to every case.
               </p>
             </div>
@@ -413,15 +413,15 @@ const TeamPage = () => {
       </section>
 
       {/* Team Details Section */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#FFF8E7' }}>
+      <section className="py-12 sm:py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: '#FFF8E7' }}>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--accent)/0.05),transparent_50%)] z-0"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--primary)/0.03),transparent_50%)] z-0"></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <div className="inline-block relative group cursor-pointer mb-4">
-                <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary">
+            <div className="text-center mb-10 md:mb-16">
+              <div className="inline-block relative group cursor-pointer mb-3 md:mb-4">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-primary">
                   Why Our Team Stands Out
                 </h2>
                 <svg 
@@ -439,60 +439,60 @@ const TeamPage = () => {
                   />
                 </svg>
               </div>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
                 Experience, dedication, and a commitment to excellence define our legal team
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              <div className="flex gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
+              <div className="flex gap-4 md:gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 backdrop-blur-sm flex items-center justify-center shadow-glow flex-shrink-0 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110">
-                    <img src={qualityIcon} alt="Quality" className="w-10 h-10 object-contain" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 backdrop-blur-sm flex items-center justify-center shadow-glow flex-shrink-0 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110">
+                    <img src={qualityIcon} alt="Quality" className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain" />
                   </div>
                 </div>
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-serif font-bold text-primary mb-4">Collective Experience</h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                <div className="space-y-2 md:space-y-4">
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-primary mb-2 md:mb-4">Collective Experience</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                     Our attorneys bring together over 100 years of combined legal experience across diverse practice areas. This depth of knowledge allows us to approach complex cases with confidence and strategic insight.
                   </p>
                 </div>
               </div>
-              <div className="flex gap-6">
+              <div className="flex gap-4 md:gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 backdrop-blur-sm flex items-center justify-center shadow-glow flex-shrink-0 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110">
-                    <img src={consumerCentricIcon} alt="Client-Centered" className="w-10 h-10 object-contain" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 backdrop-blur-sm flex items-center justify-center shadow-glow flex-shrink-0 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110">
+                    <img src={consumerCentricIcon} alt="Client-Centered" className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain" />
                   </div>
                 </div>
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-serif font-bold text-primary mb-4">Client-Centered Approach</h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                <div className="space-y-2 md:space-y-4">
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-primary mb-2 md:mb-4">Client-Centered Approach</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                     Every member of our team is committed to understanding your unique situation and goals. We take the time to listen, communicate clearly, and develop personalized strategies that serve your best interests.
                   </p>
                 </div>
               </div>
-              <div className="flex gap-6">
+              <div className="flex gap-4 md:gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 backdrop-blur-sm flex items-center justify-center shadow-glow flex-shrink-0 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110">
-                    <img src={growthIcon} alt="Growth" className="w-10 h-10 object-contain" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 backdrop-blur-sm flex items-center justify-center shadow-glow flex-shrink-0 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110">
+                    <img src={growthIcon} alt="Growth" className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain" />
                   </div>
                 </div>
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-serif font-bold text-primary mb-4">Proven Track Record</h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                <div className="space-y-2 md:space-y-4">
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-primary mb-2 md:mb-4">Proven Track Record</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                     Our team has successfully represented thousands of clients, achieving favorable outcomes in cases ranging from simple transactions to complex multi-party litigation. We measure our success by your success.
                   </p>
                 </div>
               </div>
-              <div className="flex gap-6">
+              <div className="flex gap-4 md:gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 backdrop-blur-sm flex items-center justify-center shadow-glow flex-shrink-0 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110">
-                    <img src={learningIcon} alt="Learning" className="w-10 h-10 object-contain" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 backdrop-blur-sm flex items-center justify-center shadow-glow flex-shrink-0 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110">
+                    <img src={learningIcon} alt="Learning" className="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain" />
                   </div>
                 </div>
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-serif font-bold text-primary mb-4">Continuous Learning</h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                <div className="space-y-2 md:space-y-4">
+                  <h3 className="text-xl sm:text-2xl font-serif font-bold text-primary mb-2 md:mb-4">Continuous Learning</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                     The legal landscape is constantly evolving. Our attorneys stay current with the latest developments in law, attend continuing education programs, and adapt their strategies to leverage new legal precedents and regulations.
                   </p>
                 </div>
@@ -503,7 +503,7 @@ const TeamPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 relative overflow-hidden" style={{ backgroundColor: '#FFF8E7' }}>
+      <section className="py-12 sm:py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: '#FFF8E7' }}>
         {/* Background SVG */}
         <div 
           className="absolute inset-0 bg-no-repeat bg-contain bg-center opacity-10 z-0"
@@ -515,9 +515,9 @@ const TeamPage = () => {
         ></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-block relative group cursor-pointer mb-6">
+            <div className="inline-block relative group cursor-pointer mb-4 md:mb-6">
               <h2 
-                className="text-3xl md:text-4xl font-serif font-bold"
+                className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold"
                 style={{
                   background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
                   WebkitBackgroundClip: 'text',
@@ -543,13 +543,13 @@ const TeamPage = () => {
                 />
               </svg>
             </div>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 md:mb-8 leading-relaxed">
               Let's discuss how our experienced team can help you achieve your legal goals with expertise and dedication.
             </p>
             <Button 
               onClick={scrollToContact}
               size="lg" 
-              className="bg-accent hover:bg-accent/90 text-lg px-8 py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105"
+              className="bg-accent hover:bg-accent/90 text-base md:text-lg px-6 md:px-8 py-5 md:py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105"
             >
               <span
                 style={{
