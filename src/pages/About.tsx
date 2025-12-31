@@ -7,18 +7,21 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import aboutSectionBg from "@/assets/svg/aboutsection3.svg";
 import heroBg from "@/assets/svg/herobg8.svg";
-import legalExpert from "@/assets/images/legalexpert.jpg";
-import lawyerdiscussion from "@/assets/images/lawyerdiscussion.jpg";
-import attorneyatjustice from "@/assets/images/attorneyatjustice.jpg";
+// import legalExpert from "@/assets/images/legalexpert.jpg";
+// import lawyerdiscussion from "@/assets/images/lawyerdiscussion.jpg";
+import courtroom from "@/assets/images/court-room.png";
 import handshakeSvg from "@/assets/svg/workingareasbg.svg";
-import qualityIcon from "@/assets/icons/quality.png";
-import excellenceIcon from "@/assets/icons/excellence.png";
-import dedicationIcon from "@/assets/icons/dedication.png";
-import trustIcon from "@/assets/icons/trust (1).png";
+import qualityIcon from "@/assets/icons/a1.png";
+import excellenceIcon from "@/assets/icons/a2.png";
+import dedicationIcon from "@/assets/icons/a3.png";
+import trustIcon from "@/assets/icons/a4.png";
+import aboutImage from "@/assets/images/a1.png";
+import founder from "@/assets/images/founder.png";
+import prize from "@/assets/images/prize.png";
 
 const AboutPage = () => {
   const navigate = useNavigate();
-  const [backgroundPosition, setBackgroundPosition] = useState('center center');
+  const [backgroundPosition, setBackgroundPosition] = useState("center center");
 
   // Scroll to top on mount
   useEffect(() => {
@@ -28,80 +31,84 @@ const AboutPage = () => {
   useEffect(() => {
     const updateBackgroundPosition = () => {
       if (window.innerWidth < 768) {
-        setBackgroundPosition('right center');
+        setBackgroundPosition("right center");
       } else {
-        setBackgroundPosition('center center');
+        setBackgroundPosition("center center");
       }
     };
 
     updateBackgroundPosition();
-    window.addEventListener('resize', updateBackgroundPosition);
-    
+    window.addEventListener("resize", updateBackgroundPosition);
+
     return () => {
-      window.removeEventListener('resize', updateBackgroundPosition);
+      window.removeEventListener("resize", updateBackgroundPosition);
     };
   }, []);
 
   const scrollToContact = () => {
-    navigate('/#contact');
+    navigate("/#contact");
   };
 
   const values = [
     {
       icon: qualityIcon,
       title: "Integrity",
-      description: "We conduct our practice with the highest ethical standards, ensuring transparency and honesty in all our client relationships."
+      description:
+        "We conduct our practice with the highest ethical standards, ensuring transparency, honesty, and accountability in all client engagements.",
     },
     {
       icon: excellenceIcon,
       title: "Excellence",
-      description: "We strive for excellence in every case, combining decades of experience with innovative legal strategies to achieve the best outcomes."
+      description:
+        "We pursue excellence in every assignment by applying sound legal judgment, experience, and strategic precision to deliver effective outcomes.",
     },
     {
       icon: dedicationIcon,
       title: "Dedication",
-      description: "Our commitment to our clients goes beyond the courtroom. We invest time and resources to understand your unique situation and goals."
+      description:
+        "We demonstrate unwavering dedication to our clients by diligently understanding their objectives and representing their interests with care.",
     },
     {
       icon: trustIcon,
       title: "Trust",
-      description: "Building lasting relationships based on trust and respect. Your confidence in us drives our commitment to deliver exceptional results."
-    }
+      description:
+        "We foster enduring professional relationships built on trust, reliability, and respect through consistent and principled legal service.",
+    },
   ];
 
   return (
     <div className="min-h-screen">
       <Navbar />
-      
       {/* Hero Section */}
-      <section 
+      <section
         className="relative min-h-[70vh] flex items-center pt-24 overflow-hidden"
         style={{
           backgroundImage: `url(${heroBg})`,
-          backgroundSize: 'cover',
+          backgroundSize: "cover",
           backgroundPosition: backgroundPosition,
-          backgroundRepeat: 'no-repeat',
+          backgroundRepeat: "no-repeat",
         }}
       >
         <div className="absolute inset-0 bg-white/80 md:hidden z-0"></div>
-        
+
         <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
           <div className="max-w-4xl animate-fade-in">
             <div className="inline-block relative group cursor-pointer mb-4 md:mb-6">
-              <h1 
+              <h1
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight animate-slide-up inline-block relative"
                 style={{
-                  background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  color: 'transparent'
+                  background:
+                    "linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  color: "transparent",
                 }}
               >
                 <span>About Abhay Bharadwaj & Associates</span>
-                <svg 
+                <svg
                   className="absolute -bottom-2 left-0 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ width: '100%' }}
+                  style={{ width: "100%" }}
                   viewBox="0 0 300 20"
                   preserveAspectRatio="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -116,22 +123,28 @@ const AboutPage = () => {
                 </svg>
               </h1>
             </div>
-            <p 
-              className="text-base sm:text-lg md:text-xl mb-6 md:mb-8 leading-relaxed animate-slide-up max-w-3xl" 
-              style={{ 
-                animationDelay: '0.1s',
-                background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                color: 'transparent',
-                opacity: 0.85
+            <p
+              className="text-base sm:text-lg md:text-xl mb-6 md:mb-8 leading-relaxed animate-slide-up max-w-3xl"
+              style={{
+                animationDelay: "0.1s",
+                background:
+                  "linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                color: "transparent",
+                opacity: 0.85,
               }}
             >
-              For over three decades, we have been a pillar of legal excellence in our community, built on a foundation of integrity, dedication, and an unwavering commitment to our clients' success.
+              We are a four-and-a-half-decade-old law firm based out of Rajkot,
+              Gujarat. <br /> Established by Late Shri Abhay Bharadwaj, a former
+              member of the Law Commission of India, in the year 1980.
             </p>
-            <div className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-              <Button 
+            <div
+              className="animate-slide-up"
+              style={{ animationDelay: "0.2s" }}
+            >
+              {/* <Button 
                 onClick={scrollToContact}
                 size="lg" 
                 className="bg-accent hover:bg-accent/90 text-base md:text-lg px-6 md:px-8 py-5 md:py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105"
@@ -149,74 +162,107 @@ const AboutPage = () => {
                   Schedule a Consultation
                   <ArrowRight className="ml-2 w-5 h-5" style={{ color: 'rgb(61,58,57)' }} />
                 </span>
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
       </section>
 
       {/* Main About Section */}
-      <section 
-        id="about" 
-        className="py-16 sm:py-24 md:py-48 md:min-h-[600px] bg-background relative overflow-hidden" 
-        style={{ backgroundColor: '#FFF8E7' }}
+      <section
+        id="about"
+        className="py-16 sm:py-24 md:py-48 md:min-h-[600px] bg-background relative overflow-hidden"
+        style={{ backgroundColor: "#FFF8E7" }}
       >
-        <div 
-          className="absolute inset-0 z-0 opacity-30"
+        {/* Background texture */}
+        <div
+          className="absolute inset-0 z-0 opacity-5"
           style={{
             backgroundImage: `url(${aboutSectionBg})`,
-            backgroundSize: 'cover',
+            backgroundSize: "cover",
             backgroundPosition: backgroundPosition,
-            backgroundRepeat: 'no-repeat',
+            backgroundRepeat: "no-repeat",
           }}
         ></div>
-        
-        {/* White overlay for mobile view only */}
+
+        {/* White overlay for mobile only */}
         <div className="absolute inset-0 bg-white/80 md:hidden z-[1]"></div>
-        
+
         <div className="relative z-10">
-          <div className="container px-4 md:pr-4 md:ml-0 md:pl-10">
-            <div className="max-w-4xl">
-              {/* Text Content */}
-              <div className="mb-8 md:mb-12">
-                <div className="inline-block relative group cursor-pointer mb-4 md:mb-6">
-                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-primary">
-                    Our Story
-                  </h2>
-                  <svg 
-                    className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    viewBox="0 0 300 20"
-                    preserveAspectRatio="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M 0,15 Q 150,5 300,15"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      fill="none"
-                      className="text-accent"
-                    />
-                  </svg>
+          <div className="container px-4 md:px-10">
+            {/* Main layout */}
+            <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+              {/* Left Image Section (40%) */}
+              <div className="w-full md:w-[40%]">
+                <div className="w-full h-[280px] sm:h-[360px] md:h-[600px] overflow-hidden shadow-lg bg-cover bg-center">
+                  {/* If you prefer <img>, use below instead */}
+
+                  <img
+                    src={aboutImage}
+                    alt="About our firm"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-4 md:mb-6 leading-relaxed">
-                  For over three decades, Abhay Bharadwaj & Associates has been a pillar of legal excellence in our community. Our firm was built on a foundation of integrity, dedication, and an unwavering commitment to our clients' success.
-                </p>
-                <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 md:mb-8 leading-relaxed">
-                  We believe that every client deserves personalized attention and strategic legal counsel. Our team combines deep legal expertise with a practical understanding of your goals to deliver results that matter.
-                </p>
-                
-                <div className="space-y-3 md:space-y-4">
-                  {[
-                    "Personalized legal strategies",
-                    "Transparent communication",
-                    "Proven track record of success",
-                    "Compassionate client service"
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center gap-2 md:gap-3">
-                      <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-accent flex-shrink-0" />
-                      <span className="text-sm sm:text-base text-foreground">{item}</span>
-                    </div>
-                  ))}
+              </div>
+
+              {/* Right Text Section (60%) */}
+              <div className="w-full md:w-[60%]">
+                <div className="mb-8 md:mb-12">
+                  <div className="inline-block relative group cursor-pointer mb-4 md:mb-6">
+                    <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-5xl font-serif font-bold text-primary">
+                      We’re Advocates for People Justice and Right
+                    </h2>
+                    <svg
+                      className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      viewBox="0 0 300 20"
+                      preserveAspectRatio="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M 0,15 Q 150,5 300,15"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                        fill="none"
+                        className="text-accent"
+                      />
+                    </svg>
+                  </div>
+
+                  <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-4 md:mb-6 leading-relaxed">
+                    We are a four-and-a-half-decade-old law firm based out of
+                    Rajkot, Gujarat. Established by Late Shri Abhay Bharadwaj, a
+                    former member of the Law Commission of India, in the year
+                    1980. We have gradually cemented our position as a pillar of
+                    legal excellence.
+                  </p>
+
+                  <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 md:mb-8 leading-relaxed">
+                    AB & A, with a team of over 50 skilled lawyers led by Adv.
+                    Ansh Bharadwaj, has its work spread across Gujarat,
+                    specifically in the Saurashtra-Kutch region. Our expertise
+                    spans Criminal Law, Civil Law, Family Law, Motor Vehicle
+                    Law, Company Law, and IPR Law—making us a one-stop solution
+                    for diverse legal challenges.
+                  </p>
+
+                  <div className="space-y-3 md:space-y-4">
+                    {[
+                      "Personalized legal strategies",
+                      "Transparent communication",
+                      "Proven track record of success",
+                      "Compassionate client service",
+                    ].map((item, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center gap-2 md:gap-3"
+                      >
+                        <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-accent flex-shrink-0" />
+                        <span className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -227,18 +273,18 @@ const AboutPage = () => {
       {/* Values Section */}
       <section className="py-12 sm:py-16 md:py-24 bg-gradient-to-br from-[#5C3317] via-[#6B4423] to-[#FFE4E1] text-white relative overflow-hidden">
         {/* Background SVG */}
-        <div 
+        <div
           className="absolute inset-0 bg-no-repeat bg-cover bg-center opacity-10 pointer-events-none"
-          style={{backgroundImage: `url(${handshakeSvg})`}}
+          style={{ backgroundImage: `url(${handshakeSvg})` }}
         ></div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-10 md:mb-16">
             <div className="inline-block relative group cursor-pointer mb-3 md:mb-4">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold">
-                Our Values
+                Four Decades of Excellence and Trusted Advocacy.
               </h2>
-              <svg 
+              <svg
                 className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 viewBox="0 0 300 20"
                 preserveAspectRatio="none"
@@ -262,17 +308,24 @@ const AboutPage = () => {
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
             {values.map((value, index) => {
               return (
-                <Card key={index} className="bg-white backdrop-blur-sm border-0 border-l-[5px] border-l-gray-500 hover:bg-white transition-all duration-300 hover:shadow-elegant-hover hover:scale-105 rounded-none rounded-tr-lg rounded-br-lg aspect-square">
+                <Card
+                  key={index}
+                  className="bg-white backdrop-blur-sm border-0 border-l-[5px] border-l-gray-500 hover:bg-white transition-all duration-300 hover:shadow-elegant-hover hover:scale-105 rounded-none rounded-tr-lg rounded-br-lg aspect-square"
+                >
                   <CardContent className="pt-6 md:pt-8 text-center px-4 md:px-6">
                     <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-3 md:mb-4">
-                      <img 
-                        src={value.icon} 
+                      <img
+                        src={value.icon}
                         alt={value.title}
-                        className="w-6 h-6 md:w-8 md:h-8 object-contain"
+                        className="w-12 h-12 md:w-12 md:h-12 object-contain"
                       />
                     </div>
-                    <h3 className="text-lg md:text-xl font-serif font-bold mb-2 md:mb-3 text-[#5C3317]">{value.title}</h3>
-                    <p className="text-sm md:text-base text-[#5C3317]/80 leading-relaxed line-clamp-2 md:line-clamp-none">{value.description}</p>
+                    <h3 className="text-lg md:text-xl font-serif font-bold mb-2 md:mb-3 text-[#5C3317]">
+                      {value.title}
+                    </h3>
+                    <p className="text-sm md:text-base text-[#5C3317]/80 leading-relaxed line-clamp-2 md:line-clamp-none">
+                      {value.description}
+                    </p>
                   </CardContent>
                 </Card>
               );
@@ -282,148 +335,105 @@ const AboutPage = () => {
       </section>
 
       {/* Image Gallery Section */}
-      <section className="py-12 sm:py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: '#FFF8E7' }}>
-        {/* Background decorative element */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--accent)/0.05),transparent_50%)] z-0"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--primary)/0.03),transparent_50%)] z-0"></div>
-        
+      <section
+        className="py-12 sm:py-16 md:py-24 relative overflow-hidden"
+        style={{ backgroundColor: "#FFF8E7" }}
+      >
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,hsl(var(--accent)/0.06),transparent_45%)] z-0"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_75%,hsl(var(--primary)/0.04),transparent_50%)] z-0"></div>
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-10 md:mb-16">
-              <div className="inline-block relative group cursor-pointer mb-3 md:mb-4">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-primary">
-                  Our Practice
-                </h2>
-                <svg 
-                  className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  viewBox="0 0 300 20"
-                  preserveAspectRatio="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M 0,15 Q 150,5 300,15"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    fill="none"
-                    className="text-accent"
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+              {/* LEFT CONTENT */}
+              <div className="relative">
+                {/* Decorative accent */}
+                <div className="absolute -left-6 top-2 w-1 h-20 bg-accent rounded-full hidden md:block"></div>
+
+                {/* Heading */}
+                <div className="inline-block relative group cursor-pointer mb-10">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-primary">
+                    Work With Us. Let's Make Great Together.
+                  </h2>
+                  <svg
+                    className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    viewBox="0 0 300 20"
+                    preserveAspectRatio="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M 0,15 Q 150,5 300,15"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      fill="none"
+                      className="text-accent"
+                    />
+                  </svg>
+                </div>
+
+                {/* Experience Row */}
+                <div className="flex gap-8 items-start">
+                  {/* Experience Card */}
+                  <div className="relative min-w-[150px] bg-white rounded-2xl p-6 shadow-xl border border-accent/20">
+                    {/* Accent ring */}
+                    <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-accent/20 blur-xl"></div>
+
+                    <div className="text-5xl font-serif font-bold text-primary leading-none">
+                      45+
+                    </div>
+                    <p className="text-sm font-medium text-muted-foreground mt-2">
+                      Years of Experience
+                    </p>
+                  </div>
+
+                  {/* Supporting Text */}
+                  <div className="space-y-4">
+                    <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+                      For over four decades, our firm has stood as a symbol of
+                      legal integrity and professional excellence across
+                      Gujarat.
+                    </p>
+                    <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+                      We combine seasoned courtroom expertise with modern legal
+                      strategies—delivering clarity, confidence, and results
+                      when it matters most.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* RIGHT IMAGES */}
+              <div className="grid grid-cols-2 gap-5 sm:gap-6">
+                {/* Image 1 */}
+                <div className="relative overflow-hidden hover:shadow-2xl transition-all duration-300">
+                  <img
+                    src={founder}
+                    alt="Legal Expert"
+                    className="w-full h-[190px] sm:h-[260px] md:h-[320px] object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
                   />
-                </svg>
-              </div>
-              <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-                A glimpse into our professional environment and team
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-              {/* Image 1 - Legal Expert */}
-              <div 
-                className="relative group overflow-hidden shadow-elegant-hover hover:shadow-2xl transition-shadow duration-300 hover:scale-[1.02]"
-                style={{ willChange: 'transform', transform: 'translateZ(0)' }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/10 z-10 group-hover:from-primary/30 group-hover:to-accent/20 transition-opacity duration-300"></div>
-                <img 
-                  src={legalExpert} 
-                  alt="Legal Expert" 
-                  className="w-full h-[280px] sm:h-[320px] md:h-[400px] object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
-                  style={{ willChange: 'transform', transform: 'translateZ(0)' }}
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-transparent z-20 group-hover:from-primary/90 transition-opacity duration-300"></div>
-                
-                {/* Content Overlay */}
-                <div className="absolute inset-0 z-30 flex flex-col justify-end p-4 sm:p-5 md:p-6 lg:p-8">
-                  <div className="transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-75">
-                    <div className="w-10 md:w-12 h-1 bg-accent mb-3 md:mb-4 rounded-full"></div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-white mb-1 md:mb-2">
-                      Expert Legal Counsel
-                    </h3>
-                    <p className="text-white/90 text-xs sm:text-sm md:text-base leading-relaxed">
-                      Our experienced attorneys provide strategic guidance and dedicated representation
-                    </p>
-                  </div>
-                  <div className="transform transition-all duration-300">
-                    <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-                      <span className="text-white text-xs sm:text-sm font-semibold">Professional Excellence</span>
-                    </div>
-                  </div>
                 </div>
 
-                {/* Decorative border on hover */}
-                <div className="absolute inset-0 border-2 border-accent/0 group-hover:border-accent/50 transition-opacity duration-300 z-40 pointer-events-none"></div>
-              </div>
-
-              {/* Image 2 - Lawyer Discussion */}
-              <div 
-                className="relative group overflow-hidden shadow-elegant-hover hover:shadow-2xl transition-shadow duration-300 hover:scale-[1.02]"
-                style={{ willChange: 'transform', transform: 'translateZ(0)' }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/10 z-10 group-hover:from-primary/30 group-hover:to-accent/20 transition-opacity duration-300"></div>
-                <img 
-                  src={lawyerdiscussion} 
-                  alt="Lawyer Discussion" 
-                  className="w-full h-[280px] sm:h-[320px] md:h-[400px] object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
-                  style={{ willChange: 'transform', transform: 'translateZ(0)' }}
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-transparent z-20 group-hover:from-primary/90 transition-opacity duration-300"></div>
-                
-                {/* Content Overlay */}
-                <div className="absolute inset-0 z-30 flex flex-col justify-end p-4 sm:p-5 md:p-6 lg:p-8">
-                  <div className="transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-75">
-                    <div className="w-10 md:w-12 h-1 bg-accent mb-3 md:mb-4 rounded-full"></div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-serif font-bold text-white mb-1 md:mb-2">
-                      Collaborative Approach
-                    </h3>
-                    <p className="text-white/90 text-xs sm:text-sm md:text-base leading-relaxed">
-                      Working together to achieve the best outcomes for our clients
-                    </p>
-                  </div>
-                  <div className="transform transition-all duration-300">
-                    <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-                      <span className="text-white text-xs sm:text-sm font-semibold">Team Collaboration</span>
-                    </div>
-                  </div>
+                {/* Image 2 */}
+                <div className="relative overflow-hidden hover:shadow-2xl transition-all duration-300">
+                  <img
+                    src={prize}
+                    alt="Lawyer Discussion"
+                    className="w-full h-[190px] sm:h-[260px] md:h-[320px] object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
                 </div>
 
-                {/* Decorative border on hover */}
-                <div className="absolute inset-0 border-2 border-accent/0 group-hover:border-accent/50 transition-opacity duration-300 z-40 pointer-events-none"></div>
-              </div>
-
-              {/* Image 3 - Attorney at Justice - Full Width */}
-              <div 
-                className="relative group overflow-hidden shadow-elegant-hover hover:shadow-2xl transition-shadow duration-300 hover:scale-[1.01] col-span-2"
-                style={{ willChange: 'transform', transform: 'translateZ(0)' }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/10 z-10 group-hover:from-primary/30 group-hover:to-accent/20 transition-opacity duration-300"></div>
-                <img 
-                  src={attorneyatjustice} 
-                  alt="Attorney at Justice" 
-                  className="w-full h-[350px] sm:h-[400px] md:h-[600px] lg:h-[650px] object-cover object-center group-hover:scale-110 transition-transform duration-500 ease-out"
-                  style={{ willChange: 'transform', transform: 'translateZ(0)' }}
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-transparent z-20 group-hover:from-primary/90 transition-opacity duration-300"></div>
-                
-                {/* Content Overlay */}
-                <div className="absolute inset-0 z-30 flex flex-col justify-end p-5 sm:p-6 md:p-8 lg:p-12">
-                  <div className="max-w-2xl transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-75">
-                    <div className="w-12 md:w-16 h-1 bg-accent mb-4 md:mb-6 rounded-full"></div>
-                    <h3 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-white mb-3 md:mb-4">
-                      Justice & Excellence
-                    </h3>
-                    <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">
-                      Committed to upholding the highest standards of legal practice and delivering exceptional results for every client we serve
-                    </p>
-                  </div>
-                  <div className="transform transition-all duration-300">
-                    <div className="inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-3 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
-                      <span className="text-white text-sm md:text-base font-semibold">Dedicated Service</span>
-                    </div>
-                  </div>
+                {/* Image 3 */}
+                <div className="relative overflow-hidden hover:shadow-2xl transition-all duration-300 col-span-2">
+                  <img
+                    src={courtroom}
+                    alt="Courtroom Excellence"
+                    className="w-full h-[260px] sm:h-[300px] md:h-[360px] object-cover object-center hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
                 </div>
-
-                {/* Decorative border on hover */}
-                <div className="absolute inset-0 border-2 border-accent/0 group-hover:border-accent/50 transition-opacity duration-300 z-40 pointer-events-none"></div>
               </div>
             </div>
           </div>
@@ -431,33 +441,37 @@ const AboutPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: '#FFF8E7' }}>
+      <section
+        className="py-12 sm:py-16 md:py-24 relative overflow-hidden"
+        style={{ backgroundColor: "#FFF8E7" }}
+      >
         {/* Background SVG */}
-        <div 
+        <div
           className="absolute inset-0 bg-no-repeat bg-contain bg-center z-0"
           style={{
             backgroundImage: `url(${handshakeSvg})`,
-            backgroundSize: '70%',
-            backgroundPosition: '30% center',
-            opacity: 0.25
+            backgroundSize: "70%",
+            backgroundPosition: "30% center",
+            opacity: 0.25,
           }}
         ></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-block relative group cursor-pointer mb-4 md:mb-6">
-              <h2 
+              <h2
                 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold"
                 style={{
-                  background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  color: 'transparent'
+                  background:
+                    "linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  color: "transparent",
                 }}
               >
                 Ready to Work With Us?
               </h2>
-              <svg 
+              <svg
                 className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 viewBox="0 0 300 20"
                 preserveAspectRatio="none"
@@ -473,25 +487,30 @@ const AboutPage = () => {
               </svg>
             </div>
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 md:mb-8 leading-relaxed">
-              Let's discuss how we can help you achieve your legal goals with expertise and dedication.
+              Let's discuss how we can help you achieve your legal goals with
+              expertise and dedication.
             </p>
-            <Button 
+            <Button
               onClick={scrollToContact}
-              size="lg" 
+              size="lg"
               className="bg-accent hover:bg-accent/90 text-base md:text-lg px-6 md:px-8 py-5 md:py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105"
             >
               <span
                 style={{
-                  background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  color: 'transparent'
+                  background:
+                    "linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  color: "transparent",
                 }}
                 className="flex items-center"
               >
                 Get Started Today
-                <ArrowRight className="ml-2 w-5 h-5" style={{ color: 'rgb(61,58,57)' }} />
+                <ArrowRight
+                  className="ml-2 w-5 h-5"
+                  style={{ color: "rgb(61,58,57)" }}
+                />
               </span>
             </Button>
           </div>
@@ -504,4 +523,3 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
-

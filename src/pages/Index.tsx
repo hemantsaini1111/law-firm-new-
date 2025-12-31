@@ -10,10 +10,12 @@ import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import DisclaimerPop from "@/components/DisclaimerPop";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <DisclaimerPop/>
       <Navbar />
       <Hero />
       <PracticeAreas />

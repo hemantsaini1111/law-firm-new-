@@ -1,398 +1,228 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Scale, Menu, X } from 'lucide-react';
+import { Scale, Menu, X, ChevronDown } from 'lucide-react';
 
-// Define navigation items for easy mapping
-const navItems = ['Home', 'Practice Areas', 'About', 'Team', 'Testimonials', 'Contact'];
-
-/**
- * A component to inject the complex custom styles needed for this design.
- */
 const NavbarStyles = () => (
   <style>{`
-    /* Use Inter font */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    
-    /* Apply font to the whole app */
-    .font-inter {
-        font-family: 'Inter', sans-serif;
-    }
 
-    /* 1. Header Styling */
+    .font-inter { font-family: 'Inter', sans-serif; }
+
     #navbar-header {
-        /* Dark semi-transparent bg with blur */
-        background-color: rgba(28, 25, 23, 0.85); /* stone-900 with opacity */
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        /* Bottom border as seen in image */
-        border-bottom: 1px solid #44403c; /* stone-700 */
+      background-color: rgba(28, 25, 23, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #44403c;
     }
 
-    /* 2. Diagonal Line Pattern */
     #pattern-fill {
-        background-image: linear-gradient(
-            45deg, 
-            rgba(255, 255, 255, 0.03) 25%, 
-            transparent 25%, 
-            transparent 50%, 
-            rgba(255, 255, 255, 0.03) 50%, 
-            rgba(255, 255, 255, 0.03) 75%, 
-            transparent 75%, 
-            transparent
-        );
-        background-size: 15px 15px;
-        border-right: 1px solid #44403c; /* stone-700 */
-    }
-    
-    /* 3. Link Divider */
-    .nav-link {
-        border-left: 1px solid #44403c; /* stone-700 */
-        transform-origin: center center;
-        position: relative;
-        will-change: transform;
-        transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-                    background-color 0.3s ease-in-out,
-                    color 0.3s ease-in-out,
-                    box-shadow 0.3s ease-in-out;
+      background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.03) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.03) 50%,
+        rgba(255, 255, 255, 0.03) 75%,
+        transparent 75%,
+        transparent
+      );
+      background-size: 15px 15px;
+      border-right: 1px solid #44403c;
     }
 
-    /* Active link style */
-    .nav-link.active {
-        color: #fff;
-        background-color: rgba(68, 64, 60, 0.5); /* stone-700 with opacity */
-        box-shadow: inset 0 -2px 0 #fff; /* Inset white underline */
-        transform: scaleX(1.15) scaleY(1.05);
-        transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-                    background-color 0.3s ease-in-out,
-                    color 0.3s ease-in-out,
-                    box-shadow 0.3s ease-in-out;
+    .nav-link {
+      border-left: 1px solid #44403c;
+      transition: all 0.3s ease;
     }
-    
-    /* 4. Mobile Menu Transition */
+
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: rgba(28, 25, 23, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid #44403c;
+      border-radius: 0.5rem;
+      min-width: 240px;
+      z-index: 50;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      color: #d6d3d1;
+      cursor: pointer;
+    }
+
+    .dropdown a:hover {
+      background-color: #44403c;
+      color: white;
+    }
+
+    .submenu {
+      position: absolute;
+      top: 0;
+      left: 100%;
+    }
+
     #mobile-menu {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-        /* Match header bg for seamless look */
-        background-color: rgba(28, 25, 23, 0.85); /* stone-900 with opacity */
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      background-color: rgba(28, 25, 23, 0.95);
     }
 
     #mobile-menu.open {
-        max-height: 500px; /* Adjust as needed to fit links */
-    }
-
-    /* Mobile active style */
-    #mobile-menu .mobile-nav-link.active {
-        background-color: #44403c; /* stone-700 */
-        color: #fff;
-        transform: scaleX(1.1) scaleY(1.03);
-    }
-
-    /* Mobile responsive styles */
-    @media (max-width: 640px) {
-        #navbar-header nav {
-            padding-left: 0.75rem;
-            padding-right: 0.75rem;
-        }
-        
-        #navbar-header .logo-text {
-            font-size: 0.875rem;
-            line-height: 1.25rem;
-        }
-        
-        #navbar-header .logo-icon {
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        #navbar-header nav {
-            padding-left: 0.5rem;
-            padding-right: 0.5rem;
-        }
-        
-        #navbar-header .logo-text {
-            font-size: 0.75rem;
-            line-height: 1rem;
-        }
-        
-        #navbar-header .logo-icon {
-            width: 1rem;
-            height: 1rem;
-        }
-        
-        #mobile-menu .mobile-nav-link {
-            font-size: 0.875rem;
-            padding: 0.625rem 1rem;
-        }
-    }
-
-    @media (max-width: 360px) {
-        #navbar-header .logo-text {
-            font-size: 0.625rem;
-            line-height: 1rem;
-        }
+      max-height: 700px;
     }
   `}</style>
 );
 
-/**
- * Navbar Component
- */
 const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  
-  // State for mobile menu toggle
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  // State to track the active navigation link
-  const [activeLink, setActiveLink] = useState('Home');
 
-  // Update active link based on current route
-  useEffect(() => {
-    if (location.pathname === '/practice-areas') {
-      setActiveLink('Practice Areas');
-    } else if (location.pathname === '/about') {
-      setActiveLink('About');
-    } else if (location.pathname === '/team') {
-      setActiveLink('Team');
-    } else if (location.pathname === '/testimonials') {
-      setActiveLink('Testimonials');
-    } else if (location.pathname === '/contact') {
-      setActiveLink('Contact');
-    } else if (location.pathname === '/') {
-      // Will be updated by scroll handler on home page
-    }
-  }, [location.pathname]);
-
-  // Scroll to section helper
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // Map nav items to section IDs
-  const getSectionId = (item: string): string => {
-    const mapping: Record<string, string> = {
-      'Home': 'home',
-      'Practice Areas': 'practice-areas',
-      'About': 'about',
-      'Team': 'team',
-      'Testimonials': 'testimonials',
-      'Contact': 'contact',
-    };
-    return mapping[item] || item.toLowerCase().replace(' ', '-');
-  };
-
-  // Reverse mapping: section ID to nav item
-  const getNavItemFromSectionId = (sectionId: string): string | null => {
-    const mapping: Record<string, string> = {
-      'home': 'Home',
-      'practice-areas': 'Practice Areas',
-      'about': 'About',
-      'team': 'Team',
-      'testimonials': 'Testimonials',
-      'contact': 'Contact',
-    };
-    return mapping[sectionId] || null;
-  };
-
-  // Effect to track scroll position and update active link
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 150; // Offset for navbar height + some padding
-      let currentSection = 'Home';
-
-      // Check each section to see which one is in view
-      for (let i = navItems.length - 1; i >= 0; i--) {
-        const item = navItems[i];
-        const sectionId = getSectionId(item);
-        const element = document.getElementById(sectionId);
-        
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          const elementTop = rect.top + window.scrollY;
-          
-          // If scroll position has passed the top of this section
-          if (scrollPosition >= elementTop - 100) {
-            currentSection = item;
-            break;
-          }
-        }
-      }
-
-      // Only update if changed to avoid unnecessary re-renders
-      setActiveLink((prev) => {
-        return prev !== currentSection ? currentSection : prev;
-      });
-    };
-
-    // Throttle scroll events for better performance
-    let ticking = false;
-    const throttledScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    // Initial check
-    handleScroll();
-
-    // Listen to scroll events
-    window.addEventListener('scroll', throttledScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', throttledScroll);
-    };
-  }, []);
-
-  // Handler for desktop link clicks
-  const handleNavClick = (item: string) => {
-    setActiveLink(item);
-    if (item === 'Practice Areas') {
-      navigate('/practice-areas');
-    } else if (item === 'About') {
-      navigate('/about');
-    } else if (item === 'Team') {
-      navigate('/team');
-    } else if (item === 'Testimonials') {
-      navigate('/testimonials');
-    } else if (item === 'Contact') {
-      navigate('/contact');
-    } else {
-      // If not on home page, navigate to home first, then scroll
-      if (location.pathname !== '/') {
-        navigate('/');
-        setTimeout(() => {
-          scrollToSection(getSectionId(item));
-        }, 100);
-      } else {
-        scrollToSection(getSectionId(item));
-      }
-    }
-  };
-
-  // Handler for mobile link clicks (also closes the menu)
-  const handleMobileNavClick = (item: string) => {
-    setActiveLink(item);
-    setIsMobileMenuOpen(false);
-    if (item === 'Practice Areas') {
-      navigate('/practice-areas');
-    } else if (item === 'About') {
-      navigate('/about');
-    } else if (item === 'Team') {
-      navigate('/team');
-    } else if (item === 'Testimonials') {
-      navigate('/testimonials');
-    } else if (item === 'Contact') {
-      navigate('/contact');
-    } else {
-      // If not on home page, navigate to home first, then scroll
-      if (location.pathname !== '/') {
-        navigate('/');
-        setTimeout(() => {
-          scrollToSection(getSectionId(item));
-        }, 100);
-      } else {
-        scrollToSection(getSectionId(item));
-      }
-    }
-  };
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const [keyPillarsOpen, setKeyPillarsOpen] = useState(false);
+  const [careersOpen, setCareersOpen] = useState(false);
 
   return (
     <div className="font-inter text-stone-300">
       <NavbarStyles />
-      
-      {/* Header */}
+
       <header id="navbar-header" className="fixed top-0 left-0 right-0 z-50">
-        <nav className="container mx-auto flex items-center justify-between h-14 sm:h-16 px-3 sm:px-4">
-            
-            {/* Left: Logo */}
-            <a 
-              href="#" 
-              className="flex-shrink-0 flex items-center space-x-2 sm:space-x-3 pr-2 sm:pr-6 h-full cursor-pointer"
-              onClick={(e) => {
-                e.preventDefault();
-                navigate('/');
-                setActiveLink('Home');
-              }}
-            >
-                <Scale className="logo-icon w-5 h-5 sm:w-6 sm:h-6 text-white flex-shrink-0" />
-                <span className="logo-text text-sm sm:text-lg md:text-xl font-bold text-white tracking-wide leading-tight">Abhay Bharadwaj & Associates</span>
+        <nav className="container mx-auto flex items-center justify-between h-14 sm:h-16 px-4">
+
+          {/* Logo */}
+          <a
+            href="#"
+            className="flex items-center gap-2 text-white font-bold"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/');
+            }}
+          >
+            <Scale className="w-6 h-6" />
+            <span className="text-sm sm:text-lg">Abhay Bharadwaj & Associates</span>
+          </a>
+
+          <div id="pattern-fill" className="hidden lg:block flex-grow h-full" />
+
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex items-center h-full">
+
+            <a className="nav-link px-5 h-full flex items-center uppercase text-sm cursor-pointer" onClick={() => navigate('/')}>
+              Home
             </a>
 
-            {/* Center: Pattern Fill (Desktop) */}
-            <div id="pattern-fill" className="flex-grow h-full hidden lg:block">
-                {/* This div just creates the patterned empty space */}
-            </div>
+            {/* About */}
+            <div
+              className="relative nav-link px-5 h-full flex items-center cursor-pointer"
+              onMouseEnter={() => setAboutOpen(true)}
+              onMouseLeave={() => {
+                setAboutOpen(false);
+                setKeyPillarsOpen(false);
+              }}
+            >
+              <span className="flex items-center gap-1">
+                About the Firm <ChevronDown className="w-4 h-4" />
+              </span>
 
-            {/* Right: Actions (Desktop) - Mapped from array */}
-            <div className="hidden lg:flex items-center h-full">
-                {navItems.map((item) => (
-                    <a
-                        key={item}
-                        href="#"
-                        className={`nav-link flex items-center h-full px-5 text-sm font-medium uppercase tracking-wider text-stone-400 hover:text-white transition-colors ${
-                            activeLink === item ? 'active' : ''
-                        }`}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            handleNavClick(item);
-                        }}
-                    >
-                        {item}
+              {aboutOpen && (
+                <div className="dropdown">
+                  <a onClick={() => navigate('/about-ab-a')}>About AB & A</a>
+
+                  <div
+                    className="relative"
+                    onMouseEnter={() => setKeyPillarsOpen(true)}
+                    onMouseLeave={() => setKeyPillarsOpen(false)}
+                  >
+                    <a className="flex justify-between items-center">
+                      Key Pillars ＞
                     </a>
-                ))}
+
+                    {keyPillarsOpen && (
+                      <div className="dropdown submenu">
+                        <a onClick={() => navigate('/key-pillars/abhay')}>Late Shree Abhay Bharadwaj</a>
+                        <a onClick={() => navigate('/key-pillars/ansh')}>Adv. Ansh Bharadwaj</a>
+                      </div>
+                    )}
+                  </div>
+
+                  <a onClick={() => navigate('/guiding-principles')}>Firm’s Guiding Principles</a>
+                </div>
+              )}
             </div>
 
-            {/* Mobile: Hamburger Button */}
-            <div className="lg:hidden flex-shrink-0">
-                <button
-                    id="hamburger-btn"
-                    className="p-1.5 sm:p-2 rounded-md focus:outline-none text-stone-300 hover:text-white transition-colors"
-                    aria-label="Open menu"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    {isMobileMenuOpen ? (
-                        <X className="w-5 h-5 sm:w-6 sm:h-6" />
-                    ) : (
-                        <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
-                    )}
-                </button>
+            <a className="nav-link px-5 h-full flex items-center uppercase text-sm cursor-pointer" onClick={() => navigate('/practice-areas')}>
+              Practice Areas
+            </a>
+
+            {/* Careers Dropdown */}
+            <div
+              className="relative nav-link px-5 h-full flex items-center cursor-pointer"
+              onMouseEnter={() => setCareersOpen(true)}
+              onMouseLeave={() => setCareersOpen(false)}
+            >
+              <span className="flex items-center gap-1">
+                Careers <ChevronDown className="w-4 h-4" />
+              </span>
+
+              {careersOpen && (
+                <div className="dropdown">
+                  <a onClick={() => navigate('/careers/jobs')}>Jobs</a>
+                  <a onClick={() => navigate('/careers/internships')}>Internships</a>
+                </div>
+              )}
             </div>
+
+            <a className="nav-link px-5 h-full flex items-center uppercase text-sm cursor-pointer" onClick={() => navigate('/contact')}>
+              Contact Us
+            </a>
+          </div>
+
+          {/* Mobile Toggle */}
+          <button className="lg:hidden text-white" onClick={() => setMobileOpen(!mobileOpen)}>
+            {mobileOpen ? <X /> : <Menu />}
+          </button>
         </nav>
 
-        {/* Mobile Menu (Dropdown) */}
-        <div
-          id="mobile-menu"
-          className={`lg:hidden ${isMobileMenuOpen ? 'open' : ''}`}
-        >
-            <nav className="flex flex-col space-y-1 p-3 sm:p-4">
-                {navItems.map((item) => (
-                    <a
-                        key={item}
-                        href="#"
-                        className={`mobile-nav-link block px-3 sm:px-4 py-2.5 sm:py-3 rounded-md text-sm sm:text-base font-medium text-stone-300 hover:bg-stone-700 hover:text-white transition-transform duration-200 ${
-                            activeLink === item ? 'active' : ''
-                        }`}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            handleMobileNavClick(item);
-                        }}
-                    >
-                        {item}
-                    </a>
-                ))}
-            </nav>
+        {/* Mobile Menu */}
+        <div id="mobile-menu" className={`lg:hidden ${mobileOpen ? 'open' : ''}`}>
+          <div className="p-4 space-y-2">
+
+            <button onClick={() => navigate('/')} className="block w-full text-left py-2">Home</button>
+            <button onClick={() => navigate('/about-ab-a')} className="block w-full text-left py-2">About AB & A</button>
+
+            {/* Careers Mobile */}
+            <button
+              className="w-full flex justify-between items-center py-2"
+              onClick={() => setCareersOpen(!careersOpen)}
+            >
+              <span>Careers</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${careersOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {careersOpen && (
+              <div className="ml-4">
+                <button onClick={() => navigate('/careers/jobs')} className="block w-full text-left py-2">
+                  Jobs
+                </button>
+                <button onClick={() => navigate('/careers/internships')} className="block w-full text-left py-2">
+                  Internships
+                </button>
+              </div>
+            )}
+
+            <button onClick={() => navigate('/practice-areas')} className="block w-full text-left py-2">
+              Practice Areas
+            </button>
+
+            <button onClick={() => navigate('/contact')} className="block w-full text-left py-2">
+              Contact Us
+            </button>
+          </div>
         </div>
       </header>
     </div>

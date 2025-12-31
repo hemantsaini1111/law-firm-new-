@@ -25,49 +25,49 @@ import law3Image from "@/assets/Law3.png";
 const practiceAreas = [
   {
     iconImage: corporateLawIcon,
-    title: "Corporate Law",
+    title: "Criminal Law",
     shortDescription: "Comprehensive legal services for businesses, mergers, acquisitions, and corporate governance.",
-    fullDescription: "Our corporate law practice provides strategic legal counsel to businesses of all sizes. We assist with entity formation, corporate governance, mergers and acquisitions, contract negotiations, compliance matters, and dispute resolution. Our team understands the complexities of modern business and works closely with clients to protect their interests and facilitate growth.",
+    fullDescription: "We provide comprehensive legal representation for criminal cases. Our experienced advocates understand the complexities of criminal law and are dedicated to defending your rights. Whether you are facing charges or need legal advice, we are here to guide you through the process with professionalism and care.",
     image: officeCollaboration,
     color: "from-blue-500/20 to-indigo-500/10"
   },
   {
     iconImage: civilLawIcon,
-    title: "Civil Litigation",
+    title: "Civil Law",
     shortDescription: "Expert representation in complex civil disputes and courtroom litigation.",
-    fullDescription: "With decades of experience in civil litigation, we represent clients in a wide range of disputes including contract breaches, personal injury claims, property disputes, and commercial conflicts. Our litigation team is known for thorough preparation, strategic thinking, and aggressive advocacy in the courtroom.",
+    fullDescription: "Our law firm offers expert legal services in a wide range of civil matters, including property disputes, contract enforcement, recovery of money, landlord-tenant issues, injunctions, etc. We are committed to delivering practical solutions through strategic litigation. Whether you’re an individual or a business, we ensure your civil rights and interests are protected with professionalism, confidentiality, and unwavering dedication.",
     image: courthouseInterior,
     color: "from-amber-500/20 to-orange-500/10"
   },
   {
-    iconImage: realEstateLawIcon,
-    title: "Real Estate Law",
+    iconImage: familyLawIcon,
+    title: "Family Law",
     shortDescription: "Full-service real estate legal support for transactions, disputes, and development.",
-    fullDescription: "Our real estate practice covers all aspects of property law, from residential transactions to complex commercial developments. We handle purchase and sale agreements, lease negotiations, zoning issues, title disputes, and real estate financing. Whether you're buying your first home or developing commercial property, we ensure your interests are protected.",
+    fullDescription: "Navigating family law can be challenging. At our law firm, we provide compassionate legal support for cases, like, divorce, child custody, and alimony cases. Our advocates understand the emotional aspects involved and strive to ensure your rights are protected while facilitating a smooth legal process.",
     image: handshakeAgreement,
     color: "from-green-500/20 to-emerald-500/10"
   },
   {
     iconImage: familyLawIcon,
-    title: "Family Law",
+    title: "Motor Vehicle Law",
     shortDescription: "Compassionate guidance through divorce, custody, and family legal matters.",
-    fullDescription: "Family law matters require sensitivity, understanding, and strong advocacy. We provide compassionate representation in divorce proceedings, child custody disputes, spousal support, property division, and adoption matters. Our approach balances legal expertise with emotional support during difficult times.",
+    fullDescription: "We provide dedicated legal representation in motor vehicle accident cases, including personal injury claims, compensation for property damage, and fatal accident claims under the Motor Vehicles laws. Whether you’re a victim, an insured party, or a legal heir, we guide you through claim filing, MACT proceedings, insurance settlements, and appeals. Our focus is on securing fair compensation swiftly and effectively, with compassion and clarity at every step.",
     image: consultationMeeting,
     color: "from-pink-500/20 to-rose-500/10"
   },
   {
     iconImage: employmentLawIcon,
-    title: "Employment Law",
+    title: "Company Law",
     shortDescription: "Protecting your rights in workplace disputes and employment contracts.",
-    fullDescription: "We represent both employers and employees in employment law matters. Our services include drafting employment contracts, handling discrimination claims, wage and hour disputes, wrongful termination cases, and workplace safety issues. We help clients navigate complex employment regulations and protect their rights.",
+    fullDescription: "We offer skilled representation in company law matters. Our team isequipped to handle a wide range of corporate legal issues with clarity and precision. From regulatory compliance to business structuring and beyond, we work to ensure that your legal obligations are met and your interests are effectively protected.",
     image: officeCollaboration,
     color: "from-purple-500/20 to-violet-500/10"
   },
   {
     iconImage: estatePlanningIcon,
-    title: "Estate Planning",
+    title: "Intellectual Property Law",
     shortDescription: "Secure your legacy with wills, trusts, and comprehensive estate planning.",
-    fullDescription: "Proper estate planning ensures your assets are protected and distributed according to your wishes. We help clients create comprehensive estate plans including wills, trusts, powers of attorney, and healthcare directives. Our goal is to minimize taxes, avoid probate complications, and provide peace of mind for you and your loved ones.",
+    fullDescription: "We have a skilled team equipped to deal with a wide range of intellectual property rights and legal issues associated with it, including legal compliance and litigation.",
     image: legalDocuments,
     color: "from-teal-500/20 to-cyan-500/10"
   }
@@ -191,7 +191,7 @@ const PracticeAreasPage = () => {
 
       {/* Practice Areas Detailed Section */}
       <section className="py-12 md:py-24 bg-gradient-to-b from-secondary to-background relative overflow-hidden w-full">
-        <div 
+        {/* <div 
           className="absolute top-10 right-0 w-[500px] h-[500px] z-0 opacity-25 hidden md:block"
           style={{
             backgroundImage: `url(${aboutSectionBg})`,
@@ -199,7 +199,7 @@ const PracticeAreasPage = () => {
             backgroundPosition: 'top right',
             backgroundRepeat: 'no-repeat',
           }}
-        ></div>
+        ></div> */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--accent)/0.05),transparent_50%)] z-1"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--primary)/0.03),transparent_50%)] z-1"></div>
         
