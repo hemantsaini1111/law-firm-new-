@@ -196,7 +196,7 @@ const Process = () => {
             <img 
               src={p3Image} 
               alt="Firm's Guiding Principles" 
-              className="w-full max-w-xl lg:max-w-2xl rounded-lg shadow-lg object-cover"
+              className="w-full max-w-xl lg:max-w-2xl rounded-lg shadow-lg object-cover rounded-none"
             />
           </div>
           

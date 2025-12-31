@@ -9,8 +9,7 @@ import lawyerDiscussion from "@/assets/images/prize.png";
 const aboutImages = [
   firmBuilding,
   courtRoom,
-  teamMeeting,
-  lawyerDiscussion
+  teamMeeting
 ];
 
 const About = () => {
@@ -107,8 +106,9 @@ const About = () => {
         
         {/* Image Grid positioned on the right */}
         <div className="absolute top-1/2 -translate-y-1/2 right-0 md:right-[-130px] md:top-[350px] hidden md:block">
-          <div className="grid grid-cols-2 gap-4 w-80 lg:w-96 xl:w-[500px] 2xl:w-[600px]">
-            {aboutImages.map((image, index) => (
+          <div className="grid grid-cols-2 gap-4 w-64 lg:w-72 xl:w-[400px] 2xl:w-[480px]">
+            {/* First row - 2 images */}
+            {aboutImages.slice(0, 2).map((image, index) => (
               <div key={index} className="relative overflow-hidden shadow-lg border-2 border-accent">
                 <img 
                   src={image} 
@@ -117,6 +117,14 @@ const About = () => {
                 />
               </div>
             ))}
+            {/* Second row - 1 full width image */}
+            <div className="col-span-2 relative overflow-hidden shadow-lg border-2 border-accent">
+              <img 
+                src={aboutImages[2]} 
+                alt="About AB & A 3"
+                className="w-full h-full object-cover aspect-square hover:scale-110 transition-transform duration-300"
+              />
+            </div>
           </div>
         </div>
       </div>
