@@ -1,6 +1,7 @@
 import { CheckCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import aboutSectionBg from "@/assets/svg/aboutsection3.svg";
+import a1Image from "@/assets/images/a1.png";
 
 const About = () => {
   const [backgroundPosition, setBackgroundPosition] = useState('center center');
@@ -25,8 +26,8 @@ const About = () => {
   return (
     <section 
       id="about" 
-      className="py-48 bg-background relative overflow-hidden" 
-      style={{ backgroundColor: '#FFF8E7', minHeight: '600px' }}
+      className="py-32 bg-background relative overflow-hidden" 
+      style={{ backgroundColor: '#FFF8E7', minHeight: '500px' }}
     >
       <div 
         className="absolute inset-0 z-0 opacity-30"
@@ -42,7 +43,7 @@ const About = () => {
       <div className="absolute inset-0 bg-white/80 md:hidden z-[1]"></div>
       
       <div className="relative z-10">
-      <div className="container px-4 md:pr-4 md:ml-0 md:pl-10">
+      <div className="container px-4 md:pr-4 md:ml-0 md:pl-10 relative">
         <div className="max-w-4xl">
           {/* Text Content */}
           <div className="mb-12">
@@ -66,10 +67,16 @@ const About = () => {
               </svg>
             </div>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              For over three decades, Abhay Bharadwaj & Associates has been a pillar of legal excellence in our community. Our firm was built on a foundation of integrity, dedication, and an unwavering commitment to our clients' success.
+              We are a four-and-a-half-decade-old law firm based out of Rajkot, Gujarat. Established by Late Shri Abhay Bharadwaj, a former member of the Law Commission of India, in the year 1980. We have gradually cemented our position as a pillar of legal excellence.
+            </p>
+            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              AB & A, with a team of over 50 skilled lawyers led by Adv. Ansh Bharadwaj has his work spread across Gujarat, specifically in the Saurashtra-Kutch region.
+            </p>
+            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              Our expertise spans diverse areas, including Criminal Law, Civil Law, Family Law, Motor Vehicle Law, Company Law, and IPR Law, making our firm a one-stop solution for clients' wide range of legal challenges.
             </p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              We believe that every client deserves personalized attention and strategic legal counsel. Our team combines deep legal expertise with a practical understanding of your goals to deliver results that matter.
+              AB & A has built an unwavering reputation for excellence, guiding clients through intricate legal landscapes with unwavering dedication and an unwavering commitment to justice.
             </p>
             
             <div className="space-y-4">
@@ -77,7 +84,7 @@ const About = () => {
                 "Personalized legal strategies",
                 "Transparent communication",
                 "Proven track record of success",
-                "Compassionate client service"
+                "Compassionate client service",
               ].map((item, index) => (
                 <div key={index} className="flex items-center gap-3">
                   <CheckCircle className="w-6 h-6 text-accent flex-shrink-0" />
@@ -86,6 +93,15 @@ const About = () => {
               ))}
             </div>
           </div>
+        </div>
+        
+        {/* Image positioned on the right */}
+        <div className="absolute top-1/2 -translate-y-1/2 right-0 md:right-[-130px] md:top-[350px] hidden md:block">
+          <img 
+            src={a1Image} 
+            alt="Abhay Bharadwaj & Associates" 
+            className="w-64 lg:w-80 xl:w-[400px] 2xl:w-[480px] shadow-lg object-cover border-2 border-accent"
+          />
         </div>
       </div>
       </div>

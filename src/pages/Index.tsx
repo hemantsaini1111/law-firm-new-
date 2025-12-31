@@ -18,15 +18,15 @@ const Index = () => {
       <DisclaimerPop/>
       <Navbar />
       <Hero />
-      <PracticeAreas />
       <About />
       <WhyChooseUs />
       <Process />
-      <Team />
-      <CaseResults />
-      <Testimonials />
+      <PracticeAreas />
+      {/* <Team /> */}
+      {/* <CaseResults /> */}
+      {/* <Testimonials /> */}
       <CTA />
-      <Contact />
+      {/* <Contact /> */}
       <Footer />
     </div>
   );

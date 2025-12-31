@@ -2,29 +2,21 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Award, Shield, Users, TrendingUp } from "lucide-react";
+import { Link } from "react-router-dom";
 import whyChooseUsBg from "@/assets/svg/whychooseusbg2.svg";
+import lateAbhayImage from "@/assets/images/LateAbhat.jpeg";
+import anshImage from "@/assets/images/Ansh.jpg";
 
-const features = [
+const pillars = [
   {
-    icon: Award,
-    title: "Proven Excellence",
-    description: "Over 45 years of legal excellence with hundreds of successful cases and satisfied clients."
+    image: lateAbhayImage,
+    name: "Late Shree Abhaykumar Bharadwaj",
+    link: "/key-pillars/abhay"
   },
   {
-    icon: Shield,
-    title: "Client-Focused Approach",
-    description: "Your success is our priority. We provide personalized strategies tailored to your unique needs."
-  },
-  {
-    icon: Users,
-    title: "Expert Team",
-    description: "Our diverse team of specialists brings deep expertise across multiple practice areas."
-  },
-  {
-    icon: TrendingUp,
-    title: "Outstanding Results",
-    description: "98% success rate with over $500M recovered for our clients throughout our history."
+    image: anshImage,
+    name: "Adv. Ansh Bharadwaj",
+    link: "/key-pillars/ansh"
   }
 ];
 
@@ -97,7 +89,7 @@ const WhyChooseUs = () => {
   }, [carouselApi]);
 
   return (
-    <section className="py-24 bg-gradient-to-br from-[#5C3317] via-[#6B4423] to-[#FFE4E1] text-white relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-br from-[#5C3317] via-[#6B4423] to-[#FFE4E1] text-white relative overflow-hidden">
       {/* Background SVG */}
       <div 
         className="absolute inset-0 bg-no-repeat bg-cover bg-center opacity-10 pointer-events-none"
@@ -105,10 +97,10 @@ const WhyChooseUs = () => {
       ></div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <div className="inline-block relative group cursor-pointer mb-4">
             <h2 className="text-4xl md:text-5xl font-serif font-bold">
-              Why Choose Abhay Bharadwaj & Associates
+              Key Pillars of AB & A
             </h2>
             <svg 
               className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -126,7 +118,7 @@ const WhyChooseUs = () => {
             </svg>
           </div>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Experience the difference that dedication, expertise, and personalized service can make
+            Meet our founding pillars
           </p>
         </div>
 
@@ -142,17 +134,26 @@ const WhyChooseUs = () => {
             className="w-full"
           >
             <CarouselContent className="-ml-2">
-              {features.map((feature, index) => {
-                const Icon = feature.icon;
+              {pillars.map((pillar, index) => {
                 return (
                   <CarouselItem key={index} className="pl-2 basis-full">
-                    <Card className="bg-white backdrop-blur-sm border-0 border-l-[5px] border-l-gray-500 hover:bg-white transition-all duration-300 hover:shadow-elegant-hover hover:scale-105 rounded-none rounded-tr-lg rounded-br-lg aspect-square">
-                      <CardContent className="pt-8 text-center">
-                        <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
-                          <Icon className="w-8 h-8 text-accent" />
+                    <Card className="bg-white backdrop-blur-sm border-0 hover:bg-white transition-all duration-300 hover:shadow-elegant-hover hover:scale-105 rounded-lg overflow-hidden max-w-xs mx-auto">
+                      <CardContent className="p-0">
+                        <div className="w-full aspect-[4/3] overflow-hidden">
+                          <img 
+                            src={pillar.image} 
+                            alt={pillar.name}
+                            className="w-full h-full object-cover"
+                          />
                         </div>
-                        <h3 className="text-xl font-serif font-bold mb-3 text-[#5C3317]">{feature.title}</h3>
-                        <p className="text-[#5C3317]/80 leading-relaxed">{feature.description}</p>
+                        <div className="p-4 text-center">
+                          <Link 
+                            to={pillar.link}
+                            className="text-lg font-serif font-bold text-[#5C3317] hover:text-accent transition-colors cursor-pointer"
+                          >
+                            {pillar.name}
+                          </Link>
+                        </div>
                       </CardContent>
                     </Card>
                   </CarouselItem>
@@ -182,17 +183,26 @@ const WhyChooseUs = () => {
           </div>
 
         {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
+        <div className="hidden md:grid md:grid-cols-2 gap-32 max-w-4xl mx-auto">
+          {pillars.map((pillar, index) => {
             return (
-              <Card key={index} className="bg-white backdrop-blur-sm border-0 border-l-[5px] border-l-gray-500 hover:bg-white transition-all duration-300 hover:shadow-elegant-hover hover:scale-105 rounded-none rounded-tr-lg rounded-br-lg aspect-square">
-                <CardContent className="pt-8 text-center">
-                  <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-8 h-8 text-accent" />
+              <Card key={index} className="bg-white backdrop-blur-sm border-0 hover:bg-white transition-all duration-300 hover:shadow-elegant-hover hover:scale-105 rounded-lg overflow-hidden max-w-xs mx-auto">
+                <CardContent className="p-0">
+                  <div className="w-full aspect-[6/6] overflow-hidden">
+                    <img 
+                      src={pillar.image} 
+                      alt={pillar.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                  <h3 className="text-xl font-serif font-bold mb-3 text-[#5C3317]">{feature.title}</h3>
-                  <p className="text-[#5C3317]/80 leading-relaxed">{feature.description}</p>
+                  <div className="p-4 text-center">
+                    <Link 
+                      to={pillar.link}
+                      className="text-lg font-serif font-bold text-[#5C3317] hover:text-accent transition-colors cursor-pointer"
+                    >
+                      {pillar.name}
+                    </Link>
+                  </div>
                 </CardContent>
               </Card>
             );

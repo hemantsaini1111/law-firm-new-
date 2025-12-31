@@ -2,33 +2,27 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Phone, FileText, Users, Scale } from "lucide-react";
+import p3Image from "@/assets/images/p3.jpeg";
 import handshakeSvg from "@/assets/svg/handshake2.svg";
+import excellenceIcon from "@/assets/icons/excellence.png";
+import dedicationIcon from "@/assets/icons/dedication.png";
+import trustIcon from "@/assets/icons/trust (1).png";
 
-const steps = [
+const principles = [
   {
-    icon: Phone,
-    number: "01",
-    title: "Initial Consultation",
-    description: "Schedule a free consultation to discuss your case and legal needs"
+    icon: excellenceIcon,
+    title: "Our Approach",
+    description: "At AB & A, we aim to provide exceptional legal services tailored to meet the needs of our clients. Our dedicated team of professionals is committed to ensuring justice and legal support across Gujarat."
   },
   {
-    icon: FileText,
-    number: "02",
-    title: "Case Evaluation",
-    description: "Our experts thoroughly review your case and develop a strategic plan"
+    icon: dedicationIcon,
+    title: "Our Mission",
+    description: "At AB & A, our mission is to provide high-quality legal services to our clients. We strive to achieve the best possible outcome for our clients, and we are dedicated to helping them navigate the complex legal system with ease."
   },
   {
-    icon: Users,
-    number: "03",
-    title: "Dedicated Representation",
-    description: "Your assigned attorney works tirelessly to protect your interests"
-  },
-  {
-    icon: Scale,
-    number: "04",
-    title: "Resolution",
-    description: "We fight for the best possible outcome through negotiation or trial"
+    icon: trustIcon,
+    title: "Our Values",
+    description: "At AB & A, we believe in treating our clients with respect, compassion, and understanding. We understand that every client is unique and has different needs, and we work hard to tailor our approach accordingly."
   }
 ];
 
@@ -111,10 +105,10 @@ const Process = () => {
         />
       </div>
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 pt-8 md:pt-12">
           <div className="inline-block relative group cursor-pointer mb-4">
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary">
-              How We Work With You
+              Firm's Guiding Principles
             </h2>
             <svg 
               className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -132,7 +126,7 @@ const Process = () => {
             </svg>
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A transparent, client-focused approach from consultation to resolution
+            Our commitment to excellence, integrity, and client-centered service
           </p>
         </div>
 
@@ -148,25 +142,25 @@ const Process = () => {
             className="w-full"
           >
             <CarouselContent className="-ml-2">
-              {steps.map((step, index) => {
-                const Icon = step.icon;
+              {principles.map((principle, index) => {
                 return (
                   <CarouselItem key={index} className="pl-2 basis-full">
                     <Card className="border-border hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 group bg-background/80 backdrop-blur-sm relative overflow-hidden">
-                      {/* Bottom border with inset from edges */}
                       <div className="absolute bottom-0 left-4 right-4 h-1 bg-accent"></div>
-                      <div className="absolute top-0 right-0 text-[120px] font-serif font-bold text-accent/5 leading-none p-4">
-                        {step.number}
-                      </div>
-                      <CardContent className="pt-8 relative z-10">
-                        <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center mb-6 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110 shadow-soft">
-                          <Icon className="w-8 h-8 text-accent" />
+                      <CardContent className="pt-8 pb-6 relative z-10">
+                        <div className="flex items-center gap-4 mb-4">
+                          <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110 shadow-soft">
+                            <img 
+                              src={principle.icon} 
+                              alt={principle.title}
+                              className="w-8 h-8 object-contain"
+                            />
+                          </div>
+                          <h3 className="text-xl font-serif font-bold text-foreground group-hover:text-accent transition-colors">
+                            {principle.title}
+                          </h3>
                         </div>
-                        <div className="text-sm font-bold text-accent mb-2">STEP {step.number}</div>
-                        <h3 className="text-xl font-serif font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
-                          {step.title}
-                        </h3>
-                        <p className="text-muted-foreground leading-relaxed">{step.description}</p>
+                        <p className="text-muted-foreground leading-relaxed">{principle.description}</p>
                       </CardContent>
                     </Card>
                   </CarouselItem>
@@ -195,33 +189,72 @@ const Process = () => {
             </div>
           </div>
 
-        {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl md:ml-auto md:mr-0 md:-mr-24 lg:-mr-40 xl:-mr-60 -mt-8">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            return (
+        {/* Desktop Layout - Image on left, 3 cards on right */}
+        <div className="hidden md:grid md:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto -mt-8">
+          {/* Left Side - Image */}
+          <div className="flex items-center justify-center">
+            <img 
+              src={p3Image} 
+              alt="Firm's Guiding Principles" 
+              className="w-full max-w-xl lg:max-w-2xl rounded-lg shadow-lg object-cover"
+            />
+          </div>
+          
+          {/* Right Side - 3 Cards */}
+          <div className="space-y-6">
+            {/* First Row - 2 Cards */}
+            <div className="grid grid-cols-2 gap-6">
+              {principles.slice(0, 2).map((principle, index) => {
+                return (
+                  <Card 
+                    key={index} 
+                    className="border-border hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 group bg-background/80 backdrop-blur-sm relative overflow-hidden"
+                  >
+                    <div className="absolute bottom-0 left-4 right-4 h-1 bg-accent"></div>
+                    <CardContent className="pt-6 pb-6 relative z-10">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110 shadow-soft">
+                          <img 
+                            src={principle.icon} 
+                            alt={principle.title}
+                            className="w-9 h-9 object-contain"
+                          />
+                        </div>
+                        <h3 className="text-lg font-serif font-bold text-foreground group-hover:text-accent transition-colors">
+                          {principle.title}
+                        </h3>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{principle.description}</p>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+            
+            {/* Second Row - 1 Centered Card */}
+            <div className="flex justify-center">
               <Card 
-                key={index} 
-                className="border-border hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 group bg-background/80 backdrop-blur-sm relative overflow-hidden"
+                className="border-border hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 group bg-background/80 backdrop-blur-sm relative overflow-hidden max-w-md"
               >
-                {/* Bottom border with inset from edges */}
                 <div className="absolute bottom-0 left-4 right-4 h-1 bg-accent"></div>
-                <div className="absolute top-0 right-0 text-[120px] font-serif font-bold text-accent/5 leading-none p-4">
-                  {step.number}
-                </div>
-                <CardContent className="pt-8 relative z-10">
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center mb-6 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110 shadow-soft">
-                    <Icon className="w-8 h-8 text-accent" />
+                <CardContent className="pt-6 pb-6 relative z-10">
+                  <div className="flex items-center gap-3 mb-4 justify-center">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110 shadow-soft">
+                      <img 
+                        src={principles[2].icon} 
+                        alt={principles[2].title}
+                        className="w-9 h-9 object-contain"
+                      />
+                    </div>
+                    <h3 className="text-lg font-serif font-bold text-foreground group-hover:text-accent transition-colors">
+                      {principles[2].title}
+                    </h3>
                   </div>
-                  <div className="text-sm font-bold text-accent mb-2">STEP {step.number}</div>
-                  <h3 className="text-xl font-serif font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">{step.description}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{principles[2].description}</p>
                 </CardContent>
               </Card>
-            );
-          })}
+            </div>
+          </div>
         </div>
       </div>
     </section>

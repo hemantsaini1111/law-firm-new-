@@ -247,10 +247,12 @@ const AboutPage = () => {
 
                   <div className="space-y-3 md:space-y-4">
                     {[
-                      "Personalized legal strategies",
-                      "Transparent communication",
-                      "Proven track record of success",
-                      "Compassionate client service",
+                      "Corporate Law",
+                      "Civil Litigation",
+                      "Family Law",
+                      "Motor Vehicle Law",
+                      "IPR Law",
+                      "Company Law",
                     ].map((item, index) => (
                       <div
                         key={index}
