@@ -120,10 +120,7 @@ const Navbar: React.FC = () => {
             <div
               className="relative nav-link px-5 h-full flex items-center cursor-pointer"
               onMouseEnter={() => setAboutOpen(true)}
-              onMouseLeave={() => {
-                setAboutOpen(false);
-                setKeyPillarsOpen(false);
-              }}
+              onMouseLeave={() => setAboutOpen(false)}
             >
               <span className="flex items-center gap-1">
                 About the Firm <ChevronDown className="w-4 h-4" />
@@ -132,25 +129,25 @@ const Navbar: React.FC = () => {
               {aboutOpen && (
                 <div className="dropdown">
                   <a onClick={() => navigate('/about-ab-a')}>About AB & A</a>
+                  <a onClick={() => navigate('/guiding-principles')}>Firm's Guiding Principles</a>
+                </div>
+              )}
+            </div>
 
-                  <div
-                    className="relative"
-                    onMouseEnter={() => setKeyPillarsOpen(true)}
-                    onMouseLeave={() => setKeyPillarsOpen(false)}
-                  >
-                    <a className="flex justify-between items-center">
-                      Key Pillars ＞
-                    </a>
+            {/* Key Pillars */}
+            <div
+              className="relative nav-link px-5 h-full flex items-center cursor-pointer"
+              onMouseEnter={() => setKeyPillarsOpen(true)}
+              onMouseLeave={() => setKeyPillarsOpen(false)}
+            >
+              <span className="flex items-center gap-1">
+                Key Pillars <ChevronDown className="w-4 h-4" />
+              </span>
 
-                    {keyPillarsOpen && (
-                      <div className="dropdown submenu">
-                        <a onClick={() => navigate('/key-pillars/abhay')}>Late Shree Abhay Bharadwaj</a>
-                        <a onClick={() => navigate('/key-pillars/ansh')}>Adv. Ansh Bharadwaj</a>
-                      </div>
-                    )}
-                  </div>
-
-                  <a onClick={() => navigate('/guiding-principles')}>Firm’s Guiding Principles</a>
+              {keyPillarsOpen && (
+                <div className="dropdown">
+                  <a onClick={() => navigate('/key-pillars/abhay')}>Late Shree Abhay Bharadwaj</a>
+                  <a onClick={() => navigate('/key-pillars/ansh')}>Adv. Ansh Bharadwaj</a>
                 </div>
               )}
             </div>
@@ -194,6 +191,27 @@ const Navbar: React.FC = () => {
 
             <button onClick={() => navigate('/')} className="block w-full text-left py-2">Home</button>
             <button onClick={() => navigate('/about-ab-a')} className="block w-full text-left py-2">About AB & A</button>
+            <button onClick={() => navigate('/guiding-principles')} className="block w-full text-left py-2">Firm's Guiding Principles</button>
+
+            {/* Key Pillars Mobile */}
+            <button
+              className="w-full flex justify-between items-center py-2"
+              onClick={() => setKeyPillarsOpen(!keyPillarsOpen)}
+            >
+              <span>Key Pillars</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${keyPillarsOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {keyPillarsOpen && (
+              <div className="ml-4">
+                <button onClick={() => navigate('/key-pillars/abhay')} className="block w-full text-left py-2">
+                  Late Shree Abhay Bharadwaj
+                </button>
+                <button onClick={() => navigate('/key-pillars/ansh')} className="block w-full text-left py-2">
+                  Adv. Ansh Bharadwaj
+                </button>
+              </div>
+            )}
 
             {/* Careers Mobile */}
             <button

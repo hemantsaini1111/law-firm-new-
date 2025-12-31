@@ -1,7 +1,17 @@
 import { CheckCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import aboutSectionBg from "@/assets/svg/aboutsection3.svg";
-import a1Image from "@/assets/images/a1.png";
+import firmBuilding from "@/assets/images/founder.png";
+import courtRoom from "@/assets/images/court-room.png";
+import teamMeeting from "@/assets/images/team-meeting.png";
+import lawyerDiscussion from "@/assets/images/prize.png";
+
+const aboutImages = [
+  firmBuilding,
+  courtRoom,
+  teamMeeting,
+  lawyerDiscussion
+];
 
 const About = () => {
   const [backgroundPosition, setBackgroundPosition] = useState('center center');
@@ -95,13 +105,19 @@ const About = () => {
           </div>
         </div>
         
-        {/* Image positioned on the right */}
+        {/* Image Grid positioned on the right */}
         <div className="absolute top-1/2 -translate-y-1/2 right-0 md:right-[-130px] md:top-[350px] hidden md:block">
-          <img 
-            src={a1Image} 
-            alt="Abhay Bharadwaj & Associates" 
-            className="w-64 lg:w-80 xl:w-[400px] 2xl:w-[480px] shadow-lg object-cover border-2 border-accent"
-          />
+          <div className="grid grid-cols-2 gap-4 w-80 lg:w-96 xl:w-[500px] 2xl:w-[600px]">
+            {aboutImages.map((image, index) => (
+              <div key={index} className="relative overflow-hidden shadow-lg border-2 border-accent">
+                <img 
+                  src={image} 
+                  alt={`About AB & A ${index + 1}`}
+                  className="w-full h-full object-cover aspect-square hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       </div>

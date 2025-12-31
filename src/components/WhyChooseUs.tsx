@@ -3,7 +3,8 @@ import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/componen
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import whyChooseUsBg from "@/assets/svg/whychooseusbg2.svg";
+import firmBuildingBg from "@/assets/images/LateAbhat.jpeg";
+import courtRoomBg from "@/assets/images/Ansh.jpg";
 import lateAbhayImage from "@/assets/images/LateAbhat.jpeg";
 import anshImage from "@/assets/images/Ansh.jpg";
 
@@ -90,10 +91,16 @@ const WhyChooseUs = () => {
 
   return (
     <section className="py-16 bg-gradient-to-br from-[#5C3317] via-[#6B4423] to-[#FFE4E1] text-white relative overflow-hidden">
-      {/* Background SVG */}
+      {/* Left Background Image */}
       <div 
-        className="absolute inset-0 bg-no-repeat bg-cover bg-center opacity-10 pointer-events-none"
-        style={{backgroundImage: `url(${whyChooseUsBg})`}}
+        className="absolute left-0 top-0 bottom-0 w-1/2 bg-no-repeat bg-cover bg-center opacity-30 pointer-events-none z-0"
+        style={{backgroundImage: `url(${firmBuildingBg})`}}
+      ></div>
+      
+      {/* Right Background Image */}
+      <div 
+        className="absolute right-0 top-0 bottom-0 w-1/2 bg-no-repeat bg-cover bg-center opacity-20 pointer-events-none z-[1]"
+        style={{backgroundImage: `url(${courtRoomBg})`}}
       ></div>
       
       <div className="container mx-auto px-4 relative z-10">
