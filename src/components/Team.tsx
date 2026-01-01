@@ -10,7 +10,7 @@ import p7Image from '@/assets/images/p7.jpeg';
 import employmentLawIcon from '@/assets/icons/employment-law.png';
 import learningIcon from '@/assets/icons/learning.png';
 
-// --- Type Definitions ---
+// --- Type Definitions --
 interface Career {
   id: number;
   title: string;
