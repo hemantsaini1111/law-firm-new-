@@ -242,6 +242,8 @@ const Navbar: React.FC = () => {
               className="w-full flex justify-between items-center py-2"
               onClick={() => setCareersOpen(!careersOpen)}
             >
+
+              {/* //edit */}
               <span>Careers</span>
               <ChevronDown className={`w-4 h-4 transition-transform ${careersOpen ? 'rotate-180' : ''}`} />
             </button>
