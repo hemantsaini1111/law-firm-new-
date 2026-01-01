@@ -3,7 +3,10 @@ import Navbar from "@/components/Navbar";
 import React, { useEffect } from "react";
 import courtRoom from "@/assets/images/court-room.png";
 import teamMeeting from "@/assets/images/team-meeting.png";
-import firmBuilding from "@/assets/images/firm-building.png";
+import firmBuilding from "@/assets/images/clienttalk.png";
+import qualityIcon from "@/assets/icons/guidance.png";
+import excellenceIcon from "@/assets/icons/mission.png";
+import trustIcon from "@/assets/icons/ethical.png";
 
 function Principles() {
   useEffect(() => {
@@ -13,7 +16,7 @@ function Principles() {
   return (
     <>
       <section
-        className="relative min-h-screen py-16 sm:py-20 md:py-28 overflow-hidden"
+        className="relative min-h-screen py-10 sm:py-20 md:py-28 overflow-hidden"
         style={{ backgroundColor: "#FFF8E7" }}
       >
         <Navbar />
@@ -29,23 +32,24 @@ function Principles() {
           <div className="max-w-7xl mx-auto">
 
             {/* HEADER */}
-            <div className="mb-14 text-center">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-primary mb-4 tracking-tight">
+            <div className="pt-16 sm:pt-0 mb-10 sm:mb-14 text-center">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl font-serif font-bold text-primary mb-3 sm:mb-4 tracking-tight">
                 Firm&apos;s Guiding Principles
               </h1>
               <div className="w-24 h-1 bg-accent rounded-full mx-auto"></div>
-              <p className="mt-6 max-w-3xl mx-auto text-muted-foreground text-base sm:text-lg leading-relaxed">
+              <p className="mt-4 sm:mt-6 max-w-3xl mx-auto text-muted-foreground text-sm sm:text-lg leading-relaxed px-4 sm:px-0">
                 The foundational values that guide our practice, shape our culture,
                 and define our commitment to excellence in legal service.
               </p>
             </div>
 
             {/* PRINCIPLES GRID WITH IMAGES */}
-            <div className="space-y-12 md:space-y-16">
+            <div className="space-y-10 sm:space-y-12 md:space-y-16">
               {[
                 {
                   number: "01",
                   title: "Our Approach",
+                  icon: qualityIcon,
                   text:
                     "At AB & A, we aim to provide exceptional legal services tailored to meet the specific needs of each client. Our dedicated team of professionals combines deep legal expertise with strategic thinking to ensure justice and comprehensive legal support across Gujarat and beyond.",
                   quote: "Strategic, client-centered legal solutions",
@@ -55,6 +59,7 @@ function Principles() {
                 {
                   number: "02",
                   title: "Our Mission",
+                  icon: excellenceIcon,
                   text:
                     "To deliver high-quality legal services that achieve the best possible outcomes for our clients. We are dedicated to helping clients navigate complex legal systems with confidence, clarity, and efficiency, upholding the highest standards of professional excellence.",
                   quote: "Excellence in advocacy and client success",
@@ -64,6 +69,7 @@ function Principles() {
                 {
                   number: "03",
                   title: "Our Values",
+                  icon: trustIcon,
                   text:
                     "We believe in treating every client with respect, compassion, and understanding. Recognizing that each case and client is unique, we tailor our approach to meet specific needs while maintaining unwavering commitment to integrity, ethics, and the rule of law.",
                   quote: "Integrity, compassion, and personalized service",
@@ -73,24 +79,21 @@ function Principles() {
               ].map((item) => (
                 <div
                   key={item.number}
-                  className={`grid md:grid-cols-2 gap-6 lg:gap-8 items-center ${
-                    item.imagePosition === "right" ? "md:flex-row-reverse" : ""
-                  }`}
+                  className="grid grid-cols-2 gap-3 sm:gap-6 lg:gap-8 items-center"
                 >
                   {/* Image Section */}
                   <div
-                    className={`relative rounded-none overflow-hidden shadow-2xl group ${
-                      item.imagePosition === "right" ? "md:order-2" : "md:order-1"
-                    }`}
+                    className={`relative rounded-none overflow-hidden shadow-xl sm:shadow-2xl group ${item.imagePosition === "right" ? "order-2" : "order-1"
+                      }`}
                   >
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-[300px] md:h-[400px] object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                      className="w-full h-[180px] sm:h-[300px] md:h-[400px] object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#5C3317]/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="absolute top-4 left-4 w-16 h-16 rounded-lg bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg">
-                      <span className="text-2xl font-serif font-bold text-primary">
+                    <div className="absolute top-2 left-2 sm:top-4 sm:left-4 w-10 h-10 sm:w-16 sm:h-16 rounded-lg bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg">
+                      <span className="text-lg sm:text-2xl font-serif font-bold text-primary">
                         {item.number}
                       </span>
                     </div>
@@ -98,25 +101,35 @@ function Principles() {
 
                   {/* Content Section */}
                   <div
-                    className={` p-6 md:p-8 flex flex-col  hover:shadow-xl transition-all duration-300 ${
-                      item.imagePosition === "right" ? "md:order-1" : "md:order-2"
-                    }`}
+                    className={`p-2 sm:p-8 flex flex-col hover:shadow-xl transition-all duration-300 ${item.imagePosition === "right" ? "order-1" : "order-2"
+                      } text-left items-start`}
                   >
-                    <div className="relative mb-6">
-                      <h2 className="text-2xl sm:text-3xl font-serif font-bold text-primary mb-3">
-                        {item.title}
-                      </h2>
-                      <div className="w-16 h-1 bg-accent rounded-full"></div>
+                    <div className="relative mb-2 sm:mb-6">
+                      <div className="flex items-center gap-3 sm:gap-5 justify-start">
+                        <div className="flex-shrink-0 w-10 h-10 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center shadow-soft border border-accent/10 group-hover:from-accent/30 group-hover:shadow-glow transition-all duration-500">
+                          <img
+                            src={item.icon}
+                            alt=""
+                            className="w-5 h-5 sm:w-9 sm:h-9 object-contain"
+                          />
+                        </div>
+                        <div className="flex flex-col">
+                          <h2 className="text-lg sm:text-3xl font-serif font-bold text-primary leading-tight">
+                            {item.title}
+                          </h2>
+                          <div className="w-12 sm:w-16 h-0.5 sm:h-1 bg-accent rounded-full mt-1 sm:mt-2"></div>
+                        </div>
+                      </div>
                     </div>
 
-                    <div className="relative flex-grow mb-6">
-                      <p className="text-muted-foreground leading-relaxed text-base sm:text-lg">
+                    <div className="relative flex-grow mb-3 sm:mb-6">
+                      <p className="text-muted-foreground leading-relaxed text-[10px] xs:text-xs sm:text-lg">
                         {item.text}
                       </p>
                     </div>
 
-                    <div className="relative pt-6 border-t border-stone-100">
-                      <p className="text-sm sm:text-base text-primary italic font-medium">
+                    <div className="relative pt-2 sm:pt-6 border-t border-stone-100 w-full">
+                      <p className="text-[9px] xs:text-xs sm:text-base text-primary italic font-medium">
                         "{item.quote}"
                       </p>
                     </div>
@@ -126,19 +139,19 @@ function Principles() {
             </div>
 
             {/* UNIFYING STATEMENT */}
-            <div className="mt-12 bg-white rounded-xl border border-stone-200 p-6 md:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.07)]">
+            <div className="mt-10 sm:mt-12 bg-white rounded-xl border border-stone-200 p-5 sm:p-8 shadow-[0_10px_30px_rgba(0,0,0,0.07)]">
               <div className="max-w-3xl mx-auto text-center">
-                <h3 className="text-lg sm:text-xl font-serif font-bold text-primary mb-4">
+                <h3 className="text-base sm:text-xl font-serif font-bold text-primary mb-3 sm:mb-4">
                   A Legacy of Excellence
                 </h3>
-                <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+                <p className="text-muted-foreground leading-relaxed text-xs sm:text-base">
                   These principles are not just statements—they are the living foundation
                   of our practice, inherited from our founder&apos;s vision and continuously
                   reinforced through our daily work. They guide every interaction, strategy,
                   and decision we make on behalf of our clients.
                 </p>
-                <div className="mt-6 pt-4 border-t border-stone-200">
-                  <p className="text-accent font-semibold tracking-wide text-base">
+                <div className="mt-5 sm:mt-6 pt-4 border-t border-stone-200">
+                  <p className="text-accent font-semibold tracking-wide text-xs sm:text-base">
                     Abhay Bharadwaj & Associates • Since 1980
                   </p>
                 </div>
