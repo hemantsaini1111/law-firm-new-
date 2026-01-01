@@ -562,7 +562,7 @@ const ContactPage = () => {
               {/* Google Maps */}
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                 <iframe
-                  src={`https://maps.google.com/maps?q=${encodeURIComponent(officeAddress)}&hl=en-US&z=16&output=embed`}
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.958041742878!2d70.76528002474991!3d22.317426542275474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3959c98d51ec1e95%3A0x69b2607444c14e24!2sThe%20Spire%20-%202!5e0!3m2!1sen!2sin!4v1767276452249!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ minHeight: '400px', border: 0 }}

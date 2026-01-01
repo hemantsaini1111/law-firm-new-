@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import aboutSectionBg from "@/assets/svg/aboutsection3.svg";
 import firmBuilding from "@/assets/images/founder.png";
 import courtRoom from "@/assets/images/court-room.png";
-import teamMeeting from "@/assets/images/team-meeting.png";
+import teamMeeting from "@/assets/images/a1.png";
 import lawyerDiscussion from "@/assets/images/prize.png";
 
 const aboutImages = [
@@ -121,48 +121,57 @@ const About = () => {
            {/* Mobile Image Grid */}
             <div className="md:hidden">
               <div className="grid grid-cols-2 gap-3 mt-6">
-               {/* First row - 2 images */}
-               {aboutImages.slice(0, 2).map((image, index) => (
-                 <div key={index} className="relative overflow-hidden shadow-lg border-2 border-accent">
-                   <img
-                     src={image}
-                     alt={`About AB & A ${index + 1}`}
-                     className="w-full h-full object-cover aspect-square hover:scale-105 transition-transform duration-300"
-                   />
-                 </div>
-               ))}
-               {/* Second row - 1 full width image */}
-               <div className="col-span-2 relative overflow-hidden shadow-lg border-2 border-accent">
-                 <img
-                   src={aboutImages[2]}
-                   alt="About AB & A 3"
-                   className="w-full h-full object-cover aspect-square hover:scale-105 transition-transform duration-300"
-                 />
-               </div>
-             </div>
+                {/* Large image on left */}
+                <div className="row-span-2 relative overflow-hidden rounded-lg shadow-xl border border-gray-200">
+                  <img
+                    src={aboutImages[0]}
+                    alt="About AB & A 1"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                </div>
+                {/* Two smaller images on right */}
+                {aboutImages.slice(1, 3).map((image, index) => (
+                  <div key={index} className="relative overflow-hidden rounded-lg shadow-xl border border-gray-200">
+                    <img
+                      src={image}
+                      alt={`About AB & A ${index + 2}`}
+                      className="w-full h-full object-cover aspect-square hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  </div>
+                ))}
+              </div>
            </div>
         </div>
         
-        {/* Image Grid positioned on the right */}
-        <div className="absolute top-1/2 -translate-y-1/2 right-0 md:right-[-130px] md:top-[350px] hidden md:block">
-          <div className="grid grid-cols-2 gap-4 w-64 lg:w-72 xl:w-[400px] 2xl:w-[480px]">
-            {/* First row - 2 images */}
-            {aboutImages.slice(0, 2).map((image, index) => (
-              <div key={index} className="relative overflow-hidden shadow-lg border-2 border-accent">
-                <img 
-                  src={image} 
-                  alt={`About AB & A ${index + 1}`}
-                  className="w-full h-full object-cover aspect-square hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-            ))}
-            {/* Second row - 1 full width image */}
-            <div className="col-span-2 relative overflow-hidden shadow-lg border-2 border-accent">
+        {/* Image Grid positioned on the right - Professional Masonry Layout */}
+        <div className="absolute top-1/2 -translate-y-1/2 right-0 md:right-[-100px] lg:right-[-80px] xl:right-[-60px] md:top-[300px] hidden md:block">
+          <div className="flex flex-col gap-4 w-64 lg:w-80 xl:w-96 2xl:w-[420px]">
+            {/* Large featured image */}
+            <div className="relative overflow-hidden rounded-xl shadow-2xl border border-gray-200/50 group">
               <img 
-                src={aboutImages[2]} 
-                alt="About AB & A 3"
-                className="w-full h-full object-cover aspect-square hover:scale-110 transition-transform duration-300"
+                src={aboutImages[0]} 
+                alt="About AB & A 1"
+                className="w-full h-[280px] lg:h-[320px] xl:h-[360px] object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#5C3317] via-[#8B5A2B] to-[#5C3317] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+            </div>
+            
+            {/* Two smaller images side by side */}
+            <div className="grid grid-cols-2 gap-4">
+              {aboutImages.slice(1, 3).map((image, index) => (
+                <div key={index} className="relative overflow-hidden rounded-xl shadow-2xl border border-gray-200/50 group">
+                  <img 
+                    src={image} 
+                    alt={`About AB & A ${index + 2}`}
+                    className="w-full h-[200px] lg:h-[220px] xl:h-[240px] object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#5C3317] via-[#8B5A2B] to-[#5C3317] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
