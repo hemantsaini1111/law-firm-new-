@@ -83,6 +83,15 @@ const CareerCard: React.FC<CareerCardProps> = ({ career }) => {
           </div>
           <p className="text-muted-foreground text-sm mb-4 leading-relaxed flex-grow">{career.description}</p>
           
+          {/* Important Note for Internship */}
+          {career.title === 'Internship' && (
+            <div className="mb-4 bg-gradient-to-r from-red-50 to-red-100 border-l-4 border-red-800 p-3 rounded-lg">
+              <p className="text-sm text-red-700 font-medium">
+                <strong>Note:</strong> We only offer offline internship.
+              </p>
+            </div>
+          )}
+          
           {/* Apply Now Button */}
           <button
             onClick={handleApply}
@@ -164,7 +173,7 @@ const Team = () => {
 
           {/* --- Right Cards Content --- */}
           <div className="relative w-full lg:order-2 order-2">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-xl auto-rows-fr">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-xl auto-rows-fr ml-4 md:ml-8">
               {careers.map((career) => (
                 <CareerCard key={career.id} career={career} />
               ))}
