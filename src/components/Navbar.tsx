@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Scale, Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
+import logo from '@/assets/images/logo.jpg';
 
 const NavbarStyles = () => (
   <style>{`
@@ -103,7 +104,11 @@ const Navbar: React.FC = () => {
               navigate('/');
             }}
           >
-            <Scale className="w-6 h-6" />
+            <img 
+              src={logo} 
+              alt="Abhay Bharadwaj & Associates Logo" 
+              className="w-8 h-8 sm:w-10 sm:h-10 object-contain rounded-full"
+            />
             <span className="text-sm sm:text-lg">Abhay Bharadwaj & Associates</span>
           </a>
 

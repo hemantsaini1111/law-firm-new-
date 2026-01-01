@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, Mail, Phone, MapPin, Calendar, Video, Building2, Upload, MessageCircle, Linkedin, Instagram, Clock } from "lucide-react";
+import { ArrowRight, Mail, Phone, MapPin, Calendar, Upload, MessageCircle, Linkedin, Instagram } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/svg/herobg8.svg";
 import contactSection from "@/assets/svg/contactsection.svg";
 import footerCorner from "@/assets/svg/workingareasbg.svg";
+import officeBuildingIcon from "@/assets/icons/office-building.png";
+import videoIcon from "@/assets/icons/video.png";
+import clockIcon from "@/assets/icons/24-7.png";
 
 // === Type Definitions ===
 type FormState = {
@@ -432,7 +435,7 @@ const ContactPage = () => {
                 {/* Offline Appointment */}
                 <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-[#5C3317] transition-all">
                   <div className="flex items-center mb-4">
-                    <Building2 className="w-8 h-8 text-[#5C3317] mr-3" />
+                    <img src={officeBuildingIcon} alt="Office Building" className="w-8 h-8 mr-3 object-contain" />
                     <h3 className="text-xl font-bold text-gray-800">Offline Appointment</h3>
                   </div>
                   <p className="text-gray-600 mb-4">Visit our office for an in-person consultation</p>
@@ -452,7 +455,7 @@ const ContactPage = () => {
                 {/* Online Appointment */}
                 <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-[#5C3317] transition-all">
                   <div className="flex items-center mb-4">
-                    <Video className="w-8 h-8 text-[#5C3317] mr-3" />
+                    <img src={videoIcon} alt="Video" className="w-8 h-8 mr-3 object-contain" />
                     <h3 className="text-xl font-bold text-gray-800">Online Appointment</h3>
                   </div>
                   <p className="text-gray-600 mb-4">Schedule a virtual consultation via Zoom</p>
@@ -509,7 +512,7 @@ const ContactPage = () => {
             <div className="grid md:grid-cols-2 gap-8 mb-8">
               {/* Contact Information */}
               <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
-                <h3 className="text-xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
                 <div className="space-y-4">
                   <InfoRow
                     icon={<MapPin size={20} />}
@@ -561,8 +564,8 @@ const ContactPage = () => {
             {/* Availability */}
             <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
               <div className="flex items-center mb-6">
-                <Clock className="w-6 h-6 text-[#5C3317] mr-3" />
-                <h3 className="text-xl font-bold text-gray-800">Availability</h3>
+                <img src={clockIcon} alt="Clock" className="w-6 h-6 mr-3 object-contain" />
+                <h3 className="text-2xl font-bold text-gray-800">Availability</h3>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>

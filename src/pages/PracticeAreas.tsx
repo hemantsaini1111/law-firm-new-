@@ -13,12 +13,13 @@ import estatePlanningIcon from "@/assets/icons/estate-planning.png";
 import workingAreasBg from "@/assets/svg/workingareasbg.svg";
 import heroBg from "@/assets/svg/herobg8.svg";
 import aboutSectionBg from "@/assets/Law2.png";
-import legalDocuments from "@/assets/legal-documents.jpg";
+import legalDocuments from "@/assets/images/Inte.jpeg";
 import lawLibrary from "@/assets/law-library.jpg";
-import courthouseInterior from "@/assets/courthouse-interior.jpg";
-import consultationMeeting from "@/assets/consultation-meeting.jpg";
-import handshakeAgreement from "@/assets/handshake-agreement.jpg";
-import officeCollaboration from "@/assets/office-collaboration.jpg";
+import courthouseInterior from "@/assets/images/Civil.jpeg";
+import consultationMeeting from "@/assets/images/Motor.jpeg";
+import handshakeAgreement from "@/assets/images/Family.jpeg";
+import officeCollaboration from "@/assets/images/criminal.jpeg";
+import companyLaw from "@/assets/images/Company.jpeg";
 import lawImage from "@/assets/Law.png";
 import law3Image from "@/assets/Law3.png";
 
@@ -60,7 +61,7 @@ const practiceAreas = [
     title: "Company Law",
     shortDescription: "Protecting your rights in workplace disputes and employment contracts.",
     fullDescription: "We offer skilled representation in company law matters. Our team isequipped to handle a wide range of corporate legal issues with clarity and precision. From regulatory compliance to business structuring and beyond, we work to ensure that your legal obligations are met and your interests are effectively protected.",
-    image: officeCollaboration,
+    image: companyLaw,
     color: "from-purple-500/20 to-violet-500/10"
   },
   {
@@ -228,7 +229,16 @@ const PracticeAreasPage = () => {
 
                   {/* Content Section */}
                   <div className="w-1/2 space-y-4 md:space-y-6 relative">
-                    {area.title === "Family Law" && (
+                    {area.title === "Criminal Law" && (
+                      <div className="absolute left-[390px] top-[-100px] w-84 h-84 md:w-84 md:h-84 opacity-30 z-0 hidden md:block">
+                        <img 
+                          src={law3Image} 
+                          alt="Law" 
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    )}
+                    {area.title === "Intellectual Property Law" && (
                       <div className="absolute left-[-150px] top-[-250px] w-74 h-74 md:w-74 md:h-74 opacity-30 z-0 hidden md:block">
                         <img 
                           src={lawImage} 

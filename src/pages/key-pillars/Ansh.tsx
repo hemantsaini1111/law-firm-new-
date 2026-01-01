@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ansh from "@/assets/images/p2.jpeg";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export default function Ansh() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
     <section

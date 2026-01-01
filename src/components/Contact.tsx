@@ -234,8 +234,8 @@ const Contact = () => {
             <div className="space-y-3">
               <InfoRow
                 icon={<Mail size={20} />}
-                text="hello@company.com"
-                href="mailto:hello@company.com"
+                text="abalegal@outlook.com"
+                href="mailto:abalegal@outlook.com"
               />
               <InfoRow
                 icon={<Phone size={20} />}
