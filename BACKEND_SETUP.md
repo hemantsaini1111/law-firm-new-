@@ -82,3 +82,4 @@ Note: WhatsApp Web API doesn't support sending files directly via URL. For Whats
 2. **Option 2**: Use WhatsApp Business API (requires Meta Business verification)
 3. **Option 3**: Instruct users to manually attach files in WhatsApp (current implementation)
 
+

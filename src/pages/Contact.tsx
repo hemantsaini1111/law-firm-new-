@@ -546,14 +546,14 @@ const ContactPage = () => {
               {/* Google Maps */}
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.5!2d70.8!3d22.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDE4JzAwLjAiTiA3MMKwNDgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(officeAddress)}&hl=en-US&z=16&output=embed`}
                   width="100%"
                   height="100%"
                   style={{ minHeight: '400px', border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Office Location"
+                  title="Office Location Map"
                 ></iframe>
               </div>
             </div>
@@ -586,27 +586,29 @@ const ContactPage = () => {
             </div>
 
             {/* Connect With Us */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
-              <h3 className="text-xl font-bold text-gray-800 mb-6">Connect With Us</h3>
-              <div className="flex gap-4">
-                <a
-                  href="https://www.linkedin.com/company/abhay-bharadwajassociates/posts/?feedView=all"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 bg-[#0077B5] text-white rounded-lg font-semibold hover:bg-[#006399] transition-all"
-                >
-                  <Linkedin className="w-5 h-5" />
-                  LinkedIn
-                </a>
-                <a
-                  href="https://www.instagram.com/abalawfirm/?hl=en"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all"
-                >
-                  <Instagram className="w-5 h-5" />
-                  Instagram
-                </a>
+            <div className="p-6 md:p-8">
+              <div className="text-center">
+                <h3 className="text-3xl font-bold text-gray-800 mb-6">Connect With Us</h3>
+                <div className="flex justify-center gap-4">
+                  <a
+                    href="https://www.linkedin.com/company/abhay-bharadwajassociates/posts/?feedView=all"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-[#5C3317] text-white rounded-lg font-semibold hover:bg-[#4A2812] transition-all"
+                  >
+                    <Linkedin className="w-5 h-5 text-white" />
+                    LinkedIn
+                  </a>
+                  <a
+                    href="https://www.instagram.com/abalawfirm/?hl=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-[#5C3317] text-white rounded-lg font-semibold hover:bg-[#4A2812] transition-all"
+                  >
+                    <Instagram className="w-5 h-5 text-white" />
+                    Instagram
+                  </a>
+                </div>
               </div>
             </div>
           </div>
