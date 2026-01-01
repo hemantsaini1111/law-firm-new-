@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, Mail, Phone, MapPin, Calendar, Upload, MessageCircle, Linkedin, Instagram } from "lucide-react";
+import { ArrowRight, Mail, Phone, MapPin, Calendar, Upload, Linkedin, Instagram } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -160,29 +160,19 @@ const ContactPage = () => {
   const handleInquirySubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    // Prepare WhatsApp message
-    const whatsappMessage = `Name: ${formState.name}\nEmail: ${formState.email}\nPhone: ${formState.phone || 'Not provided'}\nMessage: ${formState.message}`;
-    const whatsappUrl = `https://wa.me/919316705993?text=${encodeURIComponent(whatsappMessage)}`;
-    
+
     // For email, we'll use mailto (in production, you'd use an API)
     const emailSubject = `Inquiry from ${formState.name}`;
     const emailBody = `Name: ${formState.name}\nEmail: ${formState.email}\nPhone: ${formState.phone || 'Not provided'}\nMessage: ${formState.message}`;
     const emailUrl = `mailto:abalegal@outlook.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-    
+
     // Simulate processing
     setTimeout(() => {
       setIsLoading(false);
       setIsSubmitted(true);
-      
-      // Option to send via WhatsApp or Email
-      const sendMethod = window.confirm('Choose OK to send via WhatsApp, or Cancel to send via Email');
-      if (sendMethod) {
-        window.open(whatsappUrl, '_blank');
-      } else {
-        window.location.href = emailUrl;
-      }
-      
+
+      window.location.href = emailUrl;
+
       setTimeout(() => {
         setIsSubmitted(false);
         setFormState({
@@ -320,7 +310,7 @@ const ContactPage = () => {
             <div className="bg-white shadow-xl rounded-2xl overflow-hidden p-6 sm:p-8 md:p-10">
               <div className="mb-6">
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">Inquiry Box</h2>
-                <p className="text-sm sm:text-base text-gray-600">Send us a message via email or WhatsApp. You can attach PDFs and Word documents.</p>
+                 <p className="text-sm sm:text-base text-gray-600">Send us a message via email. You can attach PDFs and Word documents.</p>
               </div>
 
               {isSubmitted ? (
@@ -402,34 +392,23 @@ const ContactPage = () => {
                       </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <button
-                        type="submit"
-                        disabled={isLoading}
-                        className="flex-1 bg-[#5C3317] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#4A2812] focus:outline-none focus:ring-2 focus:ring-[#5C3317] focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center"
-                      >
-                        {isLoading ? (
-                          <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                          </svg>
-                        ) : (
-                          <>
-                            <Mail className="w-5 h-5 mr-2" />
-                            Send via Email
-                          </>
-                        )}
-                      </button>
-                      <a
-                        href={`https://wa.me/919316705993?text=${encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\nMessage: ${formState.message}`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 bg-[#25D366] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#20BA5A] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 flex items-center justify-center"
-                      >
-                        <MessageCircle className="w-5 h-5 mr-2" />
-                        Send via WhatsApp
-                      </a>
-                    </div>
+                    <button
+                      type="submit"
+                      disabled={isLoading}
+                      className="w-full bg-[#5C3317] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#4A2812] focus:outline-none focus:ring-2 focus:ring-[#5C3317] focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center"
+                    >
+                      {isLoading ? (
+                        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                      ) : (
+                        <>
+                          <Mail className="w-5 h-5 mr-2" />
+                          Send via Email
+                        </>
+                      )}
+                    </button>
                   </form>
                 </div>
               )}
