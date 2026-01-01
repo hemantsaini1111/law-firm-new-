@@ -122,7 +122,7 @@ const About = () => {
             <div className="md:hidden">
               <div className="grid grid-cols-2 gap-3 mt-6">
                 {/* Large image on left */}
-                <div className="row-span-2 relative overflow-hidden rounded-lg shadow-xl border border-gray-200">
+                <div className="row-span-2 relative overflow-hidden rounded-none shadow-xl border border-gray-200">
                   <img
                     src={aboutImages[0]}
                     alt="About AB & A 1"
@@ -132,7 +132,7 @@ const About = () => {
                 </div>
                 {/* Two smaller images on right */}
                 {aboutImages.slice(1, 3).map((image, index) => (
-                  <div key={index} className="relative overflow-hidden rounded-lg shadow-xl border border-gray-200">
+                  <div key={index} className="relative overflow-hidden rounded-none shadow-xl border border-gray-200">
                     <img
                       src={image}
                       alt={`About AB & A ${index + 2}`}
@@ -149,7 +149,7 @@ const About = () => {
         <div className="absolute top-1/2 -translate-y-1/2 right-0 md:right-[-100px] lg:right-[-80px] xl:right-[-60px] md:top-[300px] hidden md:block">
           <div className="flex flex-col gap-4 w-64 lg:w-80 xl:w-96 2xl:w-[420px]">
             {/* Large featured image */}
-            <div className="relative overflow-hidden rounded-xl shadow-2xl border border-gray-200/50 group">
+            <div className="relative overflow-hidden rounded-none shadow-2xl border border-gray-200/50 group">
               <img 
                 src={aboutImages[0]} 
                 alt="About AB & A 1"
@@ -162,7 +162,7 @@ const About = () => {
             {/* Two smaller images side by side */}
             <div className="grid grid-cols-2 gap-4">
               {aboutImages.slice(1, 3).map((image, index) => (
-                <div key={index} className="relative overflow-hidden rounded-xl shadow-2xl border border-gray-200/50 group">
+                <div key={index} className="relative overflow-hidden rounded-none shadow-2xl border border-gray-200/50 group">
                   <img 
                     src={image} 
                     alt={`About AB & A ${index + 2}`}
