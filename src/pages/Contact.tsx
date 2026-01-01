@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/svg/herobg8.svg";
 import contactSection from "@/assets/svg/contactsection.svg";
 import footerCorner from "@/assets/svg/workingareasbg.svg";
+import contactFormImage from "@/assets/svg/contactformimage.svg";
 import officeBuildingIcon from "@/assets/icons/office-building.png";
 import videoIcon from "@/assets/icons/video.png";
 import clockIcon from "@/assets/icons/24-7.png";
@@ -331,94 +332,106 @@ const ContactPage = () => {
                   <p className="text-lg">Your message has been sent successfully.</p>
                 </div>
               ) : (
-                <form onSubmit={handleInquirySubmit} className="space-y-4">
-                  <FormInput
-                    id="name"
-                    label="Full Name"
-                    placeholder="John Doe"
-                    value={formState.name}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  <FormInput
-                    id="email"
-                    label="Email Address"
-                    type="email"
-                    placeholder="john.doe@example.com"
-                    value={formState.email}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  <FormInput
-                    id="phone"
-                    label="Phone Number"
-                    type="tel"
-                    placeholder="+91 9316705993"
-                    value={formState.phone || ''}
-                    onChange={handleInputChange}
-                  />
-                  <FormTextarea
-                    id="message"
-                    label="Message"
-                    placeholder="How can we help you?"
-                    value={formState.message}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  
-                  {/* File Upload */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Attach Document (PDF, Word)
-                    </label>
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-[#5C3317] transition-colors">
-                      <input
-                        type="file"
-                        id="attachment"
-                        accept=".pdf,.doc,.docx"
-                        onChange={handleFileChange}
-                        className="hidden"
-                      />
-                      <label htmlFor="attachment" className="cursor-pointer">
-                        <Upload className="w-8 h-8 mx-auto text-gray-400 mb-2" />
-                        <p className="text-sm text-gray-600">Click to upload PDF or Word document</p>
-                        <p className="text-xs text-gray-500 mt-1">PDF, DOC, DOCX (Max 10MB)</p>
-                        {formState.attachment && (
-                          <p className="text-sm text-green-600 mt-2">{formState.attachment.name}</p>
-                        )}
-                      </label>
-                    </div>
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-stretch">
+                  {/* Left Side - SVG Image */}
+                  <div className="hidden md:flex h-full">
+                    <img 
+                      src={contactFormImage} 
+                      alt="Contact Form" 
+                      className="w-full h-full object-cover"
+                    />
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <button
-                      type="submit"
-                      disabled={isLoading}
-                      className="flex-1 bg-[#5C3317] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#4A2812] focus:outline-none focus:ring-2 focus:ring-[#5C3317] focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center"
-                    >
-                      {isLoading ? (
-                        <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                      ) : (
-                        <>
-                          <Mail className="w-5 h-5 mr-2" />
-                          Send via Email
-                        </>
-                      )}
-                    </button>
-                    <a
-                      href={`https://wa.me/919316705993?text=${encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\nMessage: ${formState.message}`)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 bg-[#25D366] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#20BA5A] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 flex items-center justify-center"
-                    >
-                      <MessageCircle className="w-5 h-5 mr-2" />
-                      Send via WhatsApp
-                    </a>
-                  </div>
-                </form>
+                  {/* Right Side - Form */}
+                  <form onSubmit={handleInquirySubmit} className="space-y-4">
+                    <FormInput
+                      id="name"
+                      label="Full Name"
+                      placeholder="John Doe"
+                      value={formState.name}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <FormInput
+                      id="email"
+                      label="Email Address"
+                      type="email"
+                      placeholder="john.doe@example.com"
+                      value={formState.email}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <FormInput
+                      id="phone"
+                      label="Phone Number"
+                      type="tel"
+                      placeholder="+91 9316705993"
+                      value={formState.phone || ''}
+                      onChange={handleInputChange}
+                    />
+                    <FormTextarea
+                      id="message"
+                      label="Message"
+                      placeholder="How can we help you?"
+                      value={formState.message}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    
+                    {/* File Upload */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Attach Document (PDF, Word)
+                      </label>
+                      <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-[#5C3317] transition-colors">
+                        <input
+                          type="file"
+                          id="attachment"
+                          accept=".pdf,.doc,.docx"
+                          onChange={handleFileChange}
+                          className="hidden"
+                        />
+                        <label htmlFor="attachment" className="cursor-pointer">
+                          <Upload className="w-8 h-8 mx-auto text-gray-400 mb-2" />
+                          <p className="text-sm text-gray-600">Click to upload PDF or Word document</p>
+                          <p className="text-xs text-gray-500 mt-1">PDF, DOC, DOCX (Max 10MB)</p>
+                          {formState.attachment && (
+                            <p className="text-sm text-green-600 mt-2">{formState.attachment.name}</p>
+                          )}
+                        </label>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <button
+                        type="submit"
+                        disabled={isLoading}
+                        className="flex-1 bg-[#5C3317] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#4A2812] focus:outline-none focus:ring-2 focus:ring-[#5C3317] focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center"
+                      >
+                        {isLoading ? (
+                          <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          </svg>
+                        ) : (
+                          <>
+                            <Mail className="w-5 h-5 mr-2" />
+                            Send via Email
+                          </>
+                        )}
+                      </button>
+                      <a
+                        href={`https://wa.me/919316705993?text=${encodeURIComponent(`Name: ${formState.name}\nEmail: ${formState.email}\nMessage: ${formState.message}`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 bg-[#25D366] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#20BA5A] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 flex items-center justify-center"
+                      >
+                        <MessageCircle className="w-5 h-5 mr-2" />
+                        Send via WhatsApp
+                      </a>
+                    </div>
+                  </form>
+                </div>
               )}
             </div>
           )}
@@ -433,7 +446,7 @@ const ContactPage = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Offline Appointment */}
-                <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-[#5C3317] transition-all">
+                <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-[#5C3317] transition-all flex flex-col">
                   <div className="flex items-center mb-4">
                     <img src={officeBuildingIcon} alt="Office Building" className="w-8 h-8 mr-3 object-contain" />
                     <h3 className="text-xl font-bold text-gray-800">Offline Appointment</h3>
@@ -445,7 +458,7 @@ const ContactPage = () => {
                   </div>
                   <button
                     onClick={handleOfflineAppointment}
-                    className="w-full bg-[#5C3317] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#4A2812] flex items-center justify-center"
+                    className="w-full bg-[#5C3317] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#4A2812] flex items-center justify-center mt-auto"
                   >
                     <MapPin className="w-5 h-5 mr-2" />
                     Get Directions
@@ -453,7 +466,7 @@ const ContactPage = () => {
                 </div>
 
                 {/* Online Appointment */}
-                <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-[#5C3317] transition-all">
+                <div className="border-2 border-gray-200 rounded-lg p-6 hover:border-[#5C3317] transition-all flex flex-col">
                   <div className="flex items-center mb-4">
                     <img src={videoIcon} alt="Video" className="w-8 h-8 mr-3 object-contain" />
                     <h3 className="text-xl font-bold text-gray-800">Online Appointment</h3>
@@ -462,7 +475,7 @@ const ContactPage = () => {
                   <p className="text-sm text-gray-500 mb-4">Book your Zoom meeting appointment with us</p>
                   <button
                     onClick={handleOnlineAppointment}
-                    className="w-full bg-[#5C3317] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#4A2812] flex items-center justify-center"
+                    className="w-full bg-[#5C3317] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#4A2812] flex items-center justify-center mt-auto"
                   >
                     <Calendar className="w-5 h-5 mr-2" />
                     Book Zoom Meeting
