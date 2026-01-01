@@ -56,7 +56,7 @@ const CareerCard: React.FC<CareerCardProps> = ({ career }) => {
     <div className="w-full h-full">
       <div className="relative bg-gradient-to-t from-[#FFF8E7] to-[#FFF8E7] border-2 border-[#b08d57]/40 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl h-full flex flex-col" style={{ backgroundColor: '#FFF8E7' }}>
         {/* Image Section */}
-        <div className="w-full h-40 md:h-48 relative overflow-hidden rounded-t-2xl flex-shrink-0">
+        <div className="w-full h-32 md:h-36 relative overflow-hidden rounded-t-2xl flex-shrink-0">
           <img
             src={career.imageUrl}
             alt={career.title}
@@ -71,8 +71,8 @@ const CareerCard: React.FC<CareerCardProps> = ({ career }) => {
         </div>
         
         {/* Content Section */}
-        <div className="p-4 md:p-5 flex flex-col flex-grow">
-           <div className="flex items-center gap-3 mb-2">
+        <div className="p-3 md:p-4 flex flex-col flex-grow">
+           <div className="flex items-center gap-2 mb-1.5">
              <img
                src={career.iconUrl}
                alt={career.title}
@@ -82,13 +82,13 @@ const CareerCard: React.FC<CareerCardProps> = ({ career }) => {
                  target.src = 'https://placehold.co/24x24/cccccc/333333?text=Icon&font=inter';
                }}
              />
-             <h3 className="text-primary text-lg md:text-xl font-serif font-bold">{career.title}</h3>
+             <h3 className="text-primary text-base md:text-lg font-serif font-bold">{career.title}</h3>
            </div>
-           <p className="text-muted-foreground text-xs md:text-sm mb-4 leading-relaxed flex-grow">{career.description}</p>
+           <p className="text-muted-foreground text-xs md:text-sm mb-3 leading-relaxed flex-grow">{career.description}</p>
           
           {/* Important Note for Internship */}
           {career.title === 'Internship' && (
-            <div className="mb-4 bg-gradient-to-r from-red-50 to-red-100 border-l-4 border-red-800 p-3 rounded-lg">
+            <div className="mb-3 bg-gradient-to-r from-red-50 to-red-100 border-l-4 border-red-800 p-2 rounded-lg">
               <p className="text-xs md:text-sm text-red-700 font-medium">
                 <strong>Note:</strong> We only offer offline internship.
               </p>
@@ -98,7 +98,7 @@ const CareerCard: React.FC<CareerCardProps> = ({ career }) => {
           {/* Apply Now Button */}
            <button
              onClick={handleApply}
-             className="w-full flex items-center justify-center bg-[#b08d57] text-white py-2 md:py-2.5 px-5 rounded-lg font-semibold text-xs md:text-sm shadow-md hover:bg-[#c09d67] transition-all duration-300 transform hover:scale-105 group"
+             className="w-full flex items-center justify-center bg-[#b08d57] text-white py-2 px-4 rounded-lg font-semibold text-xs md:text-sm shadow-md hover:bg-[#c09d67] transition-all duration-300 transform hover:scale-105 group"
            >
             Apply Now
             <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
@@ -242,7 +242,7 @@ const Team = () => {
 
           {/* --- Right Cards Content --- */}
           <div className="relative w-full lg:order-2 order-2">
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-lg md:max-w-xl auto-rows-fr mr-4 md:ml-8">
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-2xl md:max-w-3xl auto-rows-fr mr-4 md:ml-8">
               {careers.map((career) => (
                 <CareerCard key={career.id} career={career} />
               ))}
