@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import heroBg from "@/assets/svg/herobg8.svg";
 
 const Hero = () => {
+  const navigate = useNavigate();
   const [backgroundPosition, setBackgroundPosition] = useState('center center');
 
   useEffect(() => {
@@ -23,10 +25,7 @@ const Hero = () => {
     };
   }, []);
 
-  const scrollToContact = () => {
-    const element = document.getElementById("contact");
-    element?.scrollIntoView({ behavior: "smooth" });
-  };
+
 
   return (
     <section 
@@ -71,9 +70,9 @@ const Hero = () => {
             Expert legal representation with a proven track record of success. We fight for your rights with integrity and dedication.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <Button 
-              onClick={scrollToContact}
-              size="lg" 
+            <Button
+              onClick={() => navigate('/contact')}
+              size="lg"
               className="bg-accent hover:bg-accent/90 text-lg px-8 py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105"
             >
               <span
@@ -90,10 +89,10 @@ const Hero = () => {
                 <ArrowRight className="ml-2 w-5 h-5" style={{ color: 'rgb(61,58,57)' }} />
               </span>
             </Button>
-            <Button 
-              onClick={() => document.getElementById("practice-areas")?.scrollIntoView({ behavior: "smooth" })}
-              size="lg" 
-              variant="outline" 
+            <Button
+              onClick={() => navigate('/practice-areas')}
+              size="lg"
+              variant="outline"
               className="bg-white/10 border-white/30 hover:bg-white/20 text-lg px-8 py-7 backdrop-blur-sm hover:scale-105 transition-transform"
             >
               <span
