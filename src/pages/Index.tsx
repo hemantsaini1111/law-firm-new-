@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import PracticeAreas from "@/components/PracticeAreas";
+// import Careers from "@/components/Careers";
 import About from "@/components/About";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Process from "@/components/Process";
@@ -22,7 +23,8 @@ const Index = () => {
       <WhyChooseUs />
       <Process />
       <PracticeAreas />
-      {/* <Team /> */}
+      {/* <Careers /> */}
+      <Team />
       {/* <CaseResults /> */}
       {/* <Testimonials /> */}
       <CTA />

@@ -25,7 +25,7 @@ export default function Abhay() {
             {/* LEFT: FULL IMAGE */}
             <div className="relative h-[320px] max-sm:h-[500px] md:h-[700px]">
               <img
-                src="/a1.png"
+                src="/LateAbhat.jpeg"
                 alt="Late Shri Abhay Bharadwaj"
                 className="absolute inset-0 w-full h-full object-cover"
               />

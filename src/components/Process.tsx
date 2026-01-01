@@ -3,6 +3,8 @@ import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/componen
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import p3Image from "@/assets/images/p3.jpeg";
+import p4Image from "@/assets/images/P4.jpeg";
+import p5Image from "@/assets/images/p5.jpeg";
 import handshakeSvg from "@/assets/svg/handshake2.svg";
 import excellenceIcon from "@/assets/icons/excellence.png";
 import dedicationIcon from "@/assets/icons/dedication.png";
@@ -190,14 +192,28 @@ const Process = () => {
           </div>
 
         {/* Desktop Layout - Image on left, 3 cards on right */}
-        <div className="hidden md:grid md:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto -mt-8">
-          {/* Left Side - Image */}
-          <div className="flex items-center justify-center">
+        <div className="hidden md:grid md:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto -mt-8 items-center">
+          {/* Left Side - Images */}
+          <div className="flex flex-col items-center justify-center space-y-4">
+            {/* Main Image */}
             <img 
               src={p3Image} 
               alt="Firm's Guiding Principles" 
               className="w-full max-w-xl lg:max-w-2xl rounded-lg shadow-lg object-cover rounded-none"
             />
+            {/* Two Images Side by Side */}
+            <div className="flex gap-4 w-full max-w-xl lg:max-w-2xl">
+              <img 
+                src={p4Image} 
+                alt="Firm's Guiding Principles" 
+                className="w-1/2 rounded-lg shadow-lg object-cover rounded-none"
+              />
+              <img 
+                src={p5Image} 
+                alt="Firm's Guiding Principles" 
+                className="w-1/2 rounded-lg shadow-lg object-cover rounded-none"
+              />
+            </div>
           </div>
           
           {/* Right Side - 3 Cards */}
@@ -208,7 +224,7 @@ const Process = () => {
                 return (
                   <Card 
                     key={index} 
-                    className="border-border hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 group bg-background/80 backdrop-blur-sm relative overflow-hidden"
+                    className="border-border hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 group bg-background/80 backdrop-blur-sm relative overflow-hidden rounded-none"
                   >
                     <div className="absolute bottom-0 left-4 right-4 h-1 bg-accent"></div>
                     <CardContent className="pt-6 pb-6 relative z-10">
@@ -234,7 +250,7 @@ const Process = () => {
             {/* Second Row - 1 Centered Card */}
             <div className="flex justify-center">
               <Card 
-                className="border-border hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 group bg-background/80 backdrop-blur-sm relative overflow-hidden max-w-md"
+                className="border-border hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 group bg-background/80 backdrop-blur-sm relative overflow-hidden max-w-md rounded-none"
               >
                 <div className="absolute bottom-0 left-4 right-4 h-1 bg-accent"></div>
                 <CardContent className="pt-6 pb-6 relative z-10">

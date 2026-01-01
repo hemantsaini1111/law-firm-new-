@@ -1,69 +1,96 @@
-import React, { useRef, useEffect } from 'react';
-import { ChevronLeft, ArrowRight } from 'lucide-react';
+import React from 'react';
+import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import teamsectionSvg from '../assets/svg/teamsection2.svg';
-import emilyRodriguez from '../assets/team/emily-rodriguez.jpg';
-import jamesSterling from '../assets/team/james-sterling.jpg';
-import michaelChen from '../assets/team/michael-chen.jpg';
-import sarahMitchell from '../assets/team/sarah-mitchell.jpg';
+import p6Image from '@/assets/images/p6.jpeg';
+import p7Image from '@/assets/images/p7.jpeg';
+import employmentLawIcon from '@/assets/icons/employment-law.png';
+import learningIcon from '@/assets/icons/learning.png';
 
 // --- Type Definitions ---
-interface Attorney {
+interface Career {
   id: number;
-  name: string;
   title: string;
+  description: string;
   imageUrl: string;
+  iconUrl: string;
+  path: string;
 }
 
-// --- Team Member Data ---
-// Using actual team member images
-const attorneys: Attorney[] = [
+// --- Career Data ---
+const careers: Career[] = [
   {
     id: 1,
-    name: 'Sarah Mitchell',
-    title: 'Senior Attorney',
-    imageUrl: sarahMitchell,
+    title: 'Job',
+    description: 'Join our team of skilled legal professionals and advance your career in a dynamic, supportive environment.',
+    imageUrl: p6Image,
+    iconUrl: employmentLawIcon,
+    path: '/careers/jobs'
   },
   {
     id: 2,
-    name: 'Emily Rodriguez',
-    title: 'Attorney',
-    imageUrl: emilyRodriguez,
-  },
-  {
-    id: 3,
-    name: 'James Sterling',
-    title: 'Partner',
-    imageUrl: jamesSterling,
-  },
-  {
-    id: 4,
-    name: 'Michael Chen',
-    title: 'Senior Attorney',
-    imageUrl: michaelChen,
+    title: 'Internship',
+    description: 'Gain valuable hands-on experience in a real legal practice setting and build your professional network.',
+    imageUrl: p7Image,
+    iconUrl: learningIcon,
+    path: '/careers/internships'
   },
 ];
 
-// --- Attorney Card Component ---
-interface AttorneyCardProps {
-  attorney: Attorney;
+// --- Career Card Component ---
+interface CareerCardProps {
+  career: Career;
 }
 
-const AttorneyCard: React.FC<AttorneyCardProps> = ({ attorney }) => {
+const CareerCard: React.FC<CareerCardProps> = ({ career }) => {
+  const navigate = useNavigate();
+
+  const handleApply = () => {
+    navigate(career.path);
+  };
+
   return (
-    <div className="flex-shrink-0 w-64 md:w-72 snap-start">
-      <div className="relative bg-gradient-to-t from-[#FFF8E7] to-[#FFF8E7] border-2 border-[#b08d57]/40 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl" style={{ backgroundColor: '#FFF8E7' }}>
-        <img
-          src={attorney.imageUrl}
-          alt={attorney.name}
-          className="w-full h-80 object-cover rounded-t-2xl"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = 'https://placehold.co/300x400/cccccc/333333?text=Image+Error&font=inter';
-          }}
-        />
-        <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#FFF8E7] via-[#FFF8E7]/95 to-transparent rounded-b-2xl border-t-2 border-[#b08d57]/40">
-          <h3 className="text-primary text-xl font-serif font-bold truncate">{attorney.name}</h3>
-          <p className="text-[#b08d57] text-sm font-medium">{attorney.title}</p>
+    <div className="w-full h-full">
+      <div className="relative bg-gradient-to-t from-[#FFF8E7] to-[#FFF8E7] border-2 border-[#b08d57]/40 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl h-full flex flex-col" style={{ backgroundColor: '#FFF8E7' }}>
+        {/* Image Section */}
+        <div className="w-full h-48 relative overflow-hidden rounded-t-2xl flex-shrink-0">
+          <img
+            src={career.imageUrl}
+            alt={career.title}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = 'https://placehold.co/400x300/cccccc/333333?text=Image+Error&font=inter';
+            }}
+          />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#FFF8E7]/80 to-transparent"></div>
+        </div>
+        
+        {/* Content Section */}
+        <div className="p-5 flex flex-col flex-grow">
+          <div className="flex items-center gap-3 mb-2">
+            <img
+              src={career.iconUrl}
+              alt={career.title}
+              className="w-6 h-6 object-contain"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = 'https://placehold.co/24x24/cccccc/333333?text=Icon&font=inter';
+              }}
+            />
+            <h3 className="text-primary text-xl font-serif font-bold">{career.title}</h3>
+          </div>
+          <p className="text-muted-foreground text-sm mb-4 leading-relaxed flex-grow">{career.description}</p>
+          
+          {/* Apply Now Button */}
+          <button
+            onClick={handleApply}
+            className="w-full flex items-center justify-center bg-[#b08d57] text-white py-2.5 px-5 rounded-lg font-semibold text-sm shadow-md hover:bg-[#c09d67] transition-all duration-300 transform hover:scale-105 group"
+          >
+            Apply Now
+            <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+          </button>
         </div>
       </div>
     </div>
@@ -72,137 +99,9 @@ const AttorneyCard: React.FC<AttorneyCardProps> = ({ attorney }) => {
 
 // --- Main Team Component ---
 const Team = () => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const intervalRef = useRef<number | null>(null); // To store interval ID
-  
-  // Create infinite scroll by duplicating the attorneys array multiple times
-  const duplicatedAttorneys = [...attorneys, ...attorneys, ...attorneys, ...attorneys];
-
-  const scrollRightToLeft = () => {
-    if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      const { scrollLeft, scrollWidth, clientWidth } = container;
-      
-      // Calculate card width dynamically based on viewport
-      const isMobile = window.innerWidth < 768;
-      const cardWidth = isMobile ? 256 : 288; // w-64 (256px) on mobile, w-72 (288px) on desktop
-      const gap = 24; // space-x-6 (24px)
-      const scrollAmount = cardWidth + gap;
-      
-      // Calculate the width of one set (original attorneys array)
-      const singleSetWidth = attorneys.length * (cardWidth + gap);
-      
-      // If at the end of the visible set, jump to the start of a duplicate set invisibly
-      const currentPositionInSet = scrollLeft % singleSetWidth;
-      
-      // If we're approaching the end of a set (within scrollAmount), jump to the next set
-      if (currentPositionInSet + scrollAmount >= singleSetWidth - 50) {
-        // Jump to the start of the next set (which looks like the first)
-        const currentSet = Math.floor(scrollLeft / singleSetWidth);
-        container.scrollTo({
-          left: (currentSet + 1) * singleSetWidth,
-          behavior: 'instant',
-        });
-      } else {
-        // Scroll right (move content from right to left)
-        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      }
-    }
-  };
-  
-  // Handle scroll event to detect when we need to loop
-  const handleScroll = () => {
-    if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current;
-      const { scrollLeft, scrollWidth } = container;
-      
-      // Calculate card width dynamically based on viewport
-      const isMobile = window.innerWidth < 768;
-      const cardWidth = isMobile ? 256 : 288; // w-64 (256px) on mobile, w-72 (288px) on desktop
-      const gap = 24;
-      const singleSetWidth = attorneys.length * (cardWidth + gap);
-      
-      // If we're in the last set (4th), jump to the second set
-      if (scrollLeft >= singleSetWidth * 3) {
-        container.scrollTo({
-          left: singleSetWidth + (scrollLeft % singleSetWidth),
-          behavior: 'instant',
-        });
-      }
-      // If we're in the first set (at the very beginning), jump to the third set
-      else if (scrollLeft < singleSetWidth) {
-        container.scrollTo({
-          left: (singleSetWidth * 2) + scrollLeft,
-          behavior: 'instant',
-        });
-      }
-    }
-  };
-
-  // --- Auto-scroll logic ---
-  const startAutoScroll = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current); // Clear existing interval
-    intervalRef.current = window.setInterval(() => {
-      scrollRightToLeft();
-    }, 3000); // Scroll every 3 seconds
-  };
-
-  const stopAutoScroll = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  };
-
-  useEffect(() => {
-    // Initialize scroll position to start from the right (show rightmost cards first)
-    const initializeScroll = () => {
-      if (scrollContainerRef.current) {
-        const container = scrollContainerRef.current;
-        const isMobile = window.innerWidth < 768;
-        const cardWidth = isMobile ? 256 : 288;
-        const gap = 24;
-        const singleSetWidth = attorneys.length * (cardWidth + gap);
-        const { scrollWidth, clientWidth } = container;
-        
-        // Start at the end of the second set, showing cards from the right side
-        // This makes cards appear starting from the right edge of the screen
-        const startPosition = singleSetWidth + singleSetWidth - clientWidth;
-        container.scrollLeft = startPosition;
-      }
-    };
-    
-    // Initialize after layout is complete
-    setTimeout(initializeScroll, 100);
-    
-    startAutoScroll(); // Start auto-scroll on mount
-    
-    // Get the container element
-    const container = scrollContainerRef.current;
-
-    // Add event listeners
-    container?.addEventListener('mouseenter', stopAutoScroll);
-    container?.addEventListener('mouseleave', startAutoScroll);
-    container?.addEventListener('scroll', handleScroll);
-    
-    // Handle window resize to recalculate on mobile/desktop switch
-    const handleResize = () => {
-      initializeScroll();
-    };
-    window.addEventListener('resize', handleResize);
-
-    // Clean up on unmount
-    return () => {
-      stopAutoScroll(); // Clear interval
-      container?.removeEventListener('mouseenter', stopAutoScroll);
-      container?.removeEventListener('mouseleave', startAutoScroll);
-      container?.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []); // Empty dependency array ensures this runs once on mount
 
   return (
-    <section id="team" className="w-full overflow-hidden relative" style={{ backgroundColor: '#FFF8E7' }}>
+    <section id="careers" className="w-full overflow-hidden relative" style={{ backgroundColor: '#FFF8E7' }}>
       <style>{`
         @keyframes drawLine {
           from {
@@ -232,32 +131,11 @@ const Team = () => {
           {/* --- Left Text Content --- */}
           <div className="flex flex-col justify-center z-10 lg:order-1 order-1">
             <span className="text-[#b08d57] text-sm font-semibold uppercase tracking-wider mb-2">
-              Our Attorneys
+              Career Opportunities
             </span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary leading-tight mb-6">
               <span className="relative inline-block group cursor-default">
-                Dedicated Lawyers
-                {/* Curved underline SVG */}
-                <svg 
-                  className="absolute -bottom-2 left-0 w-full h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out overflow-visible"
-                  viewBox="0 0 300 30"
-                  preserveAspectRatio="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path 
-                    d="M 0 15 Q 75 5, 150 15 T 300 15" 
-                    stroke="#b08d57" 
-                    strokeWidth="3" 
-                    fill="none" 
-                    strokeLinecap="round"
-                    className="animate-draw"
-                  />
-                </svg>
-              </span>
-              ,
-              <br />
-              <span className="relative inline-block group cursor-default">
-                Proven Results
+                Careers
                 {/* Curved underline SVG */}
                 <svg 
                   className="absolute -bottom-2 left-0 w-full h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out overflow-visible"
@@ -276,41 +154,21 @@ const Team = () => {
                 </svg>
               </span>
             </h2>
-            <button className="flex items-center justify-center w-fit bg-[#b08d57] text-white py-3 px-8 rounded-lg font-semibold text-base shadow-md hover:bg-[#c09d67] transition-all duration-300 transform hover:scale-105 group">
-              More Attorney
-              <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
+            <p className="text-lg text-muted-foreground mb-4 leading-relaxed">
+              Explore career opportunities and join our team of dedicated legal professionals. At AB & A, we believe in fostering a collaborative and supportive work environment where talent thrives and expertise is valued.
+            </p>
+            <p className="text-base text-muted-foreground mb-6 leading-relaxed">
+              Whether you're an experienced legal professional looking for a new challenge or a fresh graduate seeking to launch your legal career, we offer opportunities for growth, learning, and meaningful contribution to our firm's legacy of excellence.
+            </p>
           </div>
 
-          {/* --- Right Carousel Content --- */}
-          <div className="relative w-full -mr-12 lg:order-2 order-2">
-            {/* Scroll Container */}
-            <div
-              ref={scrollContainerRef}
-              className="flex space-x-6 overflow-x-auto snap-x snap-mandatory pb-6 w-full
-                         [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            >
-              {duplicatedAttorneys.map((attorney, index) => (
-                <AttorneyCard key={`${attorney.id}-${index}`} attorney={attorney} />
+          {/* --- Right Cards Content --- */}
+          <div className="relative w-full lg:order-2 order-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-xl auto-rows-fr">
+              {careers.map((career) => (
+                <CareerCard key={career.id} career={career} />
               ))}
             </div>
-
-            {/* Navigation Buttons */}
-            <button
-              onClick={() => {
-                scrollRightToLeft();
-                // Reset interval on manual click
-                stopAutoScroll();
-                startAutoScroll();
-              }}
-              className="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2 
-                         bg-[#b08d57]/90 text-white rounded-full p-3 
-                         shadow-lg hover:bg-[#b08d57] transition-all duration-300 z-30
-                         lg:-left-6"
-              aria-label="Scroll"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
           </div>
         </div>
       </div>

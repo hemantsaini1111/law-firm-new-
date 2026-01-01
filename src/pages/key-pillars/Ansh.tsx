@@ -1,5 +1,5 @@
 import React from "react";
-import ansh from "@/assets/images/court-room.png";
+import ansh from "@/assets/images/p2.jpeg";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 

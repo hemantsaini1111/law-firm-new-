@@ -1,15 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone } from "lucide-react";
-import handshakeAgreement from "@/assets/handshake-agreement.jpg";
+import { useNavigate } from "react-router-dom";
+import handshakeAgreement from "@/assets/images/firm-building.png";
 
 const CTA = () => {
-  const scrollToContact = () => {
-    const element = document.getElementById("contact");
-    element?.scrollIntoView({ behavior: "smooth" });
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate("/contact");
   };
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-12 md:py-16 relative overflow-hidden">
       <style>{`
         @keyframes drawLine {
           from {
@@ -88,7 +90,7 @@ const CTA = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <Button 
-              onClick={scrollToContact}
+              onClick={handleContactClick}
               size="lg" 
               className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-10 py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-110 font-semibold"
             >

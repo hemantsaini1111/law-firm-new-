@@ -13,33 +13,33 @@ import workingAreasBg from "@/assets/svg/workingareasbg.svg";
 const practiceAreas = [
   {
     iconImage: corporateLawIcon,
-    title: "Corporate Law",
-    description: "Comprehensive legal services for businesses, mergers, acquisitions, and corporate governance."
+    title: "Criminal Law",
+    description: "Comprehensive legal representation for criminal cases, defending your rights with professionalism and care."
   },
   {
     iconImage: civilLawIcon,
-    title: "Civil Litigation",
-    description: "Expert representation in complex civil disputes and courtroom litigation."
+    title: "Civil Law",
+    description: "Expert legal services in property disputes, contract enforcement, money recovery, landlord-tenant issues, and injunctions."
   },
   {
     iconImage: realEstateLawIcon,
-    title: "Real Estate Law",
-    description: "Full-service real estate legal support for transactions, disputes, and development."
+    title: "Family Law",
+    description: "Compassionate legal support for divorce, child custody, and alimony cases, protecting your rights through a smooth legal process."
   },
   {
     iconImage: familyLawIcon,
-    title: "Family Law",
-    description: "Compassionate guidance through divorce, custody, and family legal matters."
+    title: "Motor Vehicle Law",
+    description: "Legal representation in motor vehicle accident cases, including personal injury claims, property damage, and fatal accident claims under MACT proceedings."
   },
   {
     iconImage: employmentLawIcon,
-    title: "Employment Law",
-    description: "Protecting your rights in workplace disputes and employment contracts."
+    title: "Company Law",
+    description: "Skilled representation in company law matters, from regulatory compliance to business structuring, ensuring your legal obligations are met."
   },
   {
     iconImage: estatePlanningIcon,
-    title: "Estate Planning",
-    description: "Secure your legacy with wills, trusts, and comprehensive estate planning."
+    title: "Intellectual Property Law",
+    description: "Expert handling of intellectual property rights and legal issues, including compliance and litigation."
   }
 ];
 
