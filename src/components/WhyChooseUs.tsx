@@ -100,7 +100,7 @@ const WhyChooseUs = () => {
               {pillars.map((pillar, index) => {
                 return (
                   <CarouselItem key={index} className="pl-2 basis-full">
-                    <Card className="bg-white backdrop-blur-sm border-0 hover:bg-white transition-all duration-300 hover:shadow-elegant-hover hover:scale-105 rounded-lg overflow-hidden max-w-64 mx-auto">
+                    <Card className="bg-white backdrop-blur-sm border-0 hover:bg-white transition-all duration-300 hover:shadow-elegant-hover hover:scale-105 rounded-none overflow-hidden max-w-64 mx-auto">
                       <CardContent className="p-0">
                          <div className="w-full aspect-[3/4] overflow-hidden">
                           <img 
