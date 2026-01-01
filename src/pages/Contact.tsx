@@ -178,7 +178,7 @@ const ContactPage = () => {
       // Option to send via WhatsApp or Email
       const sendMethod = window.confirm('Choose OK to send via WhatsApp, or Cancel to send via Email');
       if (sendMethod) {
-        window.open(whatsappUrl, '_blank');
+        window.open(whatsappUrl, '_blank'); //backend integration would be better
       } else {
         window.location.href = emailUrl;
       }
