@@ -11,7 +11,7 @@ const CTA = () => {
   };
 
   return (
-    <section className="py-12 md:py-16 relative overflow-hidden">
+    <section className="py-8 md:py-12 lg:py-16 relative overflow-hidden">
       <style>{`
         @keyframes drawLine {
           from {
@@ -42,7 +42,7 @@ const CTA = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center text-white">
           <div className="inline-block relative group cursor-pointer mb-6">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif font-bold leading-tight">
               <span className="relative inline-block">
                 Ready to Discuss
                 {/* Curved underline SVG for first row */}
@@ -84,31 +84,31 @@ const CTA = () => {
               </span>
             </h2>
           </div>
-          <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed">
+          <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 md:mb-10 leading-relaxed">
             Don't navigate your legal challenges alone. Our experienced attorneys are here to help you achieve the best possible outcome.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Button 
+          <div className="flex flex-row gap-3 md:gap-4 justify-center items-center mb-6 md:mb-8 flex-wrap">
+            <Button
               onClick={handleContactClick}
-              size="lg" 
-              className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-10 py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-110 font-semibold"
+              size="lg"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 text-base md:text-lg px-8 md:px-10 py-5 md:py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-110 font-semibold"
             >
               Schedule Free Consultation
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="bg-white/10 text-white border-white/30 hover:bg-white/20 text-lg px-10 py-7 backdrop-blur-sm hover:scale-105 transition-all"
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-white/10 text-white border-white/30 hover:bg-white/20 text-base md:text-lg px-8 md:px-10 py-5 md:py-7 backdrop-blur-sm hover:scale-105 transition-all"
               onClick={() => window.location.href = 'tel:9727473730'}
             >
-              <Phone className="mr-2 w-5 h-5" />
+              <Phone className="mr-2 w-4 h-4 md:w-5 md:h-5" />
               9727473730
             </Button>
           </div>
 
-          <p className="text-white/70 text-sm">
+          <p className="text-white/70 text-xs md:text-sm">
             Available 24/7 for urgent matters • Free initial consultation • No obligation
           </p>
         </div>

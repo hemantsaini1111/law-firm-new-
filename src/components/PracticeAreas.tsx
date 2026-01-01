@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import corporateLawIcon from "@/assets/icons/corporate-laws.png";
 import civilLawIcon from "@/assets/icons/civil-law.png";
@@ -47,7 +47,6 @@ const PracticeAreas = () => {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
-  const autoScrollIntervalRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (!carouselApi) {
@@ -66,53 +65,10 @@ const PracticeAreas = () => {
     };
   }, [carouselApi]);
 
-  // Auto-scroll on mobile only
-  useEffect(() => {
-    const isMobile = window.innerWidth < 768;
-    
-    if (isMobile && carouselApi) {
-      // Start auto-scroll (2 second interval)
-      autoScrollIntervalRef.current = window.setInterval(() => {
-        carouselApi.scrollNext();
-      }, 2000);
 
-      // Pause on hover
-      const carouselElement = document.querySelector('#practice-areas .carousel-container');
-      const pauseScroll = () => {
-        if (autoScrollIntervalRef.current) {
-          clearInterval(autoScrollIntervalRef.current);
-          autoScrollIntervalRef.current = null;
-        }
-      };
-      const resumeScroll = () => {
-        if (!autoScrollIntervalRef.current && window.innerWidth < 768) {
-          autoScrollIntervalRef.current = window.setInterval(() => {
-            carouselApi.scrollNext();
-          }, 2000);
-        }
-      };
-
-      carouselElement?.addEventListener('mouseenter', pauseScroll);
-      carouselElement?.addEventListener('mouseleave', resumeScroll);
-
-      return () => {
-        if (autoScrollIntervalRef.current) {
-          clearInterval(autoScrollIntervalRef.current);
-        }
-        carouselElement?.removeEventListener('mouseenter', pauseScroll);
-        carouselElement?.removeEventListener('mouseleave', resumeScroll);
-      };
-    }
-
-    return () => {
-      if (autoScrollIntervalRef.current) {
-        clearInterval(autoScrollIntervalRef.current);
-      }
-    };
-  }, [carouselApi]);
 
   return (
-    <section id="practice-areas" className="py-24 bg-gradient-to-b from-secondary to-background relative overflow-hidden">
+    <section id="practice-areas" className="py-16 md:py-24 bg-gradient-to-b from-secondary to-background relative overflow-hidden">
       <div 
         className="absolute inset-0 z-0"
         style={{
@@ -125,9 +81,9 @@ const PracticeAreas = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(var(--accent)/0.05),transparent_50%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,hsl(var(--primary)/0.03),transparent_50%)]"></div>
       <div className="container mx-auto pl-4 pr-0 relative z-10">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-12 md:mb-16 animate-fade-in">
           <div className="inline-block relative group cursor-pointer mb-4">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-primary">
               Practice Areas
             </h2>
             <svg 
@@ -145,7 +101,7 @@ const PracticeAreas = () => {
               />
             </svg>
           </div>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
             We provide comprehensive legal services across multiple practice areas
           </p>
         </div>
@@ -169,9 +125,9 @@ const PracticeAreas = () => {
                   
                   return (
                     <CarouselItem key={index} className="pl-2 basis-full">
-                      <Card 
-                        className="relative hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 group bg-background/80 backdrop-blur-sm overflow-visible"
-                      >
+                     <Card
+                         className="relative hover:shadow-elegant-hover transition-all duration-500 hover:scale-105 hover:-translate-y-2 group bg-background/80 backdrop-blur-sm overflow-visible mr-4"
+                       >
                   {isEven ? (
                     <>
                       {/* Left border - starts and ends away from corners - visible by default, hidden on hover */}
@@ -258,17 +214,17 @@ const PracticeAreas = () => {
                         }}
                       ></div>
                     </>
-                  )}
-                  <CardHeader>
-                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center mb-4 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110 shadow-soft group-hover:shadow-glow">
-                      <img src={area.iconImage} alt={area.title} className="w-8 h-8 object-contain" />
-                    </div>
-                  <CardTitle className="text-xl font-serif group-hover:text-accent transition-colors">{area.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base leading-relaxed">{area.description}</CardDescription>
-                </CardContent>
-                      </Card>
+                   )}
+                   <CardHeader>
+                     <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center mb-4 group-hover:from-accent/30 group-hover:to-accent/20 transition-all duration-300 group-hover:scale-110 shadow-soft group-hover:shadow-glow">
+                       <img src={area.iconImage} alt={area.title} className="w-6 h-6 md:w-8 md:h-8 object-contain" />
+                     </div>
+                   <CardTitle className="text-lg md:text-xl font-serif group-hover:text-accent transition-colors">{area.title}</CardTitle>
+                 </CardHeader>
+                 <CardContent>
+                   <CardDescription className="text-sm md:text-base leading-relaxed">{area.description}</CardDescription>
+                 </CardContent>
+                       </Card>
                     </CarouselItem>
                   );
                 })}
@@ -279,18 +235,18 @@ const PracticeAreas = () => {
               <button
                 onClick={() => carouselApi?.scrollPrev()}
                 disabled={!canScrollPrev}
-                className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/80 text-white shadow-lg hover:bg-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/80 text-white shadow-lg hover:bg-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label="Previous slide"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
               </button>
               <button
                 onClick={() => carouselApi?.scrollNext()}
                 disabled={!canScrollNext}
-                className="flex items-center justify-center w-10 h-10 rounded-full bg-primary/80 text-white shadow-lg hover:bg-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/80 text-white shadow-lg hover:bg-primary transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label="Next slide"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
               </button>
             </div>
           </div>

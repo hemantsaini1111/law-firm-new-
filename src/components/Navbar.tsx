@@ -87,6 +87,7 @@ const Navbar: React.FC = () => {
   const [aboutOpen, setAboutOpen] = useState(false);
   const [keyPillarsOpen, setKeyPillarsOpen] = useState(false);
   const [careersOpen, setCareersOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
 
   return (
     <div className="font-inter text-stone-300">
@@ -195,8 +196,26 @@ const Navbar: React.FC = () => {
           <div className="p-4 space-y-2">
 
             <button onClick={() => navigate('/')} className="block w-full text-left py-2">Home</button>
-            <button onClick={() => navigate('/about-ab-a')} className="block w-full text-left py-2">About AB & A</button>
-            <button onClick={() => navigate('/guiding-principles')} className="block w-full text-left py-2">Firm's Guiding Principles</button>
+
+            {/* About the Firm Mobile */}
+            <button
+              className="w-full flex justify-between items-center py-2"
+              onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+            >
+              <span>About the Firm</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${mobileAboutOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {mobileAboutOpen && (
+              <div className="ml-4">
+                <button onClick={() => navigate('/about-ab-a')} className="block w-full text-left py-2">
+                  About AB & A
+                </button>
+                <button onClick={() => navigate('/guiding-principles')} className="block w-full text-left py-2">
+                  Firm's Guiding Principles
+                </button>
+              </div>
+            )}
 
             {/* Key Pillars Mobile */}
             <button
