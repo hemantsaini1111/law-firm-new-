@@ -46,10 +46,10 @@ export default function Ansh() {
                       Email
                     </span>
                     <a
-                      href="mailto:jamesgarcia@igual.com"
+                      href="mailto:abalegal@outlook.com"
                       className="hover:text-primary transition-colors truncate block"
                     >
-                      ansh@aba.com
+                      abalegal@outlook.com
                     </a>
                   </div>
 

@@ -154,19 +154,19 @@ const Process = () => {
               <img
                 src={p3Image}
                 alt="Firm's Guiding Principles"
-                className="w-full max-w-xl rounded-lg shadow-lg object-cover"
+                className="w-full max-w-xl rounded-none shadow-lg object-cover"
               />
               {/* Two Images Side by Side */}
               <div className="flex gap-4 w-full max-w-xl mr-4">
                 <img
                   src={p4Image}
                   alt="Firm's Guiding Principles"
-                  className="w-1/2 rounded-lg shadow-lg object-cover"
+                  className="w-1/2 rounded-none shadow-lg object-cover"
                 />
                 <img
                   src={p5Image}
                   alt="Firm's Guiding Principles"
-                  className="w-1/2 rounded-lg shadow-lg object-cover"
+                  className="w-1/2 rounded-none shadow-lg object-cover"
                 />
               </div>
             </div>
