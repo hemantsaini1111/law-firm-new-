@@ -522,8 +522,8 @@ const ContactPage = () => {
                   </div>
                   <InfoRow
                     icon={<Mail size={20} />}
-                    text="abalegal@outlook.com"
-                    href="mailto:abalegal@outlook.com"
+                    text="abalegal.info@gmail.com"
+                    href="mailto:abalegal.info@gmail.com"
                   />
                 </div>
                 <a

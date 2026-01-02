@@ -645,7 +645,7 @@ function Job() {
             <div className="mt-10 text-center">
               <p className="text-sm text-gray-500">
                 We typically respond to applications within 7-10 business days.
-                For urgent inquiries, please contact careers@abhaybharadwaj.com
+                For urgent inquiries, please contact abalegal.info@gmail.com
               </p>
             </div>
           </div>

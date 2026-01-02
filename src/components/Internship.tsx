@@ -711,7 +711,7 @@ function Internship() {
                   </div>
                 </div>
                 <p className="mt-4 text-sm text-gray-500">
-                  For queries, contact: <strong>internship@abhaybharadwaj.com</strong> | Phone: +91-XXX-XXXX-XXX
+                  For queries, contact: <strong>abalegal.info@gmail.com</strong> | Phone: +91-9316705993
                 </p>
               </div>
             </div>
