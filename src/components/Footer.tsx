@@ -1,7 +1,8 @@
-import { Scale, MapPin, Phone, Mail, Linkedin, Instagram } from "lucide-react";
+import { MapPin, Phone, Mail, Linkedin, Instagram } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import lawLibrary from "@/assets/law-library.jpg";
 import footerCorner from "@/assets/svg/footercorner.svg";
+import logo from "@/assets/images/logo.jpg";
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -15,7 +16,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-12 mb-8 sm:mb-12">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4 sm:mb-6">
-              <Scale className="w-6 h-6 sm:w-8 sm:h-8 text-accent flex-shrink-0" />
+              <img 
+                src={logo} 
+                alt="Abhay Bharadwaj & Associates Logo" 
+                className="w-8 h-8 sm:w-10 sm:h-10 object-contain rounded-full flex-shrink-0"
+              />
               <span className="text-lg sm:text-xl md:text-2xl font-serif font-bold">Abhay Bharadwaj & Associates</span>
             </div>
             <p className="text-primary-foreground/80 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 max-w-md">

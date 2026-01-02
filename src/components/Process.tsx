@@ -6,9 +6,9 @@ import p3Image from "@/assets/images/p3.jpeg";
 import p4Image from "@/assets/images/P4.jpeg";
 import p5Image from "@/assets/images/p5.jpeg";
 import handshakeSvg from "@/assets/svg/handshake2.svg";
-import excellenceIcon from "@/assets/icons/excellence.png";
-import dedicationIcon from "@/assets/icons/dedication.png";
-import trustIcon from "@/assets/icons/trust (1).png";
+import excellenceIcon from "@/assets/icons/guidance.png";
+import dedicationIcon from "@/assets/icons/mission.png";
+import trustIcon from "@/assets/icons/ethical.png";
 
 const principles = [
   {
@@ -154,19 +154,19 @@ const Process = () => {
               <img
                 src={p3Image}
                 alt="Firm's Guiding Principles"
-                className="w-full max-w-xl rounded-lg shadow-lg object-cover"
+                className="w-full max-w-xl rounded-none shadow-lg object-cover"
               />
               {/* Two Images Side by Side */}
               <div className="flex gap-4 w-full max-w-xl mr-4">
                 <img
                   src={p4Image}
                   alt="Firm's Guiding Principles"
-                  className="w-1/2 rounded-lg shadow-lg object-cover"
+                  className="w-1/2 rounded-none shadow-lg object-cover"
                 />
                 <img
                   src={p5Image}
                   alt="Firm's Guiding Principles"
-                  className="w-1/2 rounded-lg shadow-lg object-cover"
+                  className="w-1/2 rounded-none shadow-lg object-cover"
                 />
               </div>
             </div>

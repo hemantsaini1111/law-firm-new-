@@ -45,7 +45,7 @@ const FormInput: React.FC<{
       onChange={onChange}
       placeholder={placeholder}
       required={required}
-      className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5C3317] focus:border-transparent"
+      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5C3317] focus:border-transparent text-sm sm:text-base"
     />
   </div>
 );
@@ -70,7 +70,7 @@ const FormTextarea: React.FC<{
       onChange={onChange}
       placeholder={placeholder}
       required={required}
-      className="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5C3317] focus:border-transparent"
+      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#5C3317] focus:border-transparent text-sm sm:text-base"
     />
   </div>
 );
@@ -203,9 +203,9 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      
+
       {/* Hero Section */}
-      <section 
+      <section
         className="relative min-h-[70vh] flex items-center pt-24 overflow-hidden"
         style={{
           backgroundImage: `url(${heroBg})`,
@@ -218,7 +218,7 @@ const ContactPage = () => {
         <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
           <div className="max-w-4xl animate-fade-in">
             <div className="inline-block relative group cursor-pointer mb-4 md:mb-6">
-              <h1 
+              <h1
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight animate-slide-up inline-block relative"
                 style={{
                   background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
@@ -229,7 +229,7 @@ const ContactPage = () => {
                 }}
               >
                 <span>Contact Us</span>
-                <svg 
+                <svg
                   className="absolute -bottom-2 left-0 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   style={{ width: '100%' }}
                   viewBox="0 0 300 20"
@@ -246,9 +246,9 @@ const ContactPage = () => {
                 </svg>
               </h1>
             </div>
-            <p 
-              className="text-base sm:text-lg md:text-xl mb-6 md:mb-8 leading-relaxed animate-slide-up max-w-3xl" 
-              style={{ 
+            <p
+              className="text-base sm:text-lg md:text-xl mb-6 md:mb-8 leading-relaxed animate-slide-up max-w-3xl"
+              style={{
                 animationDelay: '0.1s',
                 background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
                 WebkitBackgroundClip: 'text',
@@ -265,40 +265,38 @@ const ContactPage = () => {
       </section>
 
       {/* Get In Touch Section */}
-      <section 
-        id="contact" 
-        className="relative antialiased text-gray-900 py-12 sm:py-16 md:py-24 w-full flex items-center justify-center px-4 sm:px-8" 
-        style={{ 
-          backgroundColor: 'rgb(255,249,233)', 
-          backgroundImage: `url(${contactSection})`, 
-          backgroundSize: 'cover', 
-          backgroundPosition: 'center', 
-          backgroundRepeat: 'no-repeat' 
+      <section
+        id="contact"
+        className="relative antialiased text-gray-900 py-12 sm:py-16 md:py-24 w-full flex items-center justify-center px-4 sm:px-8"
+        style={{
+          backgroundColor: 'rgb(255,249,233)',
+          backgroundImage: `url(${contactSection})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
         }}
       >
         <div className="absolute inset-0 bg-[rgb(255,249,233)]/60"></div>
-        <div className="max-w-6xl w-full mx-auto relative z-10">
-          
+        <div className="max-w-6xl w-full mx-auto relative z-10 px-2 sm:px-0">
+
           {/* Tab Navigation */}
           <div className="flex justify-center mb-8">
             <div className="inline-flex bg-white rounded-lg p-1 shadow-lg">
               <button
                 onClick={() => setActiveTab('inquiry')}
-                className={`px-6 py-3 rounded-md font-semibold transition-all ${
-                  activeTab === 'inquiry' 
-                    ? 'bg-[#5C3317] text-white' 
-                    : 'text-gray-700 hover:bg-gray-100'
-                }`}
+                className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 sm:py-3 rounded-md text-sm sm:text-base font-semibold transition-all ${activeTab === 'inquiry'
+                  ? 'bg-[#5C3317] text-white shadow-md'
+                  : 'text-gray-700 hover:bg-gray-100'
+                  }`}
               >
                 Inquiry Box
               </button>
               <button
                 onClick={() => setActiveTab('appointment')}
-                className={`px-6 py-3 rounded-md font-semibold transition-all ${
-                  activeTab === 'appointment' 
-                    ? 'bg-[#5C3317] text-white' 
-                    : 'text-gray-700 hover:bg-gray-100'
-                }`}
+                className={`flex-1 sm:flex-none px-4 sm:px-6 py-2.5 sm:py-3 rounded-md text-sm sm:text-base font-semibold transition-all ${activeTab === 'appointment'
+                  ? 'bg-[#5C3317] text-white shadow-md'
+                  : 'text-gray-700 hover:bg-gray-100'
+                  }`}
               >
                 Book Appointment
               </button>
@@ -307,10 +305,10 @@ const ContactPage = () => {
 
           {/* Inquiry Box */}
           {activeTab === 'inquiry' && (
-            <div className="bg-white shadow-xl rounded-2xl overflow-hidden p-6 sm:p-8 md:p-10">
+            <div className="bg-white shadow-xl rounded-2xl overflow-hidden p-4 sm:p-8 md:p-10">
               <div className="mb-6">
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">Inquiry Box</h2>
-                 <p className="text-sm sm:text-base text-gray-600">Send us a message via email. You can attach PDFs and Word documents.</p>
+                <p className="text-sm sm:text-base text-gray-600">Send us a message via email. You can attach PDFs and Word documents.</p>
               </div>
 
               {isSubmitted ? (
@@ -325,9 +323,9 @@ const ContactPage = () => {
                 <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-stretch">
                   {/* Left Side - SVG Image */}
                   <div className="hidden md:flex h-full">
-                    <img 
-                      src={contactFormImage} 
-                      alt="Contact Form" 
+                    <img
+                      src={contactFormImage}
+                      alt="Contact Form"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -367,13 +365,13 @@ const ContactPage = () => {
                       onChange={handleInputChange}
                       required
                     />
-                    
+
                     {/* File Upload */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">
                         Attach Document (PDF, Word)
                       </label>
-                      <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-[#5C3317] transition-colors">
+                      <div className="border-2 border-dashed border-gray-300 rounded-lg p-3 sm:p-4 text-center hover:border-[#5C3317] transition-colors">
                         <input
                           type="file"
                           id="attachment"
@@ -395,7 +393,7 @@ const ContactPage = () => {
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="w-full bg-[#5C3317] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#4A2812] focus:outline-none focus:ring-2 focus:ring-[#5C3317] focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center"
+                      className="w-full bg-[#5C3317] text-white font-bold py-2.5 sm:py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#4A2812] focus:outline-none focus:ring-2 focus:ring-[#5C3317] focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center justify-center text-sm sm:text-base"
                     >
                       {isLoading ? (
                         <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -417,7 +415,7 @@ const ContactPage = () => {
 
           {/* Book Appointment */}
           {activeTab === 'appointment' && (
-            <div className="bg-white shadow-xl rounded-2xl overflow-hidden p-6 sm:p-8 md:p-10">
+            <div className="bg-white shadow-xl rounded-2xl overflow-hidden p-4 sm:p-8 md:p-10">
               <div className="mb-6">
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">Book an Appointment</h2>
                 <p className="text-sm sm:text-base text-gray-600">Choose between offline or online consultation</p>
@@ -437,7 +435,7 @@ const ContactPage = () => {
                   </div>
                   <button
                     onClick={handleOfflineAppointment}
-                    className="w-full bg-[#5C3317] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#4A2812] flex items-center justify-center mt-auto"
+                    className="w-full bg-[#5C3317] text-white font-bold py-2.5 sm:py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#4A2812] flex items-center justify-center mt-auto text-sm sm:text-base"
                   >
                     <MapPin className="w-5 h-5 mr-2" />
                     Get Directions
@@ -454,7 +452,7 @@ const ContactPage = () => {
                   <p className="text-sm text-gray-500 mb-4">Book your Zoom meeting appointment with us</p>
                   <button
                     onClick={handleOnlineAppointment}
-                    className="w-full bg-[#5C3317] text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#4A2812] flex items-center justify-center mt-auto"
+                    className="w-full bg-[#5C3317] text-white font-bold py-2.5 sm:py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:bg-[#4A2812] flex items-center justify-center mt-auto text-sm sm:text-base"
                   >
                     <Calendar className="w-5 h-5 mr-2" />
                     Book Zoom Meeting
@@ -468,7 +466,7 @@ const ContactPage = () => {
 
       {/* Reach Out for Legal Consultation */}
       <section className="py-12 sm:py-16 md:py-24 relative overflow-hidden" style={{ backgroundColor: '#FFF8E7' }}>
-        <div 
+        <div
           className="absolute inset-0 bg-no-repeat bg-contain bg-center opacity-10 z-0"
           style={{
             backgroundImage: `url(${footerCorner})`,
@@ -484,7 +482,7 @@ const ContactPage = () => {
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-primary">
                   Reach out to us for Legal Consultation
                 </h2>
-                <svg 
+                <svg
                   className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   viewBox="0 0 300 20"
                   preserveAspectRatio="none"
@@ -501,9 +499,9 @@ const ContactPage = () => {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-8">
               {/* Contact Information */}
-              <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+              <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-8">
                 <h3 className="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
                 <div className="space-y-4">
                   <InfoRow
@@ -544,7 +542,8 @@ const ContactPage = () => {
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3690.958041742878!2d70.76528002474991!3d22.317426542275474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3959c98d51ec1e95%3A0x69b2607444c14e24!2sThe%20Spire%20-%202!5e0!3m2!1sen!2sin!4v1767276452249!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
-                  style={{ minHeight: '400px', border: 0 }}
+                  style={{ minHeight: '350px', border: 0 }}
+                  className="md:min-h-[400px]"
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -554,28 +553,28 @@ const ContactPage = () => {
             </div>
 
             {/* Availability */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
+            <div className="bg-white rounded-2xl shadow-lg p-5 sm:p-8 mb-8">
               <div className="flex items-center mb-6">
                 <img src={clockIcon} alt="Clock" className="w-6 h-6 mr-3 object-contain" />
-                <h3 className="text-2xl font-bold text-gray-800">Availability</h3>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-800">Availability</h3>
               </div>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <p className="font-semibold text-gray-800 mb-2">Monday - Friday</p>
-                  <p className="text-gray-600">5:00 PM - 8:00 PM</p>
+                  <p className="font-semibold text-gray-800 text-xs sm:text-base mb-1 sm:mb-2">Monday - Friday</p>
+                  <p className="text-gray-600 text-[10px] sm:text-base">5:00 PM - 8:00 PM</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-800 mb-2">2nd & 4th Saturday</p>
-                  <p className="text-gray-600">10:30 AM - 1:00 PM</p>
-                  <p className="text-gray-600">5:00 PM - 8:00 PM</p>
+                  <p className="font-semibold text-gray-800 text-xs sm:text-base mb-1 sm:mb-2">2nd & 4th Saturday</p>
+                  <p className="text-gray-600 text-[10px] sm:text-base">10:30 AM - 1:00 PM</p>
+                  <p className="text-gray-600 text-[10px] sm:text-base">5:00 PM - 8:00 PM</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-800 mb-2">Other Saturdays</p>
-                  <p className="text-gray-600">5:00 PM - 8:00 PM</p>
+                  <p className="font-semibold text-gray-800 text-xs sm:text-base mb-1 sm:mb-2">Other Saturdays</p>
+                  <p className="text-gray-600 text-[10px] sm:text-base">5:00 PM - 8:00 PM</p>
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-800 mb-2">Sunday</p>
-                  <p className="text-gray-600">Closed</p>
+                  <p className="font-semibold text-gray-800 text-xs sm:text-base mb-1 sm:mb-2">Sunday</p>
+                  <p className="text-gray-600 text-[10px] sm:text-base">Closed</p>
                 </div>
               </div>
             </div>
@@ -584,23 +583,23 @@ const ContactPage = () => {
             <div className="p-6 md:p-8">
               <div className="text-center">
                 <h3 className="text-3xl font-bold text-gray-800 mb-6">Connect With Us</h3>
-                <div className="flex justify-center gap-4">
+                <div className="flex flex-row justify-center gap-3 sm:gap-4">
                   <a
                     href="https://www.linkedin.com/company/abhay-bharadwajassociates/posts/?feedView=all"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 bg-[#5C3317] text-white rounded-lg font-semibold hover:bg-[#4A2812] transition-all"
+                    className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-6 py-3 bg-[#5C3317] text-white rounded-lg font-semibold hover:bg-[#4A2812] transition-all text-xs sm:text-base"
                   >
-                    <Linkedin className="w-5 h-5 text-white" />
+                    <Linkedin className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     LinkedIn
                   </a>
                   <a
                     href="https://www.instagram.com/abalawfirm/?hl=en"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 bg-[#5C3317] text-white rounded-lg font-semibold hover:bg-[#4A2812] transition-all"
+                    className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-6 py-3 bg-[#5C3317] text-white rounded-lg font-semibold hover:bg-[#4A2812] transition-all text-xs sm:text-base"
                   >
-                    <Instagram className="w-5 h-5 text-white" />
+                    <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     Instagram
                   </a>
                 </div>

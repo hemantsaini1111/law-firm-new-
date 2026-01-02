@@ -149,7 +149,7 @@ const WhyChooseUs = () => {
         <div className="hidden md:grid md:grid-cols-2 gap-32 max-w-4xl mx-auto">
           {pillars.map((pillar, index) => {
             return (
-              <Card key={index} className="bg-white backdrop-blur-sm border-0 hover:bg-white transition-all duration-300 hover:shadow-elegant-hover hover:scale-105 rounded-lg overflow-hidden max-w-xs mx-auto">
+              <Card key={index} className="bg-white backdrop-blur-sm border-0 hover:bg-white transition-all duration-300 hover:shadow-elegant-hover hover:scale-105 rounded-none overflow-hidden max-w-xs mx-auto">
                 <CardContent className="p-0">
                   <div className="w-full aspect-[6/6] overflow-hidden">
                     <img 
