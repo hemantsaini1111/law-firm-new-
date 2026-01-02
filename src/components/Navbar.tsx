@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import logo from '@/assets/images/logo.jpg';
+import logo from '@/assets/images/Ansh Bharadwaj Logo.jpg';
 
 const NavbarStyles = () => (
   <style>{`
@@ -94,23 +94,29 @@ const Navbar: React.FC = () => {
       <NavbarStyles />
 
       <header id="navbar-header" className="fixed top-0 left-0 right-0 z-50">
-        <nav className="container mx-auto flex items-center justify-between h-14 sm:h-16 px-4">
+        <nav className="container mx-auto flex items-center justify-between h-16 sm:h-20 px-4">
 
           {/* Logo */}
           <a
             href="#"
-            className="flex items-center gap-2 text-white font-bold"
+            className="flex items-center gap-4 text-white font-bold group transition-all"
             onClick={(e) => {
               e.preventDefault();
               navigate('/');
             }}
           >
-            <img 
-              src={logo} 
-              alt="Abhay Bharadwaj & Associates Logo" 
-              className="w-8 h-8 sm:w-10 sm:h-10 object-contain rounded-full"
-            />
-            <span className="text-sm sm:text-lg">Abhay Bharadwaj & Associates</span>
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+              <img
+                src={logo}
+                alt="Abhay Bharadwaj & Associates Logo"
+                className="relative w-12 h-12 sm:w-16 sm:h-16 object-cover aspect-square rounded-full shadow-2xl border-2 border-white/10 group-hover:border-amber-500/30 transition-all duration-300"
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-lg sm:text-2xl tracking-tight font-serif leading-none">Abhay Bharadwaj & Associates</span>
+              {/* <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-stone-400 font-medium mt-1">Law Firm</span> */}
+            </div>
           </a>
 
           <div id="pattern-fill" className="hidden lg:block flex-grow h-full" />
