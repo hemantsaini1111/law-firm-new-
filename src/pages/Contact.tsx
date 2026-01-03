@@ -11,6 +11,7 @@ import contactFormImage from "@/assets/svg/contactformimage.svg";
 import officeBuildingIcon from "@/assets/icons/office-building.png";
 import videoIcon from "@/assets/icons/video.png";
 import clockIcon from "@/assets/icons/24-7.png";
+import { ZoomBooking } from "@/components/ZoomBooking";
 
 // === Type Definitions ===
 type FormState = {
@@ -114,6 +115,7 @@ const ContactPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<'inquiry' | 'appointment'>('inquiry');
+  const [isZoomBookingOpen, setIsZoomBookingOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -193,8 +195,7 @@ const ContactPage = () => {
   };
 
   const handleOnlineAppointment = () => {
-    // In production, this would integrate with a calendar booking system
-    alert('Online appointment booking via Zoom will be available soon. Please contact us at +919316705993 or abalegal@outlook.com to schedule.');
+    setIsZoomBookingOpen(true);
   };
 
   const officeAddress = "Fourth Floor, The Spire 2, 401, Chowk, 150 Feet Ring Rd, Sheetal Park, Rajkot, Gujarat 360007";
@@ -610,6 +611,10 @@ const ContactPage = () => {
       </section>
 
       <Footer />
+      <ZoomBooking
+        isOpen={isZoomBookingOpen}
+        onClose={() => setIsZoomBookingOpen(false)}
+      />
     </div>
   );
 };
