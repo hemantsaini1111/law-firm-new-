@@ -69,7 +69,7 @@ const Hero = () => {
           >
             Expert legal representation with a proven track record of success. We fight for your rights with integrity and dedication.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex justify-start animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <Button
               onClick={() => navigate('/contact')}
               size="lg"
@@ -85,26 +85,8 @@ const Hero = () => {
                 }}
                 className="flex items-center"
               >
-                Get Free Consultation
+                Contact Us
                 <ArrowRight className="ml-2 w-5 h-5" style={{ color: 'rgb(61,58,57)' }} />
-              </span>
-            </Button>
-            <Button
-              onClick={() => navigate('/practice-areas')}
-              size="lg"
-              variant="outline"
-              className="bg-white/10 border-white/30 hover:bg-white/20 text-lg px-8 py-7 backdrop-blur-sm hover:scale-105 transition-transform"
-            >
-              <span
-                style={{
-                  background: 'linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  color: 'transparent'
-                }}
-              >
-                Our Services
               </span>
             </Button>
           </div>
