@@ -1,7 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import React, { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabase";
 
 function Job() {
   useEffect(() => {
@@ -129,74 +128,14 @@ function Job() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateForm()) {
-      alert("Please fill in all required fields correctly.");
-      return;
-    }
+    if (validateForm()) {
+      // In a real application, you would send this data to your backend
+      console.log("Form submitted:", formData);
 
-    try {
-      // Prepare data for Supabase insert
-      // Parse age properly - handle empty string and invalid numbers
-      const ageValue = formData.age.trim() ? parseInt(formData.age.trim()) : null;
-      const ageFinal = (ageValue && !isNaN(ageValue) && ageValue > 0) ? ageValue : null;
-
-      // Ensure area_of_law is not empty string - convert empty array to null or provide default
-      const areaOfLawValue = Array.isArray(formData.areaOfLaw) && formData.areaOfLaw.length > 0
-        ? formData.areaOfLaw.join(', ')
-        : null;
-
-      // Ensure education is valid JSONB structure
-      const educationValue = Array.isArray(formData.qualifications) && formData.qualifications.length > 0
-        ? formData.qualifications
-        : null;
-
-      const insertData: Record<string, any> = {
-        name: formData.name.trim(),
-        age: ageFinal,
-        residence: formData.placeOfResidence.trim() || null,
-        phone: formData.phone.trim() || null,
-        email: formData.email.trim(),
-        education: educationValue,
-        professional_details: formData.pqe?.trim() || null,
-        area_of_law: areaOfLawValue,
-        message: formData.message?.trim() || null,
-        cv_url: null,
-        cover_letter_url: null,
-        photo_url: null,
-      };
-
-      // Remove any fields that are null/undefined/empty to avoid RLS issues
-      Object.keys(insertData).forEach(key => {
-        if (insertData[key] === undefined || insertData[key] === '') {
-          insertData[key] = null;
-        }
-      });
-
-      console.log('Submitting data:', JSON.stringify(insertData, null, 2));
-
-      const { data, error } = await supabase
-        .from('job_applications')
-        .insert([insertData])
-        .select();
-
-      if (error) {
-        console.error('Supabase error details:', {
-          message: error.message,
-          details: error.details,
-          hint: error.hint,
-          code: error.code,
-        });
-        console.error('Data that failed to insert:', insertData);
-        alert(`Failed to submit application: ${error.message}${error.hint ? `\n\nHint: ${error.hint}` : ''}`);
-        return;
-      }
-
-      console.log('Successfully inserted:', data);
-
-      // Success - only show success message after successful insert
+      // Show success message (you could use a toast notification here)
       alert("Application submitted successfully! We'll get back to you soon.");
 
       // Reset form
@@ -214,9 +153,8 @@ function Job() {
         coverLetter: null,
         photo: null,
       });
-    } catch (err) {
-      console.error('Unexpected error:', err);
-      alert("An unexpected error occurred. Please try again later.");
+    } else {
+      alert("Please fill in all required fields correctly.");
     }
   };
 
