@@ -348,7 +348,6 @@ const ContactPage = () => {
                       placeholder="john.doe@example.com"
                       value={formState.email}
                       onChange={handleInputChange}
-                      required
                     />
                     <FormInput
                       id="phone"
@@ -357,6 +356,7 @@ const ContactPage = () => {
                       placeholder="+91 9316705993"
                       value={formState.phone || ''}
                       onChange={handleInputChange}
+                      required
                     />
                     <FormTextarea
                       id="message"
@@ -586,7 +586,7 @@ const ContactPage = () => {
                 <h3 className="text-3xl font-bold text-gray-800 mb-6">Connect With Us</h3>
                 <div className="flex flex-row justify-center gap-3 sm:gap-4">
                   <a
-                    href="https://www.linkedin.com/company/abhay-bharadwajassociates/posts/?feedView=all"
+                    href="https://www.linkedin.com/company/abhay-bharadwaj-associates/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 sm:px-6 py-3 bg-[#5C3317] text-white rounded-lg font-semibold hover:bg-[#4A2812] transition-all text-xs sm:text-base"

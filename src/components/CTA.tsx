@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import handshakeAgreement from "@/assets/images/firm-building.png";
 
@@ -88,23 +88,14 @@ const CTA = () => {
             Don't navigate your legal challenges alone. Our experienced attorneys are here to help you achieve the best possible outcome.
           </p>
 
-          <div className="flex flex-row gap-2 sm:gap-4 justify-center items-center mb-6 md:mb-8">
+          <div className="flex justify-center items-center mb-6 md:mb-8">
             <Button
               onClick={handleContactClick}
               size="lg"
-              className="flex-1 sm:flex-none bg-accent text-accent-foreground hover:bg-accent/90 text-xs sm:text-base md:text-lg px-2 sm:px-10 py-4 sm:py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105 sm:hover:scale-110 font-semibold"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 text-xs sm:text-base md:text-lg px-6 sm:px-10 py-4 sm:py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105 sm:hover:scale-110 font-semibold"
             >
-              Free Consultation
+              Contact Us
               <ArrowRight className="ml-1 sm:ml-2 w-3 h-3 sm:w-5 sm:h-5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="flex-1 sm:flex-none bg-white/10 text-white border-white/30 hover:bg-white/20 text-xs sm:text-base md:text-lg px-2 sm:px-10 py-4 sm:py-7 backdrop-blur-sm hover:scale-105 transition-all"
-              onClick={() => window.location.href = 'tel:9727473730'}
-            >
-              <Phone className="mr-1 sm:mr-2 w-3 h-3 sm:w-5 sm:h-5" />
-              9727473730
             </Button>
           </div>
 

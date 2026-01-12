@@ -46,22 +46,10 @@ export default function Ansh() {
                       Email
                     </span>
                     <a
-                      href="mailto:abalegal@outlook.com"
+                      href="mailto:abalegal.info@gmail.com"
                       className="hover:text-primary transition-colors truncate block"
                     >
-                      abalegal@outlook.com
-                    </a>
-                  </div>
-
-                  <div>
-                    <span className="block font-semibold text-stone-700">
-                      Phone
-                    </span>
-                    <a
-                      href="tel:+919727473730"
-                      className="hover:text-primary transition-colors"
-                    >
-                      9727473730
+                      abalegal.info@gmail.com
                     </a>
                   </div>
 
@@ -77,15 +65,6 @@ export default function Ansh() {
                     >
                       abaassociates.com
                     </a>
-                  </div>
-
-                  <div>
-                    <span className="block font-semibold text-stone-700">
-                      Experience
-                    </span>
-                    <span>
-                      More Than <strong>5+ Years</strong>
-                    </span>
                   </div>
                 </div>
               </div>

@@ -55,7 +55,7 @@ export default function Abhay() {
                   <p className="bg-stone-50 border-l-4 border-accent pl-3 sm:pl-4 py-2 sm:py-3 rounded-md">
                     Late Shri Abhay Bharadwaj was a distinguished legal luminary,
                     jurist, and former Member of the Law Commission of India. He
-                    founded the firm in 1980 with a vision rooted in integrity,
+                    established the firm in 1980 with a vision rooted in integrity,
                     scholarship, and unwavering commitment to justice.
                   </p>
 
@@ -69,8 +69,7 @@ export default function Abhay() {
                 {/* Quote */}
                 <div className="mt-6 sm:mt-10 pt-4 sm:pt-6 border-t border-stone-200">
                   <p className="text-[11px] sm:text-sm text-muted-foreground italic">
-                    “His legacy lives on through the pursuit of justice,
-                    excellence, and ethical legal practice.”
+                    "His legacy lives through his words - I'm a born fighter"
                   </p>
                 </div>
               </div>

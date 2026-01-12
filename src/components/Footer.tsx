@@ -34,7 +34,7 @@ const Footer = () => {
               </p>
               <div className="flex gap-3 sm:gap-4">
                 <a
-                  href="https://www.linkedin.com/company/abhay-bharadwajassociates/posts/?feedView=all"
+                  href="https://www.linkedin.com/company/abhay-bharadwaj-associates/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-accent/10 flex items-center justify-center hover:bg-accent/20 transition-colors group"

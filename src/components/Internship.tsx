@@ -19,7 +19,6 @@ function Internship() {
         degree: "",
         degreeType: "3-year",
         year: "",
-        marks: "",
         place: ""
       }
     ],
@@ -70,7 +69,7 @@ function Internship() {
       ...prev,
       qualifications: [
         ...prev.qualifications,
-        { institution: "", degree: "", degreeType: "3-year", year: "", marks: "", place: "" }
+        { institution: "", degree: "", degreeType: "3-year", year: "", place: "" }
       ]
     }));
   };
@@ -126,7 +125,7 @@ function Internship() {
         placeOfResidence: "",
         phone: "",
         email: "",
-        qualifications: [{ institution: "", degree: "", degreeType: "3-year", year: "", marks: "", place: "" }],
+        qualifications: [{ institution: "", degree: "", degreeType: "3-year", year: "", place: "" }],
         period: "",
         message: "",
         cv: null,
@@ -447,20 +446,6 @@ function Internship() {
 
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Last Semester Marks
-                          </label>
-                          <input
-                            type="text"
-                            value={qual.marks}
-                            onChange={(e) => handleQualificationChange(index, "marks", e.target.value)}
-                            className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-500/30 focus:border-amber-400 focus:outline-none transition-all text-sm sm:text-base"
-                            placeholder="e.g., 8.5 CGPA, 85%"
-                          />
-                          <p className="mt-1 text-xs text-gray-500">CGPA/Percentage/SGPA of last completed semester</p>
-                        </div>
-
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-2">
                             Place of Education
                           </label>
                           <input
@@ -620,12 +605,10 @@ function Internship() {
                           <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                         </svg>
                         <div className="ml-3">
-                          <h3 className="text-sm font-medium text-amber-800">Internship Schedule</h3>
+                          <h3 className="text-sm font-medium text-amber-800">Kindly note</h3>
                           <div className="mt-2 text-sm text-amber-700">
                             <p>• Minimum duration: 1 month</p>
-                            <p>• Working hours: 10:00 AM to 6:00 PM (Monday to Saturday)</p>
-                            <p>• Stipend: Performance-based (details provided upon selection)</p>
-                            <p>• Certificate provided upon successful completion</p>
+                            <p>• Working hours: 08:30 AM to 08:30 PM (Monday to Saturday)</p>
                           </div>
                         </div>
                       </div>
@@ -695,7 +678,7 @@ function Internship() {
                     <div className="w-10 h-10 mx-auto mb-2 bg-blue-100 rounded-full flex items-center justify-center">
                       <span className="text-blue-600 font-bold">1</span>
                     </div>
-                    <p>Application Review (5-7 business days)</p>
+                    <p>Application Review</p>
                   </div>
                   <div className="text-center">
                     <div className="w-10 h-10 mx-auto mb-2 bg-green-100 rounded-full flex items-center justify-center">
@@ -707,7 +690,7 @@ function Internship() {
                     <div className="w-10 h-10 mx-auto mb-2 bg-amber-100 rounded-full flex items-center justify-center">
                       <span className="text-amber-600 font-bold">3</span>
                     </div>
-                    <p>Offer Letter & Onboarding</p>
+                    <p>Onboarding</p>
                   </div>
                 </div>
                 <p className="mt-4 text-sm text-gray-500">

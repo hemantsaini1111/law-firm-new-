@@ -195,7 +195,7 @@ export const ZoomBooking: React.FC<ZoomBookingProps> = ({ isOpen, onClose }) => 
                                     <h3 className="text-lg font-semibold text-gray-800">3. Your Information</h3>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="space-y-2">
-                                            <Label htmlFor="book-name">Full Name</Label>
+                                            <Label htmlFor="book-name">Full Name <span className="text-red-500">*</span></Label>
                                             <Input
                                                 id="book-name"
                                                 placeholder="John Doe"
@@ -206,7 +206,7 @@ export const ZoomBooking: React.FC<ZoomBookingProps> = ({ isOpen, onClose }) => 
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <Label htmlFor="book-email">Email</Label>
+                                            <Label htmlFor="book-email">Email <span className="text-red-500">*</span></Label>
                                             <Input
                                                 id="book-email"
                                                 type="email"
@@ -219,17 +219,18 @@ export const ZoomBooking: React.FC<ZoomBookingProps> = ({ isOpen, onClose }) => 
                                         </div>
                                     </div>
                                     <div className="space-y-2">
-                                        <Label htmlFor="book-phone">Phone Number</Label>
+                                        <Label htmlFor="book-phone">Phone Number <span className="text-red-500">*</span></Label>
                                         <Input
                                             id="book-phone"
                                             placeholder="+91 00000 00000"
                                             className="rounded-xl"
+                                            required
                                             value={formData.phone}
                                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <Label htmlFor="book-purpose">Consultation Purpose</Label>
+                                        <Label htmlFor="book-purpose">Consultation Purpose <span className="text-red-500">*</span></Label>
                                         <Textarea
                                             id="book-purpose"
                                             placeholder="Briefly describe your legal inquiry"

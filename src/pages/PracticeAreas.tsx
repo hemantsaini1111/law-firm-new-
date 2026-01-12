@@ -101,7 +101,7 @@ const PracticeAreasPage = () => {
   }, []);
 
   const scrollToContact = () => {
-    navigate('/#contact');
+    navigate('/contact');
   };
 
   return (
