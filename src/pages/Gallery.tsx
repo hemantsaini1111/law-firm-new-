@@ -72,20 +72,17 @@ const GalleryPage = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
+        {/* Dark overlay for better text visibility */}
+        <div className="absolute inset-0 bg-black/40 z-0"></div>
         <div className="absolute inset-0 bg-white/80 md:hidden z-0"></div>
 
         <div className="container mx-auto px-4 py-20 relative z-10">
           <div className="max-w-4xl animate-fade-in">
             <div className="inline-block relative group cursor-pointer mb-6">
               <h1
-                className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight animate-slide-up inline-block relative"
+                className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight animate-slide-up inline-block relative text-white"
                 style={{
-                  background:
-                    "linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                  color: "transparent",
+                  textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
                 }}
               >
                 <span>Curated Legacy</span>
@@ -96,21 +93,15 @@ const GalleryPage = () => {
                   preserveAspectRatio="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M 0,15 Q 150,5 300,15" stroke="currentColor" strokeWidth="3" fill="none" className="text-accent" />
+                  <path d="M 0,15 Q 150,5 300,15" stroke="currentColor" strokeWidth="3" fill="none" className="text-white" />
                 </svg>
               </h1>
             </div>
             <p
-              className="text-lg md:text-xl mb-8 leading-relaxed animate-slide-up max-w-3xl"
+              className="text-lg md:text-xl mb-8 leading-relaxed animate-slide-up max-w-3xl text-white"
               style={{
                 animationDelay: "0.1s",
-                background:
-                  "linear-gradient(135deg, rgb(61,58,57) 0%, rgb(101,67,33) 25%, rgb(139,90,43) 50%, rgb(101,67,33) 75%, rgb(61,58,57) 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                color: "transparent",
-                opacity: 0.85,
+                textShadow: "1px 1px 3px rgba(0,0,0,0.7)",
               }}
             >
               A visual narrative of our commitment to legal excellence, client advocacy, and the milestones that define our firm's legacy since 1980.
