@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import handshakeAgreement from "@/assets/images/firm-building.png";
+import contactSectionBg from "@/assets/svg/contactsection.svg";
+import handshakeAgreement from "@/assets/images/herobg2.png";
 
 const CTA = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const CTA = () => {
   };
 
   return (
-    <section className="py-8 md:py-12 lg:py-16 relative overflow-hidden">
+    <section className="py-6 md:py-10 lg:py-12 relative overflow-hidden">
       <style>{`
         @keyframes drawLine {
           from {
@@ -84,7 +85,7 @@ const CTA = () => {
               </span>
             </h2>
           </div>
-          <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 md:mb-10 leading-relaxed">
+          <p className="text-lg md:text-xl text-white/90 mb-6 md:mb-8 leading-relaxed max-w-3xl mx-auto">
             Don't navigate your legal challenges alone. Our experienced attorneys are here to help you achieve the best possible outcome.
           </p>
 
@@ -92,10 +93,10 @@ const CTA = () => {
             <Button
               onClick={handleContactClick}
               size="lg"
-              className="bg-accent text-accent-foreground hover:bg-accent/90 text-xs sm:text-base md:text-lg px-6 sm:px-10 py-4 sm:py-7 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105 sm:hover:scale-110 font-semibold"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 text-sm md:text-base px-8 py-5 shadow-glow hover:shadow-elegant-hover transition-all duration-300 hover:scale-105 font-semibold"
             >
               Contact Us
-              <ArrowRight className="ml-1 sm:ml-2 w-3 h-3 sm:w-5 sm:h-5" />
+              <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </div>
 

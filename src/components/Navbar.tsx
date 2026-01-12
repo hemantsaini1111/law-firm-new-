@@ -142,6 +142,7 @@ const Navbar: React.FC = () => {
                 <div className="dropdown">
                   <a onClick={() => navigate('/about-ab-a')}>About AB & A</a>
                   <a onClick={() => navigate('/guiding-principles')}>Firm's Guiding Principles</a>
+                  <a onClick={() => navigate('/photo-gallery')}>Photo Gallery</a>
                 </div>
               )}
             </div>
@@ -219,6 +220,9 @@ const Navbar: React.FC = () => {
                 </button>
                 <button onClick={() => navigate('/guiding-principles')} className="block w-full text-left py-2">
                   Firm's Guiding Principles
+                </button>
+                <button onClick={() => navigate('/photo-gallery')} className="block w-full text-left py-2">
+                  Photo Gallery
                 </button>
               </div>
             )}

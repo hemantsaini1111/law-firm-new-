@@ -17,6 +17,7 @@ const Ansh = lazy(() => import("./pages/key-pillars/Ansh"));
 const Principles = lazy(() => import("./components/Principles"));
 const Job = lazy(() => import("./components/Job"));
 const Internship = lazy(() => import("./components/Internship"));
+const GalleryPage = lazy(() => import("./pages/Gallery"));
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/guiding-principles" element={<Principles />} />
           <Route path="/careers/jobs" element={<Job />} />
           <Route path="/careers/internships" element={<Internship />} />
+          <Route path="/photo-gallery" element={<GalleryPage />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

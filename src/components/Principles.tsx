@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import React, { useEffect } from "react";
 import courtRoom from "@/assets/images/court-room.png";
 import teamMeeting from "@/assets/images/team-meeting.png";
-import firmBuilding from "@/assets/images/clienttalk.png";
+import firmBuilding from "@/assets/images/ourvalues.jpeg";
 import qualityIcon from "@/assets/icons/guidance.png";
 import excellenceIcon from "@/assets/icons/mission.png";
 import trustIcon from "@/assets/icons/ethical.png";

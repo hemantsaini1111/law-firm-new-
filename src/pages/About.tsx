@@ -16,8 +16,8 @@ import excellenceIcon from "@/assets/icons/a2.png";
 import dedicationIcon from "@/assets/icons/a3.png";
 import trustIcon from "@/assets/icons/a4.png";
 import aboutImage from "@/assets/images/a1.png";
-import founder from "@/assets/images/founder.png";
-import prize from "@/assets/images/prize.png";
+import founder from "@/assets/images/workwithus1.jpeg";
+import prize from "@/assets/images/workwithus2.jpeg";
 
 const AboutPage = () => {
   const navigate = useNavigate();
@@ -354,7 +354,7 @@ const AboutPage = () => {
                 {/* Heading */}
                 <div className="inline-block relative group cursor-pointer mb-10">
                   <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-primary">
-                    Work With Us. Let's Make Great Together.
+                      Join us for professional legal guidance.
                   </h2>
                   <svg
                     className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"

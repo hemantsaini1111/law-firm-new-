@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import p3Image from "@/assets/images/p3.jpeg";
 import p4Image from "@/assets/images/P4.jpeg";
-import p5Image from "@/assets/images/p5.jpeg";
+import p5Image from "@/assets/images/p6.jpeg";
 import handshakeSvg from "@/assets/svg/handshake2.svg";
 import excellenceIcon from "@/assets/icons/guidance.png";
 import dedicationIcon from "@/assets/icons/mission.png";
