@@ -194,12 +194,12 @@ const AboutPage = () => {
             <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
               {/* Left Image Section (40%) */}
               <div className="w-full md:w-[40%]">
-                 <div className="w-full h-[380px] sm:h-[380px] md:h-[600px] overflow-hidden shadow-lg bg-cover bg-center">
-                   <img
-                     src={aboutImage}
-                     alt="About our firm"
-                     className="w-full h-full object-cover md:object-cover"
-                   />
+                <div className="w-full h-[380px] sm:h-[380px] md:h-[600px] overflow-hidden shadow-lg bg-cover bg-center">
+                  <img
+                    src={aboutImage}
+                    alt="About our firm"
+                    className="w-full h-full object-cover md:object-cover"
+                  />
                 </div>
               </div>
 
@@ -208,7 +208,7 @@ const AboutPage = () => {
                 <div className="mb-8 md:mb-12">
                   <div className="inline-block relative group cursor-pointer mb-4 md:mb-6">
                     <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-5xl font-serif font-bold text-primary">
-                      We’re Advocates for People Justice and Right
+                      Upholding the Rule of Law and People’s Rights
                     </h2>
                     <svg
                       className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -243,19 +243,19 @@ const AboutPage = () => {
                     for diverse legal challenges.
                   </p>
 
-                   <div className="grid grid-cols-2 gap-3 md:block md:space-y-4">
-                     {[
-                       "Corporate Law",
-                       "Civil Litigation",
-                       "Family Law",
-                       "Motor Vehicle Law",
-                       "IPR Law",
-                       "Company Law",
-                     ].map((item, index) => (
-                       <div
-                         key={index}
-                         className="flex items-center gap-2 md:gap-3"
-                       >
+                  <div className="grid grid-cols-2 gap-3 md:block md:space-y-4">
+                    {[
+                      "Criminal Law",
+                      "Civil Law",
+                      "Family Law",
+                      "Motor Vehicle Law",
+                      "IPR Law",
+                      "Company Law",
+                    ].map((item, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center gap-2 md:gap-3"
+                      >
                         <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-accent flex-shrink-0" />
                         <span className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
                           {item}
@@ -354,7 +354,7 @@ const AboutPage = () => {
                 {/* Heading */}
                 <div className="inline-block relative group cursor-pointer mb-10">
                   <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-primary">
-                      Join us for professional legal guidance.
+                    Join us for professional legal guidance.
                   </h2>
                   <svg
                     className="absolute -bottom-2 left-0 w-full h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"

@@ -23,6 +23,7 @@ function Internship() {
       }
     ],
     period: "",
+    customPeriod: "",
     message: "",
     cv: null as File | null,
     coverLetter: null as File | null,
@@ -30,9 +31,15 @@ function Internship() {
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [showCustomPeriodModal, setShowCustomPeriodModal] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+
+    if (name === "period" && value === "Custom period") {
+      setShowCustomPeriodModal(true);
+    }
+
     setFormData(prev => ({
       ...prev,
       [name]: value
@@ -93,6 +100,9 @@ function Internship() {
     if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
     if (!formData.email.trim()) newErrors.email = "Email is required";
     if (!formData.period.trim()) newErrors.period = "Period of internship is required";
+    if (formData.period === "Custom period" && !formData.customPeriod.trim()) {
+      newErrors.customPeriod = "Please specify the custom period";
+    }
 
     // Validate qualifications
     formData.qualifications.forEach((qual, index) => {
@@ -127,6 +137,7 @@ function Internship() {
         email: "",
         qualifications: [{ institution: "", degree: "", degreeType: "3-year", year: "", place: "" }],
         period: "",
+        customPeriod: "",
         message: "",
         cv: null,
         coverLetter: null,
@@ -249,8 +260,8 @@ function Internship() {
                         value={formData.name}
                         onChange={handleInputChange}
                         className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-offset-1 focus:outline-none transition-all text-sm sm:text-base ${errors.name
-                            ? "border-red-300 focus:ring-red-500/30"
-                            : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
+                          ? "border-red-300 focus:ring-red-500/30"
+                          : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
                           }`}
                         placeholder="Full Name"
                       />
@@ -268,8 +279,8 @@ function Internship() {
                         value={formData.age}
                         onChange={handleInputChange}
                         className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-offset-1 focus:outline-none transition-all text-sm sm:text-base ${errors.age
-                            ? "border-red-300 focus:ring-red-500/30"
-                            : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
+                          ? "border-red-300 focus:ring-red-500/30"
+                          : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
                           }`}
                         placeholder="e.g., 21"
                         min="16"
@@ -289,8 +300,8 @@ function Internship() {
                         value={formData.placeOfResidence}
                         onChange={handleInputChange}
                         className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-offset-1 focus:outline-none transition-all text-sm sm:text-base ${errors.placeOfResidence
-                            ? "border-red-300 focus:ring-red-500/30"
-                            : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
+                          ? "border-red-300 focus:ring-red-500/30"
+                          : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
                           }`}
                         placeholder="City, State"
                       />
@@ -308,8 +319,8 @@ function Internship() {
                         value={formData.phone}
                         onChange={handleInputChange}
                         className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-offset-1 focus:outline-none transition-all text-sm sm:text-base ${errors.phone
-                            ? "border-red-300 focus:ring-red-500/30"
-                            : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
+                          ? "border-red-300 focus:ring-red-500/30"
+                          : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
                           }`}
                         placeholder="+91 9876543210"
                       />
@@ -327,8 +338,8 @@ function Internship() {
                         value={formData.email}
                         onChange={handleInputChange}
                         className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-offset-1 focus:outline-none transition-all text-sm sm:text-base ${errors.email
-                            ? "border-red-300 focus:ring-red-500/30"
-                            : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
+                          ? "border-red-300 focus:ring-red-500/30"
+                          : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
                           }`}
                         placeholder="you@example.com"
                       />
@@ -379,8 +390,8 @@ function Internship() {
                             value={qual.institution}
                             onChange={(e) => handleQualificationChange(index, "institution", e.target.value)}
                             className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-offset-1 focus:outline-none transition-all text-sm sm:text-base ${errors[`qual_institution_${index}`]
-                                ? "border-red-300 focus:ring-red-500/30"
-                                : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
+                              ? "border-red-300 focus:ring-red-500/30"
+                              : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
                               }`}
                             placeholder="e.g., National Law University"
                           />
@@ -398,8 +409,8 @@ function Internship() {
                             value={qual.degree}
                             onChange={(e) => handleQualificationChange(index, "degree", e.target.value)}
                             className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-offset-1 focus:outline-none transition-all text-sm sm:text-base ${errors[`qual_degree_${index}`]
-                                ? "border-red-300 focus:ring-red-500/30"
-                                : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
+                              ? "border-red-300 focus:ring-red-500/30"
+                              : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
                               }`}
                             placeholder="e.g., B.A. LL.B., LL.B."
                           />
@@ -430,8 +441,8 @@ function Internship() {
                             value={qual.year}
                             onChange={(e) => handleQualificationChange(index, "year", e.target.value)}
                             className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-offset-1 focus:outline-none transition-all text-sm sm:text-base ${errors[`qual_year_${index}`]
-                                ? "border-red-300 focus:ring-red-500/30"
-                                : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
+                              ? "border-red-300 focus:ring-red-500/30"
+                              : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
                               }`}
                           >
                             <option value="">Select Year</option>
@@ -583,21 +594,45 @@ function Internship() {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Desired Duration <span className="text-red-500">*</span>
                     </label>
-                    <select
-                      name="period"
-                      value={formData.period}
-                      onChange={handleInputChange}
-                      className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-offset-1 focus:outline-none transition-all text-sm sm:text-base ${errors.period
+                    <div className="flex gap-2 relative">
+                      <select
+                        name="period"
+                        value={formData.period}
+                        onChange={handleInputChange}
+                        className={`w-full px-3 sm:px-4 py-2.5 sm:py-3 border rounded-lg focus:ring-2 focus:ring-offset-1 focus:outline-none transition-all text-sm sm:text-base appearance-none ${errors.period
                           ? "border-red-300 focus:ring-red-500/30"
                           : "border-stone-300 focus:ring-amber-500/30 focus:border-amber-400"
-                        }`}
-                    >
-                      <option value="">Select Internship Period</option>
-                      {internshipPeriods.map(period => (
-                        <option key={period} value={period}>{period}</option>
-                      ))}
-                    </select>
-                    {errors.period && <p className="mt-1 text-sm text-red-600">{errors.period}</p>}
+                          } ${formData.period === "Custom period" ? "pr-20" : ""}`}
+                        style={{
+                          backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                          backgroundPosition: "right 0.5rem center",
+                          backgroundRepeat: "no-repeat",
+                          backgroundSize: "1.5em 1.5em",
+                        }}
+                      >
+                        <option value="">Select Internship Period</option>
+                        {internshipPeriods.map((period) => (
+                          <option key={period} value={period}>
+                            {period === "Custom period" && formData.customPeriod
+                              ? formData.customPeriod
+                              : period}
+                          </option>
+                        ))}
+                      </select>
+
+                      {formData.period === "Custom period" && (
+                        <button
+                          type="button"
+                          onClick={() => setShowCustomPeriodModal(true)}
+                          className="absolute right-8 top-1/2 -translate-y-1/2 text-xs font-bold text-amber-600 hover:text-amber-800 bg-amber-50 px-2 py-1 rounded border border-amber-200 hover:border-amber-300 transition-all z-10"
+                        >
+                          Edit
+                        </button>
+                      )}
+                    </div>
+                    {errors.customPeriod && (
+                      <p className="mt-1 text-sm text-red-600">{errors.customPeriod}</p>
+                    )}
 
                     <div className="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-4">
                       <div className="flex items-start">
@@ -702,6 +737,90 @@ function Internship() {
         </div>
       </section>
       <Footer />
+
+      {/* Custom Period Modal */}
+      {showCustomPeriodModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all scale-100 opacity-100">
+            <div className="bg-gradient-to-r from-amber-600 to-amber-700 px-6 py-4 flex justify-between items-center">
+              <h3 className="text-lg font-serif font-bold text-white">Specify Duration (Years)</h3>
+              <button
+                type="button"
+                onClick={() => {
+                  if (!formData.customPeriod) {
+                    setFormData(prev => ({ ...prev, period: "" }));
+                  }
+                  setShowCustomPeriodModal(false);
+                }}
+                className="text-white/80 hover:text-white transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="p-6">
+              <p className="text-stone-600 mb-4 text-sm">
+                Please specify the number of years you would like to intern for .
+              </p>
+
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-stone-700 mb-2">
+                  Duration (in Years) <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="customPeriod"
+                  value={formData.customPeriod}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-stone-300 rounded-xl focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 outline-none transition-all"
+                  placeholder="e.g. 2 years"
+                  autoFocus
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      if (formData.customPeriod.trim()) {
+                        setShowCustomPeriodModal(false);
+                      } else {
+                        alert("Please specify a duration");
+                      }
+                    }
+                  }}
+                />
+              </div>
+
+              <div className="flex gap-3 justify-end">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setFormData(prev => ({ ...prev, period: "", customPeriod: "" }));
+                    setShowCustomPeriodModal(false);
+                  }}
+                  className="px-5 py-2.5 rounded-lg border border-stone-300 text-stone-600 font-medium hover:bg-stone-50 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (formData.customPeriod.trim()) {
+                      setShowCustomPeriodModal(false);
+                    } else {
+                      // Optional: Shake animation or error showing could go here
+                      // For now, we rely on the user seeing the red star and knowing to type
+                      // But to be helpful let's check validation
+                      alert("Please specify a duration");
+                    }
+                  }}
+                  className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-amber-600 to-amber-700 text-white font-medium hover:from-amber-700 hover:to-amber-800 shadow-md hover:shadow-lg transition-all transform active:scale-95"
+                >
+                  Confirm Period
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
